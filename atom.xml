@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>白玉楼へ</title>
+  <subtitle>ようこそ～</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-10-19T08:46:28.441Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Ayanokouji-Kenn</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2016/10/19/hello-world/"/>
+    <id>http://yoursite.com/2016/10/19/hello-world/</id>
+    <published>2016-10-19T08:46:28.439Z</published>
+    <updated>2016-10-19T08:46:28.441Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Could not find com.android.support:appcompat-v7:23.0.3</title>
+    <link href="http://yoursite.com/2016/03/03/index/"/>
+    <id>http://yoursite.com/2016/03/03/index/</id>
+    <published>2016-03-03T02:46:46.000Z</published>
+    <updated>2016-10-20T02:18:27.626Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h5><p>将整个AS项目拷到另一个电脑的时候，出现了这个问题，提示app:unspecified<br>请去下载android support Respository,打开后SDK Manager更新到最新了还是不行</p>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p>将项目clean一下，AS会列出一堆目录，他在这些目录里面找appcompat-v7:23.0.3<br>找到其中的一个目录，比如C:\develop_software\android-studio-sdk\extras\android\m2repository\com\android\support\appcompat-v7<br>在这里面找23.0.3，发现并没有···那么看看有什么，有23.3.0，那么在build.gradle改成23.3.0，然后clean，rebuild即可</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;遇到的问题&quot;&gt;&lt;a href=&quot;#遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;遇到的问题&quot;&gt;&lt;/a&gt;遇到的问题&lt;/h5&gt;&lt;p&gt;将整个AS项目拷到另一个电脑的时候，出现了这个问题，提示app:unspecified&lt;br&gt;请去下载android
+    
+    </summary>
+    
+    
+      <category term="problems" scheme="http://yoursite.com/tags/problems/"/>
+    
+  </entry>
+  
+</feed>
