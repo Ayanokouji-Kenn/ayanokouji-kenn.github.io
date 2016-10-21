@@ -136,53 +136,65 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/19/hello-world/" title="link to post.title">Hello World</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/07/20/Unique Constraint Failded/" title="link to post.title">Unique Constraint Failded</a></h2>
       <p class="excerpt">
     
-      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
+      
+今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？
+
+解决问题排查发现是插入
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-10-19T08:46:28.439Z" class="post-list__meta--date date">2016-10-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/10/19/hello-world/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/07/20/Unique Constraint Failded/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/14/20161014 GreenDao3.2.0用法/" title="link to post.title">GreenDao3.2.0用法</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/07/20/notifyDatasetChanged无效的解决办法/" title="link to post.title">notifyDatasetChanged无效的解决办法</a></h2>
       <p class="excerpt">
     
-      发现GreenDao更新到3了，还是改了一些东西的，看了几篇文章，发现有些出入之处，于是结合官网写了个demo测试了下，在此总结。
+      
+出现问题比如这样给适配器传一个集合1234List datas;datas = DBDao.selectMyClock(); //此句是返回一个ListclocksAdapter = new AlarmClockListAdapter(getContext(), datas);myClocks.setAdapter(clocksAdapter);
 
-#1. 导入GreenDao有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里123456789101112131415161718192021222324252627282930313233343536373839
+
+数据库刷新了，然后想这样刷新数据1234pr
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-10-14T02:46:46.000Z" class="post-list__meta--date date">2016-10-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/10/14/20161014 GreenDao3.2.0用法/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/07/20/notifyDatasetChanged无效的解决办法/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/10/20161010 RecyclerView的局部更新/" title="link to post.title">RecyclerView的局部更新</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/03/03/index/" title="link to post.title">Could not find com.android.support:appcompat-v7:23.0.3</a></h2>
       <p class="excerpt">
     
-      我们知道recyclerView有好几个notify
-除了最常用的notifyDataSetChanged()以外，还有下面的那些，知道position就可以进行更新了但是！我得知道位置才能做到定向更新，那么我不想让所有都更新呢？实际开发中其实经常有这种情况，可能只是调整一小部分，根本不需要整体全部刷一遍，下面进入正题
-
-首先，项目里用到了1234compile &amp;apos;com.android
+      遇到的问题将整个AS项目拷到另一个电脑的时候，出现了这个问题，提示app:unspecified请去下载android support Respository,打开后SDK Manager更新到最新了还是不行
+解决办法将项目clean一下，AS会列出一堆目录，他在这些目录里面找appcompat-v7:23.0.3找到其中的一个目录，比如C:\develop_software\android-st
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-10-10T02:46:46.000Z" class="post-list__meta--date date">2016-10-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/10/10/20161010 RecyclerView的局部更新/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2016-03-03T02:46:46.000Z" class="post-list__meta--date date">2016-03-03</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/03/03/index/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
   </ol>
 
+
+  <nav class="pagination" role="navigation">
+    
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/page/2/">← 最近</a>
+    
+    <span class="pagination__page-number" > 3 / 3 </span>
+    
+  </nav>
 
 
 </div>

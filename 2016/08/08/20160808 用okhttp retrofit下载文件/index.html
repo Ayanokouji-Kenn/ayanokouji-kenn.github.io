@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>用okhttp/retrofit下载文件 | 白玉楼へ</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="项目中需要在开屏页下载东西，在github上发现一个好用的框架大家可以去https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md查看关于retrofit的用法就不多说了，这个框架依赖于okhttp 3.4.1
+
+首先在项目中引用compile &amp;#39;com.liulishuo.filedownloader:lib">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="用okhttp/retrofit下载文件 | 白玉楼へ">
+    <meta name="twitter:description" content="项目中需要在开屏页下载东西，在github上发现一个好用的框架大家可以去https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md查看关于retrofit的用法就不多说了，这个框架依赖于okhttp 3.4.1
+
+首先在项目中引用compile &amp;#39;com.liulishuo.filedownloader:lib">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="用okhttp/retrofit下载文件 | 白玉楼へ">
+    <meta property="og:description" content="项目中需要在开屏页下载东西，在github上发现一个好用的框架大家可以去https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md查看关于retrofit的用法就不多说了，这个框架依赖于okhttp 3.4.1
+
+首先在项目中引用compile &amp;#39;com.liulishuo.filedownloader:lib">
+
+    
+    <meta name="author" content="Ayanokouji-Kenn">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avata.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="白玉楼へ" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/08/08/20160808 用okhttp retrofit下载文件/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 白玉楼へ 的主页"><img src="/images/avatar.jpg" width="80" alt="白玉楼へ logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 白玉楼へ">白玉楼へ</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">ようこそ～</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Ayanokouji-Kenn" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-08-08T02:46:46.000Z" class="post-list__meta--date date">2016-08-08</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">用okhttp/retrofit下载文件</h1>
+  </header>
+
+  <section class="post">
+    <p>项目中需要在开屏页下载东西，在github上发现一个好用的框架<br>大家可以去<code>https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md</code>查看<br>关于retrofit的用法就不多说了，<strong>这个框架依赖于okhttp 3.4.1</strong></p>
+<ol>
+<li>首先在项目中引用<br><code>compile &#39;com.liulishuo.filedownloader:library:0.3.4&#39;</code></li>
+<li>然后在Application的onCreate()中初始化<br><code>FileDownloader.init(applicationContext);</code></li>
+<li><p>在工具类中丢进这2个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * 单任务下载</div><div class="line">     */</div><div class="line">    public static void downloadFile(String path, String url) &#123;</div><div class="line">        FileDownloader.getImpl().create(url)</div><div class="line">                .setPath(path)</div><div class="line">                .setListener(new FileDownloadListener() &#123;</div><div class="line">                    @Override</div><div class="line">                    protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void connected(BaseDownloadTask task, String etag, boolean isContinue, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void blockComplete(BaseDownloadTask task) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void retry(final BaseDownloadTask task, final Throwable ex, final int retryingTimes, final int soFarBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void completed(BaseDownloadTask task) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void paused(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void error(BaseDownloadTask task, Throwable e) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void warn(BaseDownloadTask task) &#123;</div><div class="line">                    &#125;</div><div class="line">                &#125;).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 多任务下载</div><div class="line">     * 参数1：url的集合   参数2：下载的路径</div><div class="line">     */</div><div class="line"></div><div class="line">    public static void downloadFiles(List&lt;RingListJson.RingBean&gt; urls,File dir) &#123;</div><div class="line">        final FileDownloadListener downloadListener = new FileDownloadListener() &#123;</div><div class="line">            @Override</div><div class="line">            protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void connected(BaseDownloadTask task, String etag, boolean isContinue, int soFarBytes, int totalBytes) &#123;</div><div class="line">            </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void blockComplete(BaseDownloadTask task) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void retry(final BaseDownloadTask task, final Throwable ex, final int retryingTimes, final int soFarBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void completed(BaseDownloadTask task) &#123;</div><div class="line">            </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void paused(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void error(BaseDownloadTask task, Throwable e) &#123;</div><div class="line">             &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void warn(BaseDownloadTask task) &#123;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        final FileDownloadQueueSet queueSet = new FileDownloadQueueSet(downloadListener);</div><div class="line"></div><div class="line">        final List&lt;BaseDownloadTask&gt; tasks = new ArrayList&lt;&gt;();</div><div class="line">        for (int i = 0; i &lt; urls.size(); i++) &#123;</div><div class="line">            if (FileDownloader.getImpl().create((urls.get(i).url)).isReusedOldFile()) &#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            tasks.add(FileDownloader.getImpl()</div><div class="line">                    .create(urls.get(i).url)</div><div class="line">                    .setTag(i + 1)</div><div class="line">                    .setPath(dir.getAbsolutePath()+ File.separator+urls.get(i).name.concat(&quot;.aac&quot;)));</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    /*由于是队列任务, 这里是我们假设了现在不需要每个任务都回调`FileDownloadListener#progress`, </div><div class="line">      我们只关系每个任务是否完成, </div><div class="line">      所以这里这样设置可以很有效的减少ipc.*/</div><div class="line">        queueSet.disableCallbackProgressTimes(); </div><div class="line"></div><div class="line">        // 所有任务在下载失败的时候都自动重试一次</div><div class="line">        queueSet.setAutoRetryTimes(1);</div><div class="line"></div><div class="line">        queueSet.downloadTogether(tasks);</div><div class="line">        queueSet.start();</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在需要下载的地方调用者2个方法即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = new Retrofit.Builder().baseUrl(&quot;http:/xxx.xxx.com&quot;).addConverterFactory(GsonConverterFactory.create()).build();</div><div class="line">        RingListResult ringListResult = retrofit.create(RingListResult.class);</div><div class="line">        Call&lt;RingListJson&gt; call = ringListResult.getRings();</div><div class="line">        </div><div class="line">            final File dir = D8Application.applicationContext.getFilesDir();</div><div class="line">            final File rings = new File(dir + &quot;/rings&quot;);</div><div class="line">            if (!rings.exists()) &#123;</div><div class="line">                rings.mkdirs();</div><div class="line">            &#125;</div><div class="line">        call.enqueue(new Callback&lt;RingListJson&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void onResponse(Call&lt;RingListJson&gt; call, Response&lt;RingListJson&gt; response) &#123;</div><div class="line">                RingListJson ringListJson = response.body();</div><div class="line">                List&lt;RingListJson.RingBean&gt; ringList = ringListJson.ring; //在服务器拿到url的集合</div><div class="line">                Api.downloadFiles(ringList,rings);    //传进方法里  Api是自己的工具类</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onFailure(Call&lt;RingListJson&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></li>
+</ol>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/17/20160817无法收到开机广播/" title="无法收到开机广播">无法收到开机广播</a></h2>
+                <p class="excerpt">
+                
+                
+国内第三方厂商对自启动做了一些限制，比如小米要在安全中心–&amp;gt;授权管理–自启动管理里添加三星要在智能管理器里面添加…
+
+注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-08-17T02:46:46.000Z" class="post-list__meta--date date">2016-08-17</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/08/17/20160817无法收到开机广播/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/08/20160808 用okhttpretrofit下载文件/" title="用okhttp/retrofit下载文件">用okhttp/retrofit下载文件</a></h2>
+                <p class="excerpt">
+                
+                项目中需要在开屏页下载东西，在github上发现一个好用的框架大家可以去https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md查看关于retrofit的用法就不多说了，这个框架依赖于okhttp 3.4.1
+
+首先在
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-08-08T02:46:46.000Z" class="post-list__meta--date date">2016-08-08</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+</span><a class="btn-border-small" href="/2016/08/08/20160808 用okhttpretrofit下载文件/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'ayanokouji-kenn'; 
+      
+  var disqus_identifier = '/2016/08/08/20160808 用okhttp retrofit下载文件/';
+  var disqus_title = '用okhttp/retrofit下载文件';
+  var disqus_url = 'http://yoursite.com/2016/08/08/20160808 用okhttp retrofit下载文件/';
+  
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          //dsq.src = '/js/embed.js';
+          //将disqus使用https协议将大大提高显示速度
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          //dsq.src = 'https://a.disquscdn.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Ayanokouji-Kenn</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-85987364-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?8837000262937cab3066c1640339da22";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

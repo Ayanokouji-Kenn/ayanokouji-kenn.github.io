@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>GreenDao3.2.0用法 | 白玉楼へ</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="发现GreenDao更新到3了，还是改了一些东西的，看了几篇文章，发现有些出入之处，于是结合官网写了个demo测试了下，在此总结。
+
+#1. 导入GreenDao有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里123456789101112131415161718192021222324252627282930313233343536373839">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="GreenDao3.2.0用法 | 白玉楼へ">
+    <meta name="twitter:description" content="发现GreenDao更新到3了，还是改了一些东西的，看了几篇文章，发现有些出入之处，于是结合官网写了个demo测试了下，在此总结。
+
+#1. 导入GreenDao有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里123456789101112131415161718192021222324252627282930313233343536373839">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="GreenDao3.2.0用法 | 白玉楼へ">
+    <meta property="og:description" content="发现GreenDao更新到3了，还是改了一些东西的，看了几篇文章，发现有些出入之处，于是结合官网写了个demo测试了下，在此总结。
+
+#1. 导入GreenDao有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里123456789101112131415161718192021222324252627282930313233343536373839">
+
+    
+    <meta name="author" content="Ayanokouji-Kenn">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avata.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="白玉楼へ" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/10/14/20161014 GreenDao3.2.0用法/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 白玉楼へ 的主页"><img src="/images/avatar.jpg" width="80" alt="白玉楼へ logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 白玉楼へ">白玉楼へ</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">ようこそ～</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Ayanokouji-Kenn" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-10-14T02:46:46.000Z" class="post-list__meta--date date">2016-10-14</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">GreenDao3.2.0用法</h1>
+  </header>
+
+  <section class="post">
+    <p>发现GreenDao更新到3了，还是改了一些东西的，看了几篇文章，发现有些出入之处，<br>于是结合<a href="http://greenrobot.org/greendao/" target="_blank" rel="external">官网</a>写了个demo测试了下，在此总结。</p>
+<hr>
+<p>#1. 导入GreenDao<br>有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;com.android.application&apos;</div><div class="line">android &#123;</div><div class="line">    compileSdkVersion 24</div><div class="line">    buildToolsVersion &quot;24.0.2&quot;</div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId &quot;com.uu.greendaotest&quot;</div><div class="line">        minSdkVersion 19</div><div class="line">        targetSdkVersion 24</div><div class="line">        versionCode 1</div><div class="line">        versionName &quot;1.0&quot;</div><div class="line">        testInstrumentationRunner &quot;android.support.test.runner.AndroidJUnitRunner&quot;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled false</div><div class="line">            proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//greenDao----start//</div><div class="line">apply plugin: &apos;org.greenrobot.greendao&apos;</div><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        mavenCentral()</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath &apos;org.greenrobot:greendao-gradle-plugin:3.2.0&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">greendao &#123;</div><div class="line">    schemaVersion 1    //&lt;--数据库的版本，用于升级时候进行更改</div><div class="line">    daoPackage &apos;com.aidebar.greendaotest.gen&apos;     //存放自动生成代码的包</div><div class="line">    targetGenDir &apos;src/main/java&apos;                  //...</div><div class="line">&#125;</div><div class="line">//greenDao----end//</div><div class="line">dependencies &#123;</div><div class="line">    compile fileTree(include: [&apos;*.jar&apos;], dir: &apos;libs&apos;)</div><div class="line">    androidTestCompile(&apos;com.android.support.test.espresso:espresso-core:2.2.2&apos;, &#123;</div><div class="line">        exclude group: &apos;com.android.support&apos;, module: &apos;support-annotations&apos;</div><div class="line">    &#125;)</div><div class="line">    compile &apos;com.android.support:appcompat-v7:24.2.1&apos;</div><div class="line">    testCompile &apos;junit:junit:4.12&apos;</div><div class="line">    //加上下面这俩</div><div class="line">    compile &apos;org.greenrobot:greendao:3.2.0&apos;</div><div class="line">    compile &apos;org.greenrobot:greendao-generator:3.2.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>#2  初始化数据库<br>首先写个Bean类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Entity</div><div class="line">public class User &#123;</div><div class="line"> //这个注解就表明下面那个id是个主键，必须用Long，autoincrement=true自增</div><div class="line">    @Id(autoincrement = true)    </div><div class="line">    Long id;</div><div class="line">//这个意思是在数据库中，列的名字是USER_NAME</div><div class="line">    @Property(nameInDb = &quot;USER_NAME&quot;)</div><div class="line">    String name;</div><div class="line">//...这个不用解释了吧</div><div class="line">    @NotNull</div><div class="line">    Integer age;</div></pre></td></tr></table></figure></p>
+<p>如果你前面正确导入了GreenDao，那么请Ctrl+F9，你会发现User这个类变成了</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2524531-d8d4812a220bb944.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>自动生成了构造方法和get set，以及在build.gradle里设置的路径的地方多了这么几个类</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2524531-95e5cec82a57b7e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>下面正式进入初始化操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class DbDao &#123;</div><div class="line">    private static DaoSession daoSession;</div><div class="line">    private static DaoSession getDaoSession() &#123;</div><div class="line">        if (daoSession==null) &#123;</div><div class="line">            DaoMaster.OpenHelper openHelper = new DaoMaster.OpenHelper(MyApplication.getInstance(), &quot;test&quot;)&#123;</div><div class="line">                @Override</div><div class="line">                public void onUpgrade(Database db, int oldVersion, int newVersion) &#123;</div><div class="line">                    switch (oldVersion) &#123;</div><div class="line">                        case 1:</div><div class="line">                            db.beginTransaction();</div><div class="line">                            db.execSQL(&quot;...&quot;);</div><div class="line">                            db.setTransactionSuccessful();</div><div class="line">                            db.endTransaction();</div><div class="line">                            break;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;;</div><div class="line">            SQLiteDatabase db = openHelper.getWritableDatabase();</div><div class="line">            DaoMaster daoMaster = new DaoMaster(db);</div><div class="line">            daoSession = daoMaster.newSession();</div><div class="line">        &#125;</div><div class="line">        return daoSession;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static UserDao getUserDao() &#123;</div><div class="line">        return getDaoSession().getUserDao();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>DaoMaster.OpenHelper是一个抽象类,onCreate()方法里GreenDao会根据你定义的User类，自动生成表<br>自己根据需要重写onUpgrade()方法<br>有的文章里，这里用的是DaoMaster.devOpenHelper，源码注释里明确写了</p>
+<blockquote>
+<p>WARNING: Drops all table on Upgrade! Use only during development.</p>
+</blockquote>
+<p>DaoMaster.devOpenHelper是DaoMaster.OpenHelper的实现类，它的onUpgrade就是干掉所有的表<br>然后重建新表，正式运营中会造成数据丢失，只能在开发阶段使用</p>
+<p>#3 增删改查<br>获取自动生成的这个UserDao<br><code>UserDao userDao = Dbdao.getUserDao()</code><br>它提供了各种insert delete  update等方法，<br>咦，增删改都有了，查呢？<br>查这个有点小花样的，单独拎出来说<br>最简单的 <code>userDao.load(Long id)</code>和<code>userDao.loadAll()</code>，你可以一把全找出来，再根据业务需求进行筛选<br>也可以直接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List joes = userDao.queryBuilder()</div><div class="line">                .where(UserDao.Properties.Name.eq(&quot;Joe&quot;))  //其实不用解释，一看就懂吧 eq就是equals</div><div class="line">                .orderAsc(UserDao.Properties.Age)</div><div class="line">                .list();</div></pre></td></tr></table></figure></p>
+<p>可以看到Name和Age是我定义在User中的参数，where定义的是查询条件  order是排序啦<br>那么这个Properties除了eq还有什么方法呢</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2524531-f09991dbf07b5bfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>厉害了我地哥</p>
+<hr>
+<p>OK，到这儿~</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/10/19/hello-world/" title="Hello World">Hello World</a></h2>
+                <p class="excerpt">
+                
+                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-10-19T08:46:28.439Z" class="post-list__meta--date date">2016-10-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/10/19/hello-world/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/10/10/20161010 RecyclerView的局部更新/" title="RecyclerView的局部更新">RecyclerView的局部更新</a></h2>
+                <p class="excerpt">
+                
+                我们知道recyclerView有好几个notify
+除了最常用的notifyDataSetChanged()以外，还有下面的那些，知道position就可以进行更新了但是！我得知道位置才能做到定向更新，那么我不想让所有都更新呢？实际开发中其实经常有这种情况，可能只是调整一小部分，根本不需要整体全部
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-10-10T02:46:46.000Z" class="post-list__meta--date date">2016-10-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+</span><a class="btn-border-small" href="/2016/10/10/20161010 RecyclerView的局部更新/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'ayanokouji-kenn'; 
+      
+  var disqus_identifier = '/2016/10/14/20161014 GreenDao3.2.0用法/';
+  var disqus_title = 'GreenDao3.2.0用法';
+  var disqus_url = 'http://yoursite.com/2016/10/14/20161014 GreenDao3.2.0用法/';
+  
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          //dsq.src = '/js/embed.js';
+          //将disqus使用https协议将大大提高显示速度
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          //dsq.src = 'https://a.disquscdn.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Ayanokouji-Kenn</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-85987364-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?8837000262937cab3066c1640339da22";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

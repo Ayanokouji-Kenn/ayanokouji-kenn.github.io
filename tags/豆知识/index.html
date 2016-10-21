@@ -136,47 +136,48 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/19/hello-world/" title="link to post.title">Hello World</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/09/02/20160902 调节安卓音量/" title="link to post.title">调节安卓音量</a></h2>
       <p class="excerpt">
     
-      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
+      如果使用MediaPlayer播放，直接setVolume即可，经测试静音也能有声音，但是用户调节媒体音量到0就不行了，他是在媒体音量的基础上做了百分比12MediaPlayer mediaPlayer = MediaPlayer.create(this, raws[ringId]);mediaPlayer.setVolume(1.0f, 1.0f);
+比如某个需要提醒用户的时候，12345678
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-10-19T08:46:28.439Z" class="post-list__meta--date date">2016-10-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/10/19/hello-world/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2016-09-02T02:46:46.000Z" class="post-list__meta--date date">2016-09-02</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/豆知识/">豆知识</a>
+</span><a class="btn-border-small" href="/2016/09/02/20160902 调节安卓音量/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/14/20161014 GreenDao3.2.0用法/" title="link to post.title">GreenDao3.2.0用法</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/09/02/20160902 AndroidStudio 关联源码/" title="link to post.title">AndroidStudio 关联源码</a></h2>
       <p class="excerpt">
     
-      发现GreenDao更新到3了，还是改了一些东西的，看了几篇文章，发现有些出入之处，于是结合官网写了个demo测试了下，在此总结。
-
-#1. 导入GreenDao有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里123456789101112131415161718192021222324252627282930313233343536373839
+      首先，确保你已经下载完成了，然后，在C:\Users\xxx\.AndroidStudio2.1\config\options这里找到jdk.table.xml打开它12345678910111213141516171819202122232425262728293031&amp;lt;jdk version=&amp;quot;2&amp;quot;&amp;gt;      &amp;lt;name value=&amp;quot;Andr
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-10-14T02:46:46.000Z" class="post-list__meta--date date">2016-10-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/10/14/20161014 GreenDao3.2.0用法/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2016-09-02T02:46:46.000Z" class="post-list__meta--date date">2016-09-02</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/豆知识/">豆知识</a>
+</span><a class="btn-border-small" href="/2016/09/02/20160902 AndroidStudio 关联源码/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/10/20161010 RecyclerView的局部更新/" title="link to post.title">RecyclerView的局部更新</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/19/20160819 snackbar 修改文本颜色/" title="link to post.title">snackbar 修改文本颜色</a></h2>
       <p class="excerpt">
     
-      我们知道recyclerView有好几个notify
-除了最常用的notifyDataSetChanged()以外，还有下面的那些，知道position就可以进行更新了但是！我得知道位置才能做到定向更新，那么我不想让所有都更新呢？实际开发中其实经常有这种情况，可能只是调整一小部分，根本不需要整体全部刷一遍，下面进入正题
+      
+看源码 snackbar其实就是两个textview组成的
 
-首先，项目里用到了1234compile &amp;apos;com.android
+12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action);
+见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜色方法1
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-10-10T02:46:46.000Z" class="post-list__meta--date date">2016-10-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/10/10/20161010 RecyclerView的局部更新/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2016-08-19T02:46:46.000Z" class="post-list__meta--date date">2016-08-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/豆知识/">豆知识</a>
+</span><a class="btn-border-small" href="/2016/08/19/20160819 snackbar 修改文本颜色/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   

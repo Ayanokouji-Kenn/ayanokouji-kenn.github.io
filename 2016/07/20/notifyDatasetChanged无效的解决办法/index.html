@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Hello World | 白玉楼へ</title>
+    <title>notifyDatasetChanged无效的解决办法 | 白玉楼へ</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,18 +12,24 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="description" content="出现问题比如这样给适配器传一个集合1234List datas;datas = DBDao.selectMyClock(); //此句是返回一个ListclocksAdapter = new AlarmClockListAdapter(getContext(), datas);myClocks.setAdapter(clocksAdapter);
+
+
+数据库刷新了，然后想这样刷新数据1234pr">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Hello World | 白玉楼へ">
-    <meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="twitter:title" content="notifyDatasetChanged无效的解决办法 | 白玉楼へ">
+    <meta name="twitter:description" content="出现问题比如这样给适配器传一个集合1234List datas;datas = DBDao.selectMyClock(); //此句是返回一个ListclocksAdapter = new AlarmClockListAdapter(getContext(), datas);myClocks.setAdapter(clocksAdapter);
+
+
+数据库刷新了，然后想这样刷新数据1234pr">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Hello World | 白玉楼へ">
-    <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta property="og:title" content="notifyDatasetChanged无效的解决办法 | 白玉楼へ">
+    <meta property="og:description" content="出现问题比如这样给适配器传一个集合1234List datas;datas = DBDao.selectMyClock(); //此句是返回一个ListclocksAdapter = new AlarmClockListAdapter(getContext(), datas);myClocks.setAdapter(clocksAdapter);
+
+
+数据库刷新了，然后想这样刷新数据1234pr">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -40,7 +46,7 @@ Quick">
     <link rel="alternate" type="application/rss+xml" title="白玉楼へ" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2016/10/19/hello-world/"/>
+    <link rel="canonical" href="http://yoursite.com/2016/07/20/notifyDatasetChanged无效的解决办法/"/>
 
     
       
@@ -137,25 +143,27 @@ Quick">
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2016-10-19T08:46:28.439Z" class="post-list__meta--date date">2016-10-19</time> &#8226; <span class="post-meta__tags tags">于&nbsp; </span>
+      <time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+ </span>
       <span class="page-pv">
       &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">Hello World</h1>
+    <h1 class="post-title">notifyDatasetChanged无效的解决办法</h1>
   </header>
 
   <section class="post">
-    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <ul>
+<li>出现问题<br>比如这样给适配器传一个集合<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List datas;</div><div class="line">datas = DBDao.selectMyClock(); //此句是返回一个List</div><div class="line">clocksAdapter = new AlarmClockListAdapter(getContext(), datas);</div><div class="line">myClocks.setAdapter(clocksAdapter);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>数据库刷新了，然后想这样刷新数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private void refresh() &#123;</div><div class="line">    datas = DBDao.selectMyClock();</div><div class="line">    clocksAdapter.notifyDataSetChanged();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>是无效的，因为datas指向了两个对象</p>
+<ul>
+<li>解决办法：清空集合，再将新的数据添加进去即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public void refresh() &#123;</div><div class="line">    datas.clear();</div><div class="line">    datas.addAll(DBDao.selectMyClock());</div><div class="line">    clocksAdapter.notifyDataSetChanged();</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
 
   </section>
 
@@ -163,22 +171,36 @@ Quick">
 <section class="read-more">
            
     
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/07/20/Unique Constraint Failded/" title="Unique Constraint Failded">Unique Constraint Failded</a></h2>
+                <p class="excerpt">
+                
+                
+今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/07/20/Unique Constraint Failded/">继续阅读</a></div>
+                           
+            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/10/14/20161014 GreenDao3.2.0用法/" title="GreenDao3.2.0用法">GreenDao3.2.0用法</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2016/03/03/index/" title="Could not find com.android.support:appcompat-v7:23.0.3">Could not find com.android.support:appcompat-v7:23.0.3</a></h2>
                 <p class="excerpt">
                 
-                发现GreenDao更新到3了，还是改了一些东西的，看了几篇文章，发现有些出入之处，于是结合官网写了个demo测试了下，在此总结。
-
-#1. 导入GreenDao有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里1234567891011121314
+                遇到的问题将整个AS项目拷到另一个电脑的时候，出现了这个问题，提示app:unspecified请去下载android support Respository,打开后SDK Manager更新到最新了还是不行
+解决办法将项目clean一下，AS会列出一堆目录，他在这些目录里面找appcompat-v
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2016-10-14T02:46:46.000Z" class="post-list__meta--date date">2016-10-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/10/14/20161014 GreenDao3.2.0用法/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2016-03-03T02:46:46.000Z" class="post-list__meta--date date">2016-03-03</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/03/03/index/">继续阅读</a></div>
                        
             </div>
         
@@ -194,9 +216,9 @@ Quick">
   <script type="text/javascript">
       var disqus_shortname = 'ayanokouji-kenn'; 
       
-  var disqus_identifier = '/2016/10/19/hello-world/';
-  var disqus_title = 'Hello World';
-  var disqus_url = 'http://yoursite.com/2016/10/19/hello-world/';
+  var disqus_identifier = '/2016/07/20/notifyDatasetChanged无效的解决办法/';
+  var disqus_title = 'notifyDatasetChanged无效的解决办法';
+  var disqus_url = 'http://yoursite.com/2016/07/20/notifyDatasetChanged无效的解决办法/';
   
 
       /* * * DON'T EDIT BELOW THIS LINE * * */

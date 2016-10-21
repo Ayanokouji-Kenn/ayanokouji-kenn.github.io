@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>白玉楼へ | ようこそ～</title>
+    <title>onStartCommand中的intent为null | 白玉楼へ</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,15 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="">
+    <meta name="description" content="当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="白玉楼へ | ようこそ～">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:title" content="onStartCommand中的intent为null | 白玉楼へ">
+    <meta name="twitter:description" content="当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="白玉楼へ | ようこそ～">
-    <meta property="og:description" content="">
+    <meta property="og:title" content="onStartCommand中的intent为null | 白玉楼へ">
+    <meta property="og:description" content="当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="白玉楼へ" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com"/>
+    <link rel="canonical" href="http://yoursite.com/2016/08/24/20160824 onStartCommand中的intent为null/"/>
 
     
       
@@ -130,63 +130,71 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/19/hello-world/" title="link to post.title">Hello World</a></h2>
-      <p class="excerpt">
-    
-      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-10-19T08:46:28.439Z" class="post-list__meta--date date">2016-10-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/10/19/hello-world/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/14/20161014 GreenDao3.2.0用法/" title="link to post.title">GreenDao3.2.0用法</a></h2>
-      <p class="excerpt">
-    
-      发现GreenDao更新到3了，还是改了一些东西的，看了几篇文章，发现有些出入之处，于是结合官网写了个demo测试了下，在此总结。
+            <article class="post-container post-container--single">
 
-#1. 导入GreenDao有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里123456789101112131415161718192021222324252627282930313233343536373839
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-10-14T02:46:46.000Z" class="post-list__meta--date date">2016-10-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">onStartCommand中的intent为null</h1>
+  </header>
+
+  <section class="post">
+    <ul>
+<li>当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (intent!=null &amp;&amp; intent.getAction()!=null) &#123; </div><div class="line">            //do something</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 SPUtils/" title="用okhttp/retrofit下载文件">用okhttp/retrofit下载文件</a></h2>
+                <p class="excerpt">
+                
+                123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/10/14/20161014 GreenDao3.2.0用法/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
+</span><a class="btn-border-small" href="/2016/08/24/20160824 SPUtils/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/19/20160819 snackbar 修改文本颜色/" title="snackbar 修改文本颜色">snackbar 修改文本颜色</a></h2>
+                <p class="excerpt">
+                
+                
+看源码 snackbar其实就是两个textview组成的
+
+12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action)
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-08-19T02:46:46.000Z" class="post-list__meta--date date">2016-08-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/豆知识/">豆知识</a>
+</span><a class="btn-border-small" href="/2016/08/19/20160819 snackbar 修改文本颜色/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/10/20161010 RecyclerView的局部更新/" title="link to post.title">RecyclerView的局部更新</a></h2>
-      <p class="excerpt">
-    
-      我们知道recyclerView有好几个notify
-除了最常用的notifyDataSetChanged()以外，还有下面的那些，知道position就可以进行更新了但是！我得知道位置才能做到定向更新，那么我不想让所有都更新呢？实际开发中其实经常有这种情况，可能只是调整一小部分，根本不需要整体全部刷一遍，下面进入正题
-
-首先，项目里用到了1234compile &amp;apos;com.android
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-10-10T02:46:46.000Z" class="post-list__meta--date date">2016-10-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/10/10/20161010 RecyclerView的局部更新/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
-
-</div>
-
+</section>
 
             
 <section class="post-comments">
@@ -194,6 +202,10 @@ Quick
   <script type="text/javascript">
       var disqus_shortname = 'ayanokouji-kenn'; 
       
+  var disqus_identifier = '/2016/08/24/20160824 onStartCommand中的intent为null/';
+  var disqus_title = 'onStartCommand中的intent为null';
+  var disqus_url = 'http://yoursite.com/2016/08/24/20160824 onStartCommand中的intent为null/';
+  
 
       /* * * DON'T EDIT BELOW THIS LINE * * */
       (function() {
@@ -201,7 +213,7 @@ Quick
           //dsq.src = '/js/embed.js';
           //将disqus使用https协议将大大提高显示速度
           dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-          //dsq.src = 'https://a.disquscdn.com/count.js';
+          //dsq.src = 'https://a.disquscdn.com/embed.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
       })();
   </script>

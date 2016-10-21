@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>snackbar 修改文本颜色 | 白玉楼へ</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="看源码 snackbar其实就是两个textview组成的
+
+12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action);
+见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜色方法1">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="snackbar 修改文本颜色 | 白玉楼へ">
+    <meta name="twitter:description" content="看源码 snackbar其实就是两个textview组成的
+
+12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action);
+见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜色方法1">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="snackbar 修改文本颜色 | 白玉楼へ">
+    <meta property="og:description" content="看源码 snackbar其实就是两个textview组成的
+
+12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action);
+见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜色方法1">
+
+    
+    <meta name="author" content="Ayanokouji-Kenn">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avata.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="白玉楼へ" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/08/19/20160819 snackbar 修改文本颜色/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 白玉楼へ 的主页"><img src="/images/avatar.jpg" width="80" alt="白玉楼へ logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 白玉楼へ">白玉楼へ</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">ようこそ～</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Ayanokouji-Kenn" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-08-19T02:46:46.000Z" class="post-list__meta--date date">2016-08-19</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/豆知识/">豆知识</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">snackbar 修改文本颜色</h1>
+  </header>
+
+  <section class="post">
+    <ul>
+<li>看源码 snackbar其实就是两个textview组成的</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mMessageView = (TextView) findViewById(R.id.snackbar_text);</div><div class="line">mActionView = (Button) findViewById(R.id.snackbar_action);</div></pre></td></tr></table></figure>
+<p>见名知意，一个是信息文本，一个是动作文本<br>然而，他虽然提供给了修改actoinView的颜色方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * Sets the text color of the action specified in</div><div class="line">     * &#123;@link #setAction(CharSequence, View.OnClickListener)&#125;.</div><div class="line">     */</div><div class="line">    @NonNull</div><div class="line">    public Snackbar setActionTextColor(@ColorInt int color) &#123;</div><div class="line">        final TextView tv = mView.getActionView();</div><div class="line">        tv.setTextColor(color);</div><div class="line">        return this;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>但是没有提供修改mMessageView颜色的方法，而且是私有的<br>可是呢，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * Returns the &#123;@link Snackbar&#125;&apos;s view.</div><div class="line">     */</div><div class="line">    @NonNull</div><div class="line">    public View getView() &#123;</div><div class="line">        return mView;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>那么我们可以拿到snackbar的view!!,那后面的事情就好办了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Snackbar snackbar = Snackbar.make(container, &quot;hehe&quot;, Snackbar.LENGTH_SHORT)</div><div class="line">                        .setAction(&quot;なに？？&quot;, new View.OnClickListener() &#123;</div><div class="line">                            @Override</div><div class="line">                            public void onClick(View view) &#123;</div><div class="line">                                Toast.makeText(MainActivity.this, &quot;whattttt&quot;, Toast.LENGTH_SHORT).show();</div><div class="line">                            &#125;</div><div class="line">                        &#125;)</div><div class="line">                        .setActionTextColor(0xffffc0cb);</div><div class="line">                //findViewById拿到文本textview，然后修改颜色就是了</div><div class="line">                ((TextView)snackbar.getView().findViewById(R.id.snackbar_text)).setTextColor(0xffffc0cb);</div><div class="line">                snackbar.show();</div></pre></td></tr></table></figure></p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 onStartCommand中的intent为null/" title="onStartCommand中的intent为null">onStartCommand中的intent为null</a></h2>
+                <p class="excerpt">
+                
+                
+当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;
+
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824 onStartCommand中的intent为null/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/17/20160817无法收到开机广播/" title="无法收到开机广播">无法收到开机广播</a></h2>
+                <p class="excerpt">
+                
+                
+国内第三方厂商对自启动做了一些限制，比如小米要在安全中心–&amp;gt;授权管理–自启动管理里添加三星要在智能管理器里面添加…
+
+注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-08-17T02:46:46.000Z" class="post-list__meta--date date">2016-08-17</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/08/17/20160817无法收到开机广播/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'ayanokouji-kenn'; 
+      
+  var disqus_identifier = '/2016/08/19/20160819 snackbar 修改文本颜色/';
+  var disqus_title = 'snackbar 修改文本颜色';
+  var disqus_url = 'http://yoursite.com/2016/08/19/20160819 snackbar 修改文本颜色/';
+  
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          //dsq.src = '/js/embed.js';
+          //将disqus使用https协议将大大提高显示速度
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          //dsq.src = 'https://a.disquscdn.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Ayanokouji-Kenn</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-85987364-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?8837000262937cab3066c1640339da22";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

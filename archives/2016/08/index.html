@@ -136,39 +136,6 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/09/13/20160722 retrofit 如何post json给服务端/" title="link to post.title">dialog 更改宽高</a></h2>
-      <p class="excerpt">
-    
-      
-需求：开发新项目时，拿到接口文档，需要请求消息体是json类型的
-
-
-可能你这么写过post：12345interface NService &amp;#123;        @FormUrlEncoded        @POST(&amp;quot;alarmclock/add.json&amp;quot;)        Call&amp;lt;ResponseBody&amp;gt; getResult(@FieldMap 
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-09-13T02:46:46.000Z" class="post-list__meta--date date">2016-09-13</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/09/13/20160722 retrofit 如何post json给服务端/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/09/13/20160913 dialog 更改宽高/" title="link to post.title">dialog 更改宽高</a></h2>
-      <p class="excerpt">
-    
-      
-一种方法是在dialog的onCreate里面加上12345678910private void initWindow() &amp;#123;        Window win = this.getWindow();        win.getDecorView().setPadding(0, 0, 0, 0);        WindowManager.LayoutParams lp = win
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-09-13T02:46:46.000Z" class="post-list__meta--date date">2016-09-13</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/09/13/20160913 dialog 更改宽高/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/08/30/20160830 SecurityException与android.permission.xxxx/" title="link to post.title">SecurityException与android.permission.xxxx</a></h2>
       <p class="excerpt">
     
@@ -181,23 +148,6 @@ Beginning in Android 6.0 (API level 2
       <div class="post-list__meta"><time datetime="2016-08-30T02:46:46.000Z" class="post-list__meta--date date">2016-08-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/problems/">problems</a>
 </span><a class="btn-border-small" href="/2016/08/30/20160830 SecurityException与android.permission.xxxx/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 onStartCommand中的intent为null/" title="link to post.title">onStartCommand中的intent为null</a></h2>
-      <p class="excerpt">
-    
-      
-当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;
-
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/08/24/20160824 onStartCommand中的intent为null/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -220,6 +170,72 @@ Beginning in Android 6.0 (API level 2
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 RxBus的工具类/" title="link to post.title">用okhttp/retrofit下载文件</a></h2>
+      <p class="excerpt">
+    
+      
+直接上代码 ，三个类
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758import rx.Observable;import rx.functions.Func1;import rx.subjects.PublishSubject
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824 RxBus的工具类/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 SPUtils/" title="link to post.title">用okhttp/retrofit下载文件</a></h2>
+      <p class="excerpt">
+    
+      12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824 SPUtils/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 onStartCommand中的intent为null/" title="link to post.title">onStartCommand中的intent为null</a></h2>
+      <p class="excerpt">
+    
+      
+当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;
+
+
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824 onStartCommand中的intent为null/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/19/20160819 snackbar 修改文本颜色/" title="link to post.title">snackbar 修改文本颜色</a></h2>
+      <p class="excerpt">
+    
+      
+看源码 snackbar其实就是两个textview组成的
+
+12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action);
+见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜色方法1
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-08-19T02:46:46.000Z" class="post-list__meta--date date">2016-08-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/豆知识/">豆知识</a>
+</span><a class="btn-border-small" href="/2016/08/19/20160819 snackbar 修改文本颜色/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/08/17/20160817无法收到开机广播/" title="link to post.title">无法收到开机广播</a></h2>
       <p class="excerpt">
     
@@ -237,83 +253,39 @@ Beginning in Android 6.0 (API level 2
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/07/27/ExpandableListView中childview的数据出现了2次/" title="link to post.title">ExpandableListView中childview的数据出现了2次</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/08/20160808 用okhttp retrofit下载文件/" title="link to post.title">用okhttp/retrofit下载文件</a></h2>
       <p class="excerpt">
     
-      
-问题：给child的集合个数是3个，但是打开折叠，出现了6个数据，debug发现getChildView执行了groupCount×childCount×2次，这显然是不合理的
-原因：虽然ExpandableListView提供了点击、展开、折叠的监听123listview.setOnGroupClickListener()listview.setOnGroupExpandListener()l
+      项目中需要在开屏页下载东西，在github上发现一个好用的框架大家可以去https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md查看关于retrofit的用法就不多说了，这个框架依赖于okhttp 3.4.1
+
+首先在项目中引用compile &amp;#39;com.liulishuo.filedownloader:lib
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-07-27T02:46:46.000Z" class="post-list__meta--date date">2016-07-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/27/ExpandableListView中childview的数据出现了2次/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2016-08-08T02:46:46.000Z" class="post-list__meta--date date">2016-08-08</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+</span><a class="btn-border-small" href="/2016/08/08/20160808 用okhttp retrofit下载文件/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/07/27/解决toggleButton关闭状态初始化背景无效/" title="link to post.title">解决toggleButton关闭状态初始化背景无效</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/08/20160808 用okhttpretrofit下载文件/" title="link to post.title">用okhttp/retrofit下载文件</a></h2>
       <p class="excerpt">
     
-      
-做安卓开发想必最头疼的是“与IOS一样”了，询问IOS这个怎么做的，那个怎么做的，答曰：系统默认的/系统提供了···
+      项目中需要在开屏页下载东西，在github上发现一个好用的框架大家可以去https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md查看关于retrofit的用法就不多说了，这个框架依赖于okhttp 3.4.1
 
-安卓也提供了toggleButton，不过项目开发中为了保持一致性，设计师基本需要用到开关的时候基本用的还是IOS得那种，于是我找到了https://github.com/zcweng/ToggleButton                      这哥们写的用的时候发现在
+首先在项目中引用compile &amp;#39;com.liulishuo.filedownloader:lib
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-07-27T02:46:46.000Z" class="post-list__meta--date date">2016-07-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/27/解决toggleButton关闭状态初始化背景无效/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/07/24/radioGroup.check()执行了多次OnCheckedChangeListener()/" title="link to post.title">radioGroup.check()执行了多次OnCheckedChangeListener()</a></h2>
-      <p class="excerpt">
-    
-      
-问题：我对某个radioButton里面写了个startActivity跳转到另一个界面，然后那个界面finish()之前需要调用radioGroup.check(),发现又跳转进这个界面了，纳闷之下，debug走起，发现OnCheckedChangeListener()走了好几次，所以页面又被启动了。
-
-解决：将radioGroup.check() 替换成radioButton.setChec
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-07-24T02:46:46.000Z" class="post-list__meta--date date">2016-07-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/24/radioGroup.check()执行了多次OnCheckedChangeListener()/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/07/20/notifyDatasetChanged无效的解决办法/" title="link to post.title">notifyDatasetChanged无效的解决办法</a></h2>
-      <p class="excerpt">
-    
-      
-出现问题比如这样给适配器传一个集合1234List datas;datas = DBDao.selectMyClock(); //此句是返回一个ListclocksAdapter = new AlarmClockListAdapter(getContext(), datas);myClocks.setAdapter(clocksAdapter);
-
-
-数据库刷新了，然后想这样刷新数据1234pr
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/20/notifyDatasetChanged无效的解决办法/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2016-08-08T02:46:46.000Z" class="post-list__meta--date date">2016-08-08</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+</span><a class="btn-border-small" href="/2016/08/08/20160808 用okhttpretrofit下载文件/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
   </ol>
 
-
-  <nav class="pagination" role="navigation">
-    
-    <span class="pagination__page-number" > 1 / 2 </span>
-    
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/tags/problems/page/2/">更早 →</a>
-    
-  </nav>
 
 
 </div>
