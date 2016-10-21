@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -143,7 +144,15 @@
 需求：开发新项目时，拿到接口文档，需要请求消息体是json类型的
 
 
-可能你这么写过post：12345interface NService &amp;#123;        @FormUrlEncoded        @POST(&amp;quot;alarmclock/add.json&amp;quot;)        Call&amp;lt;ResponseBody&amp;gt; getResult(@FieldMap 
+可能你这么写过post：1
+2
+3
+4
+5
+interface NService &amp;#123;
+        @FormUrlEncoded
+        @POST(&quot;alarmclock/add.json&quot;)
+        Call&amp;lt;ResponseBody&amp;gt; getResult(@FieldMap Ma
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-09-13T02:46:46.000Z" class="post-list__meta--date date">2016-09-13</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -158,7 +167,20 @@
       <p class="excerpt">
     
       
-一种方法是在dialog的onCreate里面加上12345678910private void initWindow() &amp;#123;        Window win = this.getWindow();        win.getDecorView().setPadding(0, 0, 0, 0);        WindowManager.LayoutParams lp = win
+一种方法是在dialog的onCreate里面加上1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+private void initWindow() &amp;#123;
+        Window win = this.getWindow();
+        win.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutPa
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-09-13T02:46:46.000Z" class="post-list__meta--date date">2016-09-13</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -172,10 +194,14 @@
       <h2 class="post-list__post-title post-title"><a href="/2016/08/30/20160830 SecurityException与android.permission.xxxx/" title="link to post.title">SecurityException与android.permission.xxxx</a></h2>
       <p class="excerpt">
     
-      12java.lang.SecurityExceptiongetDeviceId: Neither user 10174 nor current process has android.permission.READ_PHONE_STATE.
+      1
+2
+java.lang.SecurityException
+getDeviceId: Neither user 10174 nor current process has android.permission.READ_PHONE_STATE.
+
 这个问题是由于android6.0的动态权限引起的首先看下google怎么说的
 
-Beginning in Android 6.0 (API level 2
+Beginning in Android 6.0 (API lev
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-08-30T02:46:46.000Z" class="post-list__meta--date date">2016-08-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -190,7 +216,13 @@ Beginning in Android 6.0 (API level 2
       <p class="excerpt">
     
       
-当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;
+当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了1
+2
+3
+if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123; 
+            //do something
+&amp;#125;
+
 
 
     &hellip;
@@ -207,7 +239,13 @@ Beginning in Android 6.0 (API level 2
       <p class="excerpt">
     
       
-当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;
+当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了1
+2
+3
+if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123; 
+            //do something
+&amp;#125;
+
 
 
     &hellip;
@@ -226,28 +264,14 @@ Beginning in Android 6.0 (API level 2
       
 国内第三方厂商对自启动做了一些限制，比如小米要在安全中心–&amp;gt;授权管理–自启动管理里添加三星要在智能管理器里面添加…
 
-注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；1234
+注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；1
+2
+
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-08-17T02:46:46.000Z" class="post-list__meta--date date">2016-08-17</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/problems/">problems</a>
 </span><a class="btn-border-small" href="/2016/08/17/20160817无法收到开机广播/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/07/27/ExpandableListView中childview的数据出现了2次/" title="link to post.title">ExpandableListView中childview的数据出现了2次</a></h2>
-      <p class="excerpt">
-    
-      
-问题：给child的集合个数是3个，但是打开折叠，出现了6个数据，debug发现getChildView执行了groupCount×childCount×2次，这显然是不合理的
-原因：虽然ExpandableListView提供了点击、展开、折叠的监听123listview.setOnGroupClickListener()listview.setOnGroupExpandListener()l
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-07-27T02:46:46.000Z" class="post-list__meta--date date">2016-07-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/27/ExpandableListView中childview的数据出现了2次/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -270,6 +294,26 @@ Beginning in Android 6.0 (API level 2
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/07/27/ExpandableListView中childview的数据出现了2次/" title="link to post.title">ExpandableListView中childview的数据出现了2次</a></h2>
+      <p class="excerpt">
+    
+      
+问题：给child的集合个数是3个，但是打开折叠，出现了6个数据，debug发现getChildView执行了groupCount×childCount×2次，这显然是不合理的
+原因：虽然ExpandableListView提供了点击、展开、折叠的监听1
+2
+3
+listview.setOnGroupClickListener()
+listview.setOnGroupExpandListene
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-07-27T02:46:46.000Z" class="post-list__meta--date date">2016-07-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/07/27/ExpandableListView中childview的数据出现了2次/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/07/24/radioGroup.check()执行了多次OnCheckedChangeListener()/" title="link to post.title">radioGroup.check()执行了多次OnCheckedChangeListener()</a></h2>
       <p class="excerpt">
     
@@ -287,19 +331,18 @@ Beginning in Android 6.0 (API level 2
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/07/20/notifyDatasetChanged无效的解决办法/" title="link to post.title">notifyDatasetChanged无效的解决办法</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/07/20/Unique Constraint Failded/" title="link to post.title">Unique Constraint Failded</a></h2>
       <p class="excerpt">
     
       
-出现问题比如这样给适配器传一个集合1234List datas;datas = DBDao.selectMyClock(); //此句是返回一个ListclocksAdapter = new AlarmClockListAdapter(getContext(), datas);myClocks.setAdapter(clocksAdapter);
+今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？
 
-
-数据库刷新了，然后想这样刷新数据1234pr
+解决问题排查发现是插入
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/20/notifyDatasetChanged无效的解决办法/">继续阅读</a></div>
+</span><a class="btn-border-small" href="/2016/07/20/Unique Constraint Failded/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -383,7 +426,7 @@ Beginning in Android 6.0 (API level 2
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

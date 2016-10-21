@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -140,7 +141,31 @@
       <p class="excerpt">
     
       
-如果需要实现这种效果，直接上代码1234567891011121314151617181920tv = (TextView) findViewById(R.id.tv);        tv.append(&amp;quot;hehehehahaha&amp;quot;);        SpannableString ssb = new SpannableString(&amp;quot;点击跳转&amp;quot;);  
+如果需要实现这种效果，直接上代码1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+tv = (TextView) findViewById(R.id.tv);
+
+        tv.append(&quot;hehehehahaha&quot;);
+
+        SpannableString ssb = new SpannableString(&quot;点击跳转&quot;
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-07-30T02:46:46.000Z" class="post-list__meta--date date">2016-07-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -156,7 +181,11 @@
     
       
 问题：给child的集合个数是3个，但是打开折叠，出现了6个数据，debug发现getChildView执行了groupCount×childCount×2次，这显然是不合理的
-原因：虽然ExpandableListView提供了点击、展开、折叠的监听123listview.setOnGroupClickListener()listview.setOnGroupExpandListener()l
+原因：虽然ExpandableListView提供了点击、展开、折叠的监听1
+2
+3
+listview.setOnGroupClickListener()
+listview.setOnGroupExpandListene
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-07-27T02:46:46.000Z" class="post-list__meta--date date">2016-07-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -222,10 +251,18 @@
       <p class="excerpt">
     
       
-出现问题比如这样给适配器传一个集合1234List datas;datas = DBDao.selectMyClock(); //此句是返回一个ListclocksAdapter = new AlarmClockListAdapter(getContext(), datas);myClocks.setAdapter(clocksAdapter);
+出现问题比如这样给适配器传一个集合1
+2
+3
+4
+List datas;
+datas = DBDao.selectMyClock(); //此句是返回一个List
+clocksAdapter = new AlarmClockListAdapter(getContext(), datas);
+myClocks.setAdapter(clocksAdapter);
 
 
-数据库刷新了，然后想这样刷新数据1234pr
+
+数据库刷新了，然后想这样刷新
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -306,7 +343,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

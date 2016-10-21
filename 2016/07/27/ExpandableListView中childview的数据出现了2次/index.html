@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -13,17 +14,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta name="description" content="问题：给child的集合个数是3个，但是打开折叠，出现了6个数据，debug发现getChildView执行了groupCount×childCount×2次，这显然是不合理的
-原因：虽然ExpandableListView提供了点击、展开、折叠的监听123listview.setOnGroupClickListener()listview.setOnGroupExpandListener()l">
+原因：虽然ExpandableListView提供了点击、展开、折叠的监听1
+2
+3
+listview.setOnGroupClickListener()
+listview.setOnGroupExpandListene">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ExpandableListView中childview的数据出现了2次 | 白玉楼へ">
     <meta name="twitter:description" content="问题：给child的集合个数是3个，但是打开折叠，出现了6个数据，debug发现getChildView执行了groupCount×childCount×2次，这显然是不合理的
-原因：虽然ExpandableListView提供了点击、展开、折叠的监听123listview.setOnGroupClickListener()listview.setOnGroupExpandListener()l">
+原因：虽然ExpandableListView提供了点击、展开、折叠的监听1
+2
+3
+listview.setOnGroupClickListener()
+listview.setOnGroupExpandListene">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="ExpandableListView中childview的数据出现了2次 | 白玉楼へ">
     <meta property="og:description" content="问题：给child的集合个数是3个，但是打开折叠，出现了6个数据，debug发现getChildView执行了groupCount×childCount×2次，这显然是不合理的
-原因：虽然ExpandableListView提供了点击、展开、折叠的监听123listview.setOnGroupClickListener()listview.setOnGroupExpandListener()l">
+原因：虽然ExpandableListView提供了点击、展开、折叠的监听1
+2
+3
+listview.setOnGroupClickListener()
+listview.setOnGroupExpandListene">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -151,12 +164,64 @@
   <section class="post">
     <ul>
 <li>问题：给child的集合个数是3个，但是打开折叠，出现了6个数据，debug发现getChildView执行了groupCount×childCount×2次，这显然是不合理的</li>
-<li>原因：<br>虽然ExpandableListView提供了点击、展开、折叠的监听<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">listview.setOnGroupClickListener()</div><div class="line">listview.setOnGroupExpandListener()</div><div class="line">listview.setOnGroupCollapseListener()</div></pre></td></tr></table></figure>
+<li>原因：<br>虽然ExpandableListView提供了点击、展开、折叠的监听<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+</pre></td><td class="code"><pre><span class="line">listview.setOnGroupClickListener()</span>
+<span class="line">listview.setOnGroupExpandListener()</span>
+<span class="line">listview.setOnGroupCollapseListener()</span>
+</pre></td></tr></table></figure>
 </li>
 </ul>
-<p>但ExpandableListView自己就实现了点击group展开，再次点击折叠，不需要手动去写这个操作。<br>除非需要同一时间只允许打开一个group，那么可以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//展开监听，展开的时候遍历所有组，将其他的折叠起来</div><div class="line">        listview.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onGroupExpand(int groupPosition) &#123;</div><div class="line">                for (int i = 0; i &lt; ringAdapter.getGroupCount(); i++) &#123;</div><div class="line">                    if (groupPosition != i) &#123;</div><div class="line">                        listview.collapseGroup(i);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></p>
+<p>但ExpandableListView自己就实现了点击group展开，再次点击折叠，不需要手动去写这个操作。<br>除非需要同一时间只允许打开一个group，那么可以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+</pre></td><td class="code"><pre><span class="line">//展开监听，展开的时候遍历所有组，将其他的折叠起来</span>
+<span class="line">        listview.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() &#123;</span>
+<span class="line">            @Override</span>
+<span class="line">            public void onGroupExpand(int groupPosition) &#123;</span>
+<span class="line">                for (int i = 0; i &lt; ringAdapter.getGroupCount(); i++) &#123;</span>
+<span class="line">                    if (groupPosition != i) &#123;</span>
+<span class="line">                        listview.collapseGroup(i);</span>
+<span class="line">                    &#125;</span>
+<span class="line">                &#125;</span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;);</span>
+</pre></td></tr></table></figure></p>
 <hr>
-<p><strong>前方高能</strong><br>如果<strong>手欠</strong>再次去实现了一遍展开和折叠的操作的话，比如这样，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">listview.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) &#123;</div><div class="line">                //如果是展开的，就合上，如果合上的点击展开</div><div class="line">                if (listview.isGroupExpanded(groupPosition)) &#123;</div><div class="line">                    listview.collapseGroup(groupPosition);</div><div class="line">                &#125; else &#123;</div><div class="line">                    listview.expandGroup(groupPosition);</div><div class="line">                &#125;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>前方高能</strong><br>如果<strong>手欠</strong>再次去实现了一遍展开和折叠的操作的话，比如这样，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+</pre></td><td class="code"><pre><span class="line">listview.setOnGroupClickListener(<span class="keyword">new</span> ExpandableListView.OnGroupClickListener() &#123;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onGroupClick</span><span class="params">(ExpandableListView parent, View v, <span class="keyword">int</span> groupPosition, <span class="keyword">long</span> id)</span> </span>&#123;</span>
+<span class="line">                <span class="comment">//如果是展开的，就合上，如果合上的点击展开</span></span>
+<span class="line">                <span class="keyword">if</span> (listview.isGroupExpanded(groupPosition)) &#123;</span>
+<span class="line">                    listview.collapseGroup(groupPosition);</span>
+<span class="line">                &#125; <span class="keyword">else</span> &#123;</span>
+<span class="line">                    listview.expandGroup(groupPosition);</span>
+<span class="line">                &#125;</span>
+<span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;);</span>
+</pre></td></tr></table></figure></p>
 <p>那么就会被认为展开了2次操作，会多调一遍getChildView()，造成数据重复！！</p>
 
   </section>
@@ -172,7 +237,31 @@
                 <p class="excerpt">
                 
                 
-如果需要实现这种效果，直接上代码1234567891011121314151617181920tv = (TextView) findViewById(R.id.tv);        tv.append(&amp;quot;hehehehahaha&amp;quot;);        SpannableStr
+如果需要实现这种效果，直接上代码1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+tv = (TextView) findViewById(R.id.tv);
+
+        tv.append(&quot;hehehehahaha&quot;);
+
+      
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-07-30T02:46:46.000Z" class="post-list__meta--date date">2016-07-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -274,7 +363,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

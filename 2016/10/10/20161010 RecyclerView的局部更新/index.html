@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -15,21 +16,33 @@
     <meta name="description" content="我们知道recyclerView有好几个notify
 除了最常用的notifyDataSetChanged()以外，还有下面的那些，知道position就可以进行更新了但是！我得知道位置才能做到定向更新，那么我不想让所有都更新呢？实际开发中其实经常有这种情况，可能只是调整一小部分，根本不需要整体全部刷一遍，下面进入正题
 
-首先，项目里用到了1234compile &amp;apos;com.android">
+首先，项目里用到了1
+2
+3
+4
+compile &#39;com.android.">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="RecyclerView的局部更新 | 白玉楼へ">
     <meta name="twitter:description" content="我们知道recyclerView有好几个notify
 除了最常用的notifyDataSetChanged()以外，还有下面的那些，知道position就可以进行更新了但是！我得知道位置才能做到定向更新，那么我不想让所有都更新呢？实际开发中其实经常有这种情况，可能只是调整一小部分，根本不需要整体全部刷一遍，下面进入正题
 
-首先，项目里用到了1234compile &amp;apos;com.android">
+首先，项目里用到了1
+2
+3
+4
+compile &#39;com.android.">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="RecyclerView的局部更新 | 白玉楼へ">
     <meta property="og:description" content="我们知道recyclerView有好几个notify
 除了最常用的notifyDataSetChanged()以外，还有下面的那些，知道position就可以进行更新了但是！我得知道位置才能做到定向更新，那么我不想让所有都更新呢？实际开发中其实经常有这种情况，可能只是调整一小部分，根本不需要整体全部刷一遍，下面进入正题
 
-首先，项目里用到了1234compile &amp;apos;com.android">
+首先，项目里用到了1
+2
+3
+4
+compile &#39;com.android.">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -158,9 +171,355 @@
     <p>我们知道recyclerView有好几个notify</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2524531-412ab4e561ac1f34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>除了最常用的<code>notifyDataSetChanged()</code>以外，还有下面的那些，知道position就可以进行更新了<br>但是！我得知道位置才能做到定向更新，那么我不想让所有都更新呢？<br>实际开发中其实经常有这种情况，可能只是调整一小部分，根本不需要整体全部刷一遍，下面进入正题</p>
 <hr>
-<p>首先，项目里用到了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.android.support:appcompat-v7:24.2.1&apos;</div><div class="line">compile &apos;io.reactivex.rxjava2:rxjava:2.0.0-RC4&apos;</div><div class="line">compile &apos;io.reactivex.rxjava2:rxandroid:2.0.0-RC1&apos;</div><div class="line">compile &apos;com.android.support:recyclerview-v7:24.2.1&apos;</div></pre></td></tr></table></figure></p>
-<p>当然rxjava不是必须的。。。不懂也没关系，这不是重点<br>上代码，其实就2个类，一个MainActivity，一个是Adapter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line">    private RecyclerView mRv;</div><div class="line">    private Button mBtn;</div><div class="line">    private List&lt;Bean&gt; mDatas;</div><div class="line">    private DiffAdapter diffAdapter;</div><div class="line">    private List&lt;Bean&gt; mNewDatas;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        initView();</div><div class="line">        initData();</div><div class="line">        initEvent();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initView() &#123;</div><div class="line">        mRv = getView(R.id.rv);</div><div class="line">        mBtn = getView(R.id.btn);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initData() &#123;</div><div class="line">        mDatas = new ArrayList&lt;&gt;();</div><div class="line">        for (int i = 0; i &lt; 10; i++) &#123;</div><div class="line">            //Bean就是个Bean类，里面就2个参数，一个id，一个name</div><div class="line">            mDatas.add(new Bean(i, &quot;name&quot; + i));   </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initEvent() &#123;</div><div class="line">        mRv.setLayoutManager(new LinearLayoutManager(this));</div><div class="line">        diffAdapter = new DiffAdapter(this, mDatas);</div><div class="line">        mRv.setAdapter(diffAdapter);</div><div class="line">        </div><div class="line">        mBtn.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                refresh();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void refresh() &#123;</div><div class="line">        mNewDatas = new ArrayList&lt;&gt;();</div><div class="line">        //模拟获取新数据，将原集合添加进来，删掉一个，添加一个</div><div class="line">        mNewDatas.addAll(mDatas);                        </div><div class="line">        mNewDatas.remove(0);</div><div class="line">        Random random = new Random();</div><div class="line">        int i = random.nextInt(10);</div><div class="line">        mNewDatas.add(new Bean(i, &quot;add&quot; + i));</div><div class="line">        //不懂rxjava的同学从这里</div><div class="line">        Observable.fromArray(mDatas)                                       </div><div class="line">               .map(new Function&lt;List&lt;Bean&gt;, DiffUtil.DiffResult&gt;() &#123;</div><div class="line">                    @Override</div><div class="line">                    public DiffUtil.DiffResult apply(List&lt;Bean&gt; been) throws Exception &#123; </div><div class="line">                        //到这里可以不用看，下面的才是关键 </div><div class="line">                        //DiffUtil.calculateDiff（）是用来计算2个集合差异性的，返回了一个diffResult，下面会用到</div><div class="line">                        return DiffUtil.calculateDiff(new DiffUtil.Callback() &#123;                        </div><div class="line">                            @Override</div><div class="line">                            public int getOldListSize() &#123;        //获取原集合大小</div><div class="line">                                return mDatas == null ? 0 : mDatas.size();</div><div class="line">                            &#125;</div><div class="line"></div><div class="line">                            @Override</div><div class="line">                            public int getNewListSize() &#123;    //获取新集合大小</div><div class="line">                                return mNewDatas == null ? 0 : mNewDatas.size();</div><div class="line">                            &#125;</div><div class="line"></div><div class="line">                            //判断2个item是否是同一个，逻辑根据实际开发需求来定，这里就用Bean.id来判断了</div><div class="line">                            @Override</div><div class="line">                            public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) &#123;</div><div class="line">                                return mDatas.get(oldItemPosition).getId() == mNewDatas.get(newItemPosition).getId();</div><div class="line">                            &#125;</div><div class="line">                            </div><div class="line">                            //判断2个item的内容是否改变了，同上，这里用Bean.name来判断</div><div class="line">                            @Override</div><div class="line">                            public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) &#123;</div><div class="line">                                return TextUtils.equals(mDatas.get(oldItemPosition).getName(), mNewDatas.get(newItemPosition).getName());</div><div class="line">                            &#125;</div><div class="line"></div><div class="line">                            /*如果2个item是同一个，但是内容不同，即</div><div class="line">                              areItemsTheSame 返回true</div><div class="line">                              areContentsTheSame 返回了false*/</div><div class="line">                            //那么会调用这个方法</div><div class="line">                            @Nullable</div><div class="line">                            @Override</div><div class="line">                            public Object getChangePayload(int oldItemPosition, int newItemPosition) &#123;</div><div class="line">                                Bean oldBean = mDatas.get(oldItemPosition);</div><div class="line">                                Bean newBean = mNewDatas.get(newItemPosition);</div><div class="line">                                //将新旧2个item对象的不同之处返回，如果没有就返回null</div><div class="line">                               /*这个例子里面反正就一个name不同，就直接返回String了，</div><div class="line">                                如果变化的东西多，可以返回List,Map,SparseArray,bundle等等等等*/</div><div class="line">                                if (!TextUtils.equals(oldBean.getName(), newBean.getName())) &#123;        </div><div class="line">                                    return newBean.getName();</div><div class="line">                                &#125; else &#123;</div><div class="line">                                    return null;</div><div class="line">                                &#125;</div><div class="line">                            &#125;</div><div class="line">                        &#125;);</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">                .subscribeOn(Schedulers.computation())</div><div class="line">                .observeOn(AndroidSchedulers.mainThread())</div><div class="line">                .subscribe(new Consumer&lt;DiffUtil.DiffResult&gt;() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void accept(DiffUtil.DiffResult diffResult) throws Exception &#123;</div><div class="line">                    //上面的DiffUtil.calculateDiff（）返回的diffResult这里用到了</div><div class="line">                        diffResult.dispatchUpdatesTo(diffAdapter);</div><div class="line">                        mDatas = mNewDatas;</div><div class="line">                        diffAdapter.setData(mDatas);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    private &lt;T extends View&gt; T getView(int id) &#123;</div><div class="line">        return (T)findViewById(id);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">public class DiffAdapter extends RecyclerView.Adapter&lt;DiffAdapter.DiffVh&gt; &#123;</div><div class="line">    private List&lt;Bean&gt; mDatas;</div><div class="line">    private Context mContext;</div><div class="line">    public DiffAdapter(Context context, List&lt;Bean&gt; datas) &#123;</div><div class="line">        mContext = context;</div><div class="line">        mDatas = datas;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public DiffAdapter.DiffVh onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line">        </div><div class="line">        return new DiffVh(LayoutInflater.from(mContext).inflate(R.layout.item_rv,parent,false));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onBindViewHolder(DiffAdapter.DiffVh holder, int position) &#123;</div><div class="line">        holder.tvTitle.setText(mDatas.get(position).getId()+&quot;&quot;);</div><div class="line">        holder.tvDesc.setText(mDatas.get(position).getName());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onBindViewHolder(DiffAdapter.DiffVh holder, int position, List&lt;Object&gt; payloads) &#123;</div><div class="line">        if (payloads.isEmpty()) &#123;</div><div class="line">            onBindViewHolder(holder,position);</div><div class="line">        &#125;else &#123;</div><div class="line">            holder.tvDesc.setText((CharSequence) payloads.get(0));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getItemCount() &#123;</div><div class="line">        return mDatas==null?0:mDatas.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setData(List&lt;Bean&gt; mDatas) &#123;</div><div class="line">        this.mDatas = mDatas;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    class DiffVh extends RecyclerView.ViewHolder &#123;</div><div class="line"></div><div class="line">        TextView tvTitle;</div><div class="line">        TextView tvDesc;</div><div class="line"></div><div class="line">        DiffVh(View itemView) &#123;</div><div class="line">            super(itemView);</div><div class="line">            tvTitle = (TextView) itemView.findViewById(R.id.tv_title);</div><div class="line">            tvDesc = (TextView) itemView.findViewById(R.id.tv_desc);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先，项目里用到了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+</pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.android.support:appcompat-v7:24.2.1'</span></span>
+<span class="line">compile <span class="string">'io.reactivex.rxjava2:rxjava:2.0.0-RC4'</span></span>
+<span class="line">compile <span class="string">'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'</span></span>
+<span class="line">compile <span class="string">'com.android.support:recyclerview-v7:24.2.1'</span></span>
+</pre></td></tr></table></figure></p>
+<p>当然rxjava不是必须的。。。不懂也没关系，这不是重点<br>上代码，其实就2个类，一个MainActivity，一个是Adapter<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+<span class="line">35</span>
+<span class="line">36</span>
+<span class="line">37</span>
+<span class="line">38</span>
+<span class="line">39</span>
+<span class="line">40</span>
+<span class="line">41</span>
+<span class="line">42</span>
+<span class="line">43</span>
+<span class="line">44</span>
+<span class="line">45</span>
+<span class="line">46</span>
+<span class="line">47</span>
+<span class="line">48</span>
+<span class="line">49</span>
+<span class="line">50</span>
+<span class="line">51</span>
+<span class="line">52</span>
+<span class="line">53</span>
+<span class="line">54</span>
+<span class="line">55</span>
+<span class="line">56</span>
+<span class="line">57</span>
+<span class="line">58</span>
+<span class="line">59</span>
+<span class="line">60</span>
+<span class="line">61</span>
+<span class="line">62</span>
+<span class="line">63</span>
+<span class="line">64</span>
+<span class="line">65</span>
+<span class="line">66</span>
+<span class="line">67</span>
+<span class="line">68</span>
+<span class="line">69</span>
+<span class="line">70</span>
+<span class="line">71</span>
+<span class="line">72</span>
+<span class="line">73</span>
+<span class="line">74</span>
+<span class="line">75</span>
+<span class="line">76</span>
+<span class="line">77</span>
+<span class="line">78</span>
+<span class="line">79</span>
+<span class="line">80</span>
+<span class="line">81</span>
+<span class="line">82</span>
+<span class="line">83</span>
+<span class="line">84</span>
+<span class="line">85</span>
+<span class="line">86</span>
+<span class="line">87</span>
+<span class="line">88</span>
+<span class="line">89</span>
+<span class="line">90</span>
+<span class="line">91</span>
+<span class="line">92</span>
+<span class="line">93</span>
+<span class="line">94</span>
+<span class="line">95</span>
+<span class="line">96</span>
+<span class="line">97</span>
+<span class="line">98</span>
+<span class="line">99</span>
+<span class="line">100</span>
+<span class="line">101</span>
+<span class="line">102</span>
+<span class="line">103</span>
+<span class="line">104</span>
+<span class="line">105</span>
+<span class="line">106</span>
+<span class="line">107</span>
+<span class="line">108</span>
+<span class="line">109</span>
+<span class="line">110</span>
+<span class="line">111</span>
+<span class="line">112</span>
+<span class="line">113</span>
+<span class="line">114</span>
+<span class="line">115</span>
+<span class="line">116</span>
+<span class="line">117</span>
+<span class="line">118</span>
+<span class="line">119</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span>
+<span class="line">    <span class="keyword">private</span> RecyclerView mRv;</span>
+<span class="line">    <span class="keyword">private</span> Button mBtn;</span>
+<span class="line">    <span class="keyword">private</span> List&lt;Bean&gt; mDatas;</span>
+<span class="line">    <span class="keyword">private</span> DiffAdapter diffAdapter;</span>
+<span class="line">    <span class="keyword">private</span> List&lt;Bean&gt; mNewDatas;</span>
+<span class="line"></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span>
+<span class="line">        setContentView(R.layout.activity_main);</span>
+<span class="line">        initView();</span>
+<span class="line">        initData();</span>
+<span class="line">        initEvent();</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        mRv = getView(R.id.rv);</span>
+<span class="line">        mBtn = getView(R.id.btn);</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        mDatas = <span class="keyword">new</span> ArrayList&lt;&gt;();</span>
+<span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span>
+<span class="line">            <span class="comment">//Bean就是个Bean类，里面就2个参数，一个id，一个name</span></span>
+<span class="line">            mDatas.add(<span class="keyword">new</span> Bean(i, <span class="string">"name"</span> + i));   </span>
+<span class="line">        &#125;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initEvent</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        mRv.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>));</span>
+<span class="line">        diffAdapter = <span class="keyword">new</span> DiffAdapter(<span class="keyword">this</span>, mDatas);</span>
+<span class="line">        mRv.setAdapter(diffAdapter);</span>
+<span class="line">        </span>
+<span class="line">        mBtn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span>
+<span class="line">                refresh();</span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;);</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        mNewDatas = <span class="keyword">new</span> ArrayList&lt;&gt;();</span>
+<span class="line">        <span class="comment">//模拟获取新数据，将原集合添加进来，删掉一个，添加一个</span></span>
+<span class="line">        mNewDatas.addAll(mDatas);                        </span>
+<span class="line">        mNewDatas.remove(<span class="number">0</span>);</span>
+<span class="line">        Random random = <span class="keyword">new</span> Random();</span>
+<span class="line">        <span class="keyword">int</span> i = random.nextInt(<span class="number">10</span>);</span>
+<span class="line">        mNewDatas.add(<span class="keyword">new</span> Bean(i, <span class="string">"add"</span> + i));</span>
+<span class="line">        <span class="comment">//不懂rxjava的同学从这里</span></span>
+<span class="line">        Observable.fromArray(mDatas)                                       </span>
+<span class="line">               .map(<span class="keyword">new</span> Function&lt;List&lt;Bean&gt;, DiffUtil.DiffResult&gt;() &#123;</span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="keyword">public</span> DiffUtil.<span class="function">DiffResult <span class="title">apply</span><span class="params">(List&lt;Bean&gt; been)</span> <span class="keyword">throws</span> Exception </span>&#123; </span>
+<span class="line">                        <span class="comment">//到这里可以不用看，下面的才是关键 </span></span>
+<span class="line">                        <span class="comment">//DiffUtil.calculateDiff（）是用来计算2个集合差异性的，返回了一个diffResult，下面会用到</span></span>
+<span class="line">                        <span class="keyword">return</span> DiffUtil.calculateDiff(<span class="keyword">new</span> DiffUtil.Callback() &#123;                        </span>
+<span class="line">                            <span class="meta">@Override</span></span>
+<span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOldListSize</span><span class="params">()</span> </span>&#123;        <span class="comment">//获取原集合大小</span></span>
+<span class="line">                                <span class="keyword">return</span> mDatas == <span class="keyword">null</span> ? <span class="number">0</span> : mDatas.size();</span>
+<span class="line">                            &#125;</span>
+<span class="line"></span>
+<span class="line">                            <span class="meta">@Override</span></span>
+<span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNewListSize</span><span class="params">()</span> </span>&#123;    <span class="comment">//获取新集合大小</span></span>
+<span class="line">                                <span class="keyword">return</span> mNewDatas == <span class="keyword">null</span> ? <span class="number">0</span> : mNewDatas.size();</span>
+<span class="line">                            &#125;</span>
+<span class="line"></span>
+<span class="line">                            <span class="comment">//判断2个item是否是同一个，逻辑根据实际开发需求来定，这里就用Bean.id来判断了</span></span>
+<span class="line">                            <span class="meta">@Override</span></span>
+<span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">areItemsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</span>
+<span class="line">                                <span class="keyword">return</span> mDatas.get(oldItemPosition).getId() == mNewDatas.get(newItemPosition).getId();</span>
+<span class="line">                            &#125;</span>
+<span class="line">                            </span>
+<span class="line">                            <span class="comment">//判断2个item的内容是否改变了，同上，这里用Bean.name来判断</span></span>
+<span class="line">                            <span class="meta">@Override</span></span>
+<span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">areContentsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</span>
+<span class="line">                                <span class="keyword">return</span> TextUtils.equals(mDatas.get(oldItemPosition).getName(), mNewDatas.get(newItemPosition).getName());</span>
+<span class="line">                            &#125;</span>
+<span class="line"></span>
+<span class="line">                            <span class="comment">/*如果2个item是同一个，但是内容不同，即</span>
+<span class="line">                              areItemsTheSame 返回true</span>
+<span class="line">                              areContentsTheSame 返回了false*/</span></span>
+<span class="line">                            <span class="comment">//那么会调用这个方法</span></span>
+<span class="line">                            <span class="meta">@Nullable</span></span>
+<span class="line">                            <span class="meta">@Override</span></span>
+<span class="line">                            <span class="function"><span class="keyword">public</span> Object <span class="title">getChangePayload</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</span>
+<span class="line">                                Bean oldBean = mDatas.get(oldItemPosition);</span>
+<span class="line">                                Bean newBean = mNewDatas.get(newItemPosition);</span>
+<span class="line">                                <span class="comment">//将新旧2个item对象的不同之处返回，如果没有就返回null</span></span>
+<span class="line">                               <span class="comment">/*这个例子里面反正就一个name不同，就直接返回String了，</span>
+<span class="line">                                如果变化的东西多，可以返回List,Map,SparseArray,bundle等等等等*/</span></span>
+<span class="line">                                <span class="keyword">if</span> (!TextUtils.equals(oldBean.getName(), newBean.getName())) &#123;        </span>
+<span class="line">                                    <span class="keyword">return</span> newBean.getName();</span>
+<span class="line">                                &#125; <span class="keyword">else</span> &#123;</span>
+<span class="line">                                    <span class="keyword">return</span> <span class="keyword">null</span>;</span>
+<span class="line">                                &#125;</span>
+<span class="line">                            &#125;</span>
+<span class="line">                        &#125;);</span>
+<span class="line">                    &#125;</span>
+<span class="line">                &#125;)</span>
+<span class="line">                .subscribeOn(Schedulers.computation())</span>
+<span class="line">                .observeOn(AndroidSchedulers.mainThread())</span>
+<span class="line">                .subscribe(<span class="keyword">new</span> Consumer&lt;DiffUtil.DiffResult&gt;() &#123;</span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(DiffUtil.DiffResult diffResult)</span> <span class="keyword">throws</span> Exception </span>&#123;</span>
+<span class="line">                    <span class="comment">//上面的DiffUtil.calculateDiff（）返回的diffResult这里用到了</span></span>
+<span class="line">                        diffResult.dispatchUpdatesTo(diffAdapter);</span>
+<span class="line">                        mDatas = mNewDatas;</span>
+<span class="line">                        diffAdapter.setData(mDatas);</span>
+<span class="line">                    &#125;</span>
+<span class="line">                &#125;);</span>
+<span class="line">        </span>
+<span class="line">    &#125;</span>
+<span class="line">    </span>
+<span class="line">    <span class="keyword">private</span> &lt;T extends View&gt; <span class="function">T <span class="title">getView</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">return</span> (T)findViewById(id);</span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+<span class="line">35</span>
+<span class="line">36</span>
+<span class="line">37</span>
+<span class="line">38</span>
+<span class="line">39</span>
+<span class="line">40</span>
+<span class="line">41</span>
+<span class="line">42</span>
+<span class="line">43</span>
+<span class="line">44</span>
+<span class="line">45</span>
+<span class="line">46</span>
+<span class="line">47</span>
+<span class="line">48</span>
+<span class="line">49</span>
+<span class="line">50</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">DiffAdapter</span>.<span class="title">DiffVh</span>&gt; </span>&#123;</span>
+<span class="line">    <span class="keyword">private</span> List&lt;Bean&gt; mDatas;</span>
+<span class="line">    <span class="keyword">private</span> Context mContext;</span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DiffAdapter</span><span class="params">(Context context, List&lt;Bean&gt; datas)</span> </span>&#123;</span>
+<span class="line">        mContext = context;</span>
+<span class="line">        mDatas = datas;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="keyword">public</span> DiffAdapter.<span class="function">DiffVh <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span>
+<span class="line">        </span>
+<span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DiffVh(LayoutInflater.from(mContext).inflate(R.layout.item_rv,parent,<span class="keyword">false</span>));</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(DiffAdapter.DiffVh holder, <span class="keyword">int</span> position)</span> </span>&#123;</span>
+<span class="line">        holder.tvTitle.setText(mDatas.get(position).getId()+<span class="string">""</span>);</span>
+<span class="line">        holder.tvDesc.setText(mDatas.get(position).getName());</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(DiffAdapter.DiffVh holder, <span class="keyword">int</span> position, List&lt;Object&gt; payloads)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">if</span> (payloads.isEmpty()) &#123;</span>
+<span class="line">            onBindViewHolder(holder,position);</span>
+<span class="line">        &#125;<span class="keyword">else</span> &#123;</span>
+<span class="line">            holder.tvDesc.setText((CharSequence) payloads.get(<span class="number">0</span>));</span>
+<span class="line">        &#125;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">return</span> mDatas==<span class="keyword">null</span>?<span class="number">0</span>:mDatas.size();</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setData</span><span class="params">(List&lt;Bean&gt; mDatas)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">this</span>.mDatas = mDatas;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DiffVh</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span>
+<span class="line"></span>
+<span class="line">        TextView tvTitle;</span>
+<span class="line">        TextView tvDesc;</span>
+<span class="line"></span>
+<span class="line">        DiffVh(View itemView) &#123;</span>
+<span class="line">            <span class="keyword">super</span>(itemView);</span>
+<span class="line">            tvTitle = (TextView) itemView.findViewById(R.id.tv_title);</span>
+<span class="line">            tvDesc = (TextView) itemView.findViewById(R.id.tv_desc);</span>
+<span class="line">        &#125;</span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure>
 <p>布局文件不贴了吧<br><code>R.layout.item_rv</code>就是2个textview用来显示Bean的id和name<br><code>R.layout.activity_main</code>就是一个recyclerview和一个button用来刷新而已<br>OK，到此为止，怎么用都在注释里</p>
 
   </section>
@@ -177,7 +536,16 @@
                 
                 发现GreenDao更新到3了，还是改了一些东西的，看了几篇文章，发现有些出入之处，于是结合官网写了个demo测试了下，在此总结。
 
-#1. 导入GreenDao有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里1234567891011121314
+#1. 导入GreenDao有的同学可能不清楚gradle是哪个gradle。。在你module的那个build.gradle里1
+2
+3
+4
+5
+6
+7
+8
+9
+1
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-10-14T02:46:46.000Z" class="post-list__meta--date date">2016-10-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -197,7 +565,15 @@
 需求：开发新项目时，拿到接口文档，需要请求消息体是json类型的
 
 
-可能你这么写过post：12345interface NService &amp;#123;        @FormUrlEncoded        @POST(&amp;quot;alarmclock/add.json&amp;quot;)   
+可能你这么写过post：1
+2
+3
+4
+5
+interface NService &amp;#123;
+        @FormUrlEncoded
+        @POST(&quot;alarmclock/add.json&quot;)
+     
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-09-13T02:46:46.000Z" class="post-list__meta--date date">2016-09-13</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -280,7 +656,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

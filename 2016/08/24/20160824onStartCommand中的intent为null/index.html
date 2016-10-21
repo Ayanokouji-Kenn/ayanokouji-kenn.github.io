@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -12,15 +13,30 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;">
+    <meta name="description" content="当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了1
+2
+3
+if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123; 
+            //do something
+&amp;#125;">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="onStartCommand中的intent为null | 白玉楼へ">
-    <meta name="twitter:description" content="当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;">
+    <meta name="twitter:description" content="当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了1
+2
+3
+if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123; 
+            //do something
+&amp;#125;">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="onStartCommand中的intent为null | 白玉楼へ">
-    <meta property="og:description" content="当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;">
+    <meta property="og:description" content="当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了1
+2
+3
+if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123; 
+            //do something
+&amp;#125;">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -147,7 +163,13 @@
 
   <section class="post">
     <ul>
-<li>当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (intent!=null &amp;&amp; intent.getAction()!=null) &#123; </div><div class="line">            //do something</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li>当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (intent!=<span class="keyword">null</span> &amp;&amp; intent.getAction()!=<span class="keyword">null</span>) &#123; </span>
+<span class="line">            <span class="comment">//do something</span></span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure></li>
 </ul>
 
   </section>
@@ -159,18 +181,20 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 RxBus的工具类/" title="RxBus的工具类">RxBus的工具类</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/30/20160830 SecurityException与android.permission.xxxx/" title="SecurityException与android.permission.xxxx">SecurityException与android.permission.xxxx</a></h2>
                 <p class="excerpt">
                 
-                
-直接上代码 ，三个类
+                1
+2
+java.lang.SecurityException
+getDeviceId: Neither user 10174 nor current process has android.permission.READ_PHONE_STATE.
 
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758import rx.Observable;import rx
+这个问题是由于android6.0的动态权限引起
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/08/24/20160824 RxBus的工具类/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2016-08-30T02:46:46.000Z" class="post-list__meta--date date">2016-08-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/08/30/20160830 SecurityException与android.permission.xxxx/">继续阅读</a></div>
                            
             </div>
         
@@ -178,15 +202,21 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 SPUtils/" title="SPUtils">SPUtils</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 onStartCommand中的intent为null/" title="onStartCommand中的intent为null">onStartCommand中的intent为null</a></h2>
                 <p class="excerpt">
                 
-                123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798
+                
+当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了1
+2
+3
+if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123; 
+            //do something
+&amp;#12
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/08/24/20160824 SPUtils/">继续阅读</a></div>
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824 onStartCommand中的intent为null/">继续阅读</a></div>
                        
             </div>
         
@@ -264,7 +294,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

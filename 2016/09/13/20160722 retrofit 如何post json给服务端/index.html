@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -15,21 +16,45 @@
     <meta name="description" content="需求：开发新项目时，拿到接口文档，需要请求消息体是json类型的
 
 
-可能你这么写过post：12345interface NService &amp;#123;        @FormUrlEncoded        @POST(&amp;quot;alarmclock/add.json&amp;quot;)        Call&amp;lt;ResponseBody&amp;gt; getResult(@FieldMap">
+可能你这么写过post：1
+2
+3
+4
+5
+interface NService &amp;#123;
+        @FormUrlEncoded
+        @POST(&quot;alarmclock/add.json&quot;)
+        Call&amp;lt;ResponseBody&amp;gt; getResult(@FieldMap Ma">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="retrofit 如何post json给服务端 | 白玉楼へ">
     <meta name="twitter:description" content="需求：开发新项目时，拿到接口文档，需要请求消息体是json类型的
 
 
-可能你这么写过post：12345interface NService &amp;#123;        @FormUrlEncoded        @POST(&amp;quot;alarmclock/add.json&amp;quot;)        Call&amp;lt;ResponseBody&amp;gt; getResult(@FieldMap">
+可能你这么写过post：1
+2
+3
+4
+5
+interface NService &amp;#123;
+        @FormUrlEncoded
+        @POST(&quot;alarmclock/add.json&quot;)
+        Call&amp;lt;ResponseBody&amp;gt; getResult(@FieldMap Ma">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="retrofit 如何post json给服务端 | 白玉楼へ">
     <meta property="og:description" content="需求：开发新项目时，拿到接口文档，需要请求消息体是json类型的
 
 
-可能你这么写过post：12345interface NService &amp;#123;        @FormUrlEncoded        @POST(&amp;quot;alarmclock/add.json&amp;quot;)        Call&amp;lt;ResponseBody&amp;gt; getResult(@FieldMap">
+可能你这么写过post：1
+2
+3
+4
+5
+interface NService &amp;#123;
+        @FormUrlEncoded
+        @POST(&quot;alarmclock/add.json&quot;)
+        Call&amp;lt;ResponseBody&amp;gt; getResult(@FieldMap Ma">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -159,13 +184,137 @@
 <li>需求：<br>开发新项目时，拿到接口文档，需要请求消息体是json类型的</li>
 </ul>
 <hr>
-<p>可能你这么写过post：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">interface NService &#123;</div><div class="line">        @FormUrlEncoded</div><div class="line">        @POST(&quot;alarmclock/add.json&quot;)</div><div class="line">        Call&lt;ResponseBody&gt; getResult(@FieldMap Map&lt;String, Object&gt; params);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = new Retrofit.Builder().baseUrl(URL).client(client).build();</div><div class="line">        NService nService = retrofit.create(NService.class);</div><div class="line">        Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();</div><div class="line">        params.put(&quot;id&quot;, &quot;123&quot;);</div><div class="line">        params.put(&quot;name&quot;, &quot;ksi&quot;);</div><div class="line"></div><div class="line">        Call&lt;ResponseBody&gt; call = nService.getResult(params);</div><div class="line">        call.enqueue(new Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void onResponse(Call&lt;ResponseBody&gt; call, retrofit2.Response&lt;ResponseBody&gt; response) &#123;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onFailure(Call&lt;ResponseBody&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<p>可能你这么写过post：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+</pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">NService</span> </span>&#123;</span>
+<span class="line">        <span class="meta">@FormUrlEncoded</span></span>
+<span class="line">        <span class="meta">@POST</span>(<span class="string">"alarmclock/add.json"</span>)</span>
+<span class="line">        <span class="function">Call&lt;ResponseBody&gt; <span class="title">getResult</span><span class="params">(@FieldMap Map&lt;String, Object&gt; params)</span></span>;</span>
+<span class="line">    &#125;</span>
+</pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+</pre></td><td class="code"><pre><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder().baseUrl(URL).client(client).build();</span>
+<span class="line">        NService nService = retrofit.create(NService.class);</span>
+<span class="line">        Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;&gt;();</span>
+<span class="line">        params.put(<span class="string">"id"</span>, <span class="string">"123"</span>);</span>
+<span class="line">        params.put(<span class="string">"name"</span>, <span class="string">"ksi"</span>);</span>
+<span class="line"></span>
+<span class="line">        Call&lt;ResponseBody&gt; call = nService.getResult(params);</span>
+<span class="line">        call.enqueue(<span class="keyword">new</span> Callback&lt;ResponseBody&gt;() &#123;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;ResponseBody&gt; call, retrofit2.Response&lt;ResponseBody&gt; response)</span> </span>&#123;</span>
+<span class="line"></span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call&lt;ResponseBody&gt; call, Throwable t)</span> </span>&#123;</span>
+<span class="line"></span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;);</span>
+</pre></td></tr></table></figure>
 <p>这是表单提交，你提交上去的其实是<code>id=123&amp;name=ksi</code>这么个东西。<br>如果要提交的是json那么自然要改变请求体了</p>
 <p>好，有的同学可能会搜索以下问题：<strong>怎么查看/更改/添加请求头、请求体、响应体</strong>？<br>我的版本是：retrofit2.1.0，2.0以前的做法可能不一样。</p>
-<p>首先，在你的build.gradle下面依赖这玩意<br><code>compile &#39;com.squareup.okhttp3:logging-interceptor:3.4.1&#39;</code><br>然后配置client，添加拦截器，第一个拦截器是用于添加请求头的，第二个就是打印日志了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">OkHttpClient client = new OkHttpClient().newBuilder()</div><div class="line">                .addInterceptor(new Interceptor() &#123;</div><div class="line">                    @Override</div><div class="line">                    public Response intercept(Chain chain) throws IOException &#123;</div><div class="line">                        Request request = chain.request().newBuilder()</div><div class="line">                                .addHeader(&quot;creater_oid&quot;, &quot;123411&quot;) //这里就是添加一个请求头</div><div class="line">                                .build();</div><div class="line"></div><div class="line">//                        Buffer buffer = new Buffer();       不依赖logging，用这三行也能打印出请求体</div><div class="line">//                        request.body().writeTo(buffer);</div><div class="line">//                        Log.d(getClass().getSimpleName(), &quot;intercept: &quot; + buffer.readUtf8());</div><div class="line"></div><div class="line">                        return chain.proceed(request);</div><div class="line">                    &#125; //下面是关键代码</div><div class="line">                &#125;).addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))</div><div class="line">                .build();</div></pre></td></tr></table></figure></p>
-<p>好，我们来干正经事了，json格式的请求，参数注解用@Body<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">interface ApiService &#123;</div><div class="line">        @POST(&quot;add.json&quot;)</div><div class="line">        Call&lt;ResponseBody&gt; add(@Body RequestBody body);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = new Retrofit.Builder().baseUrl(URL).client(client).build();</div><div class="line">        ApiService apiService = retrofit.create(ApiService.class);</div><div class="line"></div><div class="line">//new JSONObject里的getMap()方法就是返回一个map，里面包含了你要传给服务器的各个键值对，然后根据接口文档的请求格式，直接拼接上相应的东西就行了</div><div class="line">//比如&#123;&quot;data&quot;:&#123;这里面是参数&#125;&#125;，那就在外面拼上大括号和&quot;data&quot;好了</div><div class="line">        RequestBody requestBody = RequestBody.create(MediaType.parse(&quot;Content-Type, application/json&quot;),</div><div class="line">                                   &quot;&#123;\&quot;data\&quot;:&quot;+new JSONObject(getMap()).toString()+&quot;&#125;&quot;);</div><div class="line">        Call&lt;ResponseBody&gt; call = apiService.add(requestBody);</div><div class="line">        call.enqueue(new Callback&lt;ResponseBody&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void onResponse(Call&lt;ResponseBody&gt; call, retrofit2.Response&lt;ResponseBody&gt; response) &#123;</div><div class="line">                Log.d(getClass().getSimpleName(), &quot;onResponse: ----&quot; + response.body().toString());</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onFailure(Call&lt;ResponseBody&gt; call, Throwable t) &#123;</div><div class="line">                Log.d(getClass().getSimpleName(), &quot;onFailure: ------&quot; + t.toString());</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<p>首先，在你的build.gradle下面依赖这玩意<br><code>compile &#39;com.squareup.okhttp3:logging-interceptor:3.4.1&#39;</code><br>然后配置client，添加拦截器，第一个拦截器是用于添加请求头的，第二个就是打印日志了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+</pre></td><td class="code"><pre><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient().newBuilder()</span>
+<span class="line">                .addInterceptor(<span class="keyword">new</span> Interceptor() &#123;</span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</span>
+<span class="line">                        Request request = chain.request().newBuilder()</span>
+<span class="line">                                .addHeader(<span class="string">"creater_oid"</span>, <span class="string">"123411"</span>) <span class="comment">//这里就是添加一个请求头</span></span>
+<span class="line">                                .build();</span>
+<span class="line"></span>
+<span class="line"><span class="comment">//                        Buffer buffer = new Buffer();       不依赖logging，用这三行也能打印出请求体</span></span>
+<span class="line"><span class="comment">//                        request.body().writeTo(buffer);</span></span>
+<span class="line"><span class="comment">//                        Log.d(getClass().getSimpleName(), "intercept: " + buffer.readUtf8());</span></span>
+<span class="line"></span>
+<span class="line">                        <span class="keyword">return</span> chain.proceed(request);</span>
+<span class="line">                    &#125; <span class="comment">//下面是关键代码</span></span>
+<span class="line">                &#125;).addInterceptor(<span class="keyword">new</span> HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))</span>
+<span class="line">                .build();</span>
+</pre></td></tr></table></figure></p>
+<p>好，我们来干正经事了，json格式的请求，参数注解用@Body<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+</pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ApiService</span> </span>&#123;</span>
+<span class="line">        <span class="meta">@POST</span>(<span class="string">"add.json"</span>)</span>
+<span class="line">        <span class="function">Call&lt;ResponseBody&gt; <span class="title">add</span><span class="params">(@Body RequestBody body)</span></span>;</span>
+<span class="line">    &#125;</span>
+</pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+</pre></td><td class="code"><pre><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder().baseUrl(URL).client(client).build();</span>
+<span class="line">        ApiService apiService = retrofit.create(ApiService.class);</span>
+<span class="line"></span>
+<span class="line"><span class="comment">//new JSONObject里的getMap()方法就是返回一个map，里面包含了你要传给服务器的各个键值对，然后根据接口文档的请求格式，直接拼接上相应的东西就行了</span></span>
+<span class="line"><span class="comment">//比如&#123;"data":&#123;这里面是参数&#125;&#125;，那就在外面拼上大括号和"data"好了</span></span>
+<span class="line">        RequestBody requestBody = RequestBody.create(MediaType.parse(<span class="string">"Content-Type, application/json"</span>),</span>
+<span class="line">                                   <span class="string">"&#123;\"data\":"</span>+<span class="keyword">new</span> JSONObject(getMap()).toString()+<span class="string">"&#125;"</span>);</span>
+<span class="line">        Call&lt;ResponseBody&gt; call = apiService.add(requestBody);</span>
+<span class="line">        call.enqueue(<span class="keyword">new</span> Callback&lt;ResponseBody&gt;() &#123;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;ResponseBody&gt; call, retrofit2.Response&lt;ResponseBody&gt; response)</span> </span>&#123;</span>
+<span class="line">                Log.d(getClass().getSimpleName(), <span class="string">"onResponse: ----"</span> + response.body().toString());</span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call&lt;ResponseBody&gt; call, Throwable t)</span> </span>&#123;</span>
+<span class="line">                Log.d(getClass().getSimpleName(), <span class="string">"onFailure: ------"</span> + t.toString());</span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;);</span>
+</pre></td></tr></table></figure>
 <p>OK，大功告成，来看看打印结果吧</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2524531-612f8177ff844aa4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ截图20160722012756.png"><br>看到第三行了么，那就是自定义添加的请求头，第四行就是json格式的请求体了<br>&lt;—200 OK下面是响应体。</p>
 
@@ -199,7 +348,19 @@
                 <p class="excerpt">
                 
                 
-一种方法是在dialog的onCreate里面加上12345678910private void initWindow() &amp;#123;        Window win = this.getWindow();        win.getDecorView().setPadding(0, 0,
+一种方法是在dialog的onCreate里面加上1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+private void initWindow() &amp;#123;
+        Window win = this.getWindow();
+        win.getDecorView().setP
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-09-13T02:46:46.000Z" class="post-list__meta--date date">2016-09-13</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -282,7 +443,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

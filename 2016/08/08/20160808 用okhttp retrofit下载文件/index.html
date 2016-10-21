@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -157,10 +158,288 @@
 <li>首先在项目中引用<br><code>compile &#39;com.liulishuo.filedownloader:library:0.3.4&#39;</code></li>
 <li>然后在Application的onCreate()中初始化<br><code>FileDownloader.init(applicationContext);</code></li>
 <li><p>在工具类中丢进这2个方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * 单任务下载</div><div class="line">     */</div><div class="line">    public static void downloadFile(String path, String url) &#123;</div><div class="line">        FileDownloader.getImpl().create(url)</div><div class="line">                .setPath(path)</div><div class="line">                .setListener(new FileDownloadListener() &#123;</div><div class="line">                    @Override</div><div class="line">                    protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void connected(BaseDownloadTask task, String etag, boolean isContinue, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void blockComplete(BaseDownloadTask task) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void retry(final BaseDownloadTask task, final Throwable ex, final int retryingTimes, final int soFarBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void completed(BaseDownloadTask task) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void paused(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void error(BaseDownloadTask task, Throwable e) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void warn(BaseDownloadTask task) &#123;</div><div class="line">                    &#125;</div><div class="line">                &#125;).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 多任务下载</div><div class="line">     * 参数1：url的集合   参数2：下载的路径</div><div class="line">     */</div><div class="line"></div><div class="line">    public static void downloadFiles(List&lt;RingListJson.RingBean&gt; urls,File dir) &#123;</div><div class="line">        final FileDownloadListener downloadListener = new FileDownloadListener() &#123;</div><div class="line">            @Override</div><div class="line">            protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void connected(BaseDownloadTask task, String etag, boolean isContinue, int soFarBytes, int totalBytes) &#123;</div><div class="line">            </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void blockComplete(BaseDownloadTask task) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void retry(final BaseDownloadTask task, final Throwable ex, final int retryingTimes, final int soFarBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void completed(BaseDownloadTask task) &#123;</div><div class="line">            </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void paused(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void error(BaseDownloadTask task, Throwable e) &#123;</div><div class="line">             &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void warn(BaseDownloadTask task) &#123;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        final FileDownloadQueueSet queueSet = new FileDownloadQueueSet(downloadListener);</div><div class="line"></div><div class="line">        final List&lt;BaseDownloadTask&gt; tasks = new ArrayList&lt;&gt;();</div><div class="line">        for (int i = 0; i &lt; urls.size(); i++) &#123;</div><div class="line">            if (FileDownloader.getImpl().create((urls.get(i).url)).isReusedOldFile()) &#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            tasks.add(FileDownloader.getImpl()</div><div class="line">                    .create(urls.get(i).url)</div><div class="line">                    .setTag(i + 1)</div><div class="line">                    .setPath(dir.getAbsolutePath()+ File.separator+urls.get(i).name.concat(&quot;.aac&quot;)));</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    /*由于是队列任务, 这里是我们假设了现在不需要每个任务都回调`FileDownloadListener#progress`, </div><div class="line">      我们只关系每个任务是否完成, </div><div class="line">      所以这里这样设置可以很有效的减少ipc.*/</div><div class="line">        queueSet.disableCallbackProgressTimes(); </div><div class="line"></div><div class="line">        // 所有任务在下载失败的时候都自动重试一次</div><div class="line">        queueSet.setAutoRetryTimes(1);</div><div class="line"></div><div class="line">        queueSet.downloadTogether(tasks);</div><div class="line">        queueSet.start();</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+<span class="line">35</span>
+<span class="line">36</span>
+<span class="line">37</span>
+<span class="line">38</span>
+<span class="line">39</span>
+<span class="line">40</span>
+<span class="line">41</span>
+<span class="line">42</span>
+<span class="line">43</span>
+<span class="line">44</span>
+<span class="line">45</span>
+<span class="line">46</span>
+<span class="line">47</span>
+<span class="line">48</span>
+<span class="line">49</span>
+<span class="line">50</span>
+<span class="line">51</span>
+<span class="line">52</span>
+<span class="line">53</span>
+<span class="line">54</span>
+<span class="line">55</span>
+<span class="line">56</span>
+<span class="line">57</span>
+<span class="line">58</span>
+<span class="line">59</span>
+<span class="line">60</span>
+<span class="line">61</span>
+<span class="line">62</span>
+<span class="line">63</span>
+<span class="line">64</span>
+<span class="line">65</span>
+<span class="line">66</span>
+<span class="line">67</span>
+<span class="line">68</span>
+<span class="line">69</span>
+<span class="line">70</span>
+<span class="line">71</span>
+<span class="line">72</span>
+<span class="line">73</span>
+<span class="line">74</span>
+<span class="line">75</span>
+<span class="line">76</span>
+<span class="line">77</span>
+<span class="line">78</span>
+<span class="line">79</span>
+<span class="line">80</span>
+<span class="line">81</span>
+<span class="line">82</span>
+<span class="line">83</span>
+<span class="line">84</span>
+<span class="line">85</span>
+<span class="line">86</span>
+<span class="line">87</span>
+<span class="line">88</span>
+<span class="line">89</span>
+<span class="line">90</span>
+<span class="line">91</span>
+<span class="line">92</span>
+<span class="line">93</span>
+<span class="line">94</span>
+<span class="line">95</span>
+<span class="line">96</span>
+<span class="line">97</span>
+<span class="line">98</span>
+<span class="line">99</span>
+<span class="line">100</span>
+<span class="line">101</span>
+<span class="line">102</span>
+<span class="line">103</span>
+<span class="line">104</span>
+<span class="line">105</span>
+<span class="line">106</span>
+<span class="line">107</span>
+<span class="line">108</span>
+<span class="line">109</span>
+<span class="line">110</span>
+<span class="line">111</span>
+<span class="line">112</span>
+<span class="line">113</span>
+<span class="line">114</span>
+<span class="line">115</span>
+<span class="line">116</span>
+<span class="line">117</span>
+</pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span>
+<span class="line">     * 单任务下载</span>
+<span class="line">     */</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">downloadFile</span><span class="params">(String path, String url)</span> </span>&#123;</span>
+<span class="line">        FileDownloader.getImpl().create(url)</span>
+<span class="line">                .setPath(path)</span>
+<span class="line">                .setListener(<span class="keyword">new</span> FileDownloadListener() &#123;</span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">pending</span><span class="params">(BaseDownloadTask task, <span class="keyword">int</span> soFarBytes, <span class="keyword">int</span> totalBytes)</span> </span>&#123;</span>
+<span class="line">                    &#125;</span>
+<span class="line"></span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">connected</span><span class="params">(BaseDownloadTask task, String etag, <span class="keyword">boolean</span> isContinue, <span class="keyword">int</span> soFarBytes, <span class="keyword">int</span> totalBytes)</span> </span>&#123;</span>
+<span class="line">                    &#125;</span>
+<span class="line"></span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">progress</span><span class="params">(BaseDownloadTask task, <span class="keyword">int</span> soFarBytes, <span class="keyword">int</span> totalBytes)</span> </span>&#123;</span>
+<span class="line">                    &#125;</span>
+<span class="line"></span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">blockComplete</span><span class="params">(BaseDownloadTask task)</span> </span>&#123;</span>
+<span class="line">                    &#125;</span>
+<span class="line"></span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">retry</span><span class="params">(<span class="keyword">final</span> BaseDownloadTask task, <span class="keyword">final</span> Throwable ex, <span class="keyword">final</span> <span class="keyword">int</span> retryingTimes, <span class="keyword">final</span> <span class="keyword">int</span> soFarBytes)</span> </span>&#123;</span>
+<span class="line">                    &#125;</span>
+<span class="line"></span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">completed</span><span class="params">(BaseDownloadTask task)</span> </span>&#123;</span>
+<span class="line">                    &#125;</span>
+<span class="line"></span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">paused</span><span class="params">(BaseDownloadTask task, <span class="keyword">int</span> soFarBytes, <span class="keyword">int</span> totalBytes)</span> </span>&#123;</span>
+<span class="line">                    &#125;</span>
+<span class="line"></span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">error</span><span class="params">(BaseDownloadTask task, Throwable e)</span> </span>&#123;</span>
+<span class="line">                    &#125;</span>
+<span class="line"></span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">warn</span><span class="params">(BaseDownloadTask task)</span> </span>&#123;</span>
+<span class="line">                    &#125;</span>
+<span class="line">                &#125;).start();</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">/**</span>
+<span class="line">     * 多任务下载</span>
+<span class="line">     * 参数1：url的集合   参数2：下载的路径</span>
+<span class="line">     */</span></span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">downloadFiles</span><span class="params">(List&lt;RingListJson.RingBean&gt; urls,File dir)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">final</span> FileDownloadListener downloadListener = <span class="keyword">new</span> FileDownloadListener() &#123;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">pending</span><span class="params">(BaseDownloadTask task, <span class="keyword">int</span> soFarBytes, <span class="keyword">int</span> totalBytes)</span> </span>&#123;</span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">connected</span><span class="params">(BaseDownloadTask task, String etag, <span class="keyword">boolean</span> isContinue, <span class="keyword">int</span> soFarBytes, <span class="keyword">int</span> totalBytes)</span> </span>&#123;</span>
+<span class="line">            </span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">progress</span><span class="params">(BaseDownloadTask task, <span class="keyword">int</span> soFarBytes, <span class="keyword">int</span> totalBytes)</span> </span>&#123;</span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">blockComplete</span><span class="params">(BaseDownloadTask task)</span> </span>&#123;</span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">retry</span><span class="params">(<span class="keyword">final</span> BaseDownloadTask task, <span class="keyword">final</span> Throwable ex, <span class="keyword">final</span> <span class="keyword">int</span> retryingTimes, <span class="keyword">final</span> <span class="keyword">int</span> soFarBytes)</span> </span>&#123;</span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">completed</span><span class="params">(BaseDownloadTask task)</span> </span>&#123;</span>
+<span class="line">            </span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">paused</span><span class="params">(BaseDownloadTask task, <span class="keyword">int</span> soFarBytes, <span class="keyword">int</span> totalBytes)</span> </span>&#123;</span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">error</span><span class="params">(BaseDownloadTask task, Throwable e)</span> </span>&#123;</span>
+<span class="line">             &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">warn</span><span class="params">(BaseDownloadTask task)</span> </span>&#123;</span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;;</span>
+<span class="line"></span>
+<span class="line">        <span class="keyword">final</span> FileDownloadQueueSet queueSet = <span class="keyword">new</span> FileDownloadQueueSet(downloadListener);</span>
+<span class="line"></span>
+<span class="line">        <span class="keyword">final</span> List&lt;BaseDownloadTask&gt; tasks = <span class="keyword">new</span> ArrayList&lt;&gt;();</span>
+<span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; urls.size(); i++) &#123;</span>
+<span class="line">            <span class="keyword">if</span> (FileDownloader.getImpl().create((urls.get(i).url)).isReusedOldFile()) &#123;</span>
+<span class="line">                <span class="keyword">continue</span>;</span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            tasks.add(FileDownloader.getImpl()</span>
+<span class="line">                    .create(urls.get(i).url)</span>
+<span class="line">                    .setTag(i + <span class="number">1</span>)</span>
+<span class="line">                    .setPath(dir.getAbsolutePath()+ File.separator+urls.get(i).name.concat(<span class="string">".aac"</span>)));</span>
+<span class="line"></span>
+<span class="line">        &#125;</span>
+<span class="line">    <span class="comment">/*由于是队列任务, 这里是我们假设了现在不需要每个任务都回调`FileDownloadListener#progress`, </span>
+<span class="line">      我们只关系每个任务是否完成, </span>
+<span class="line">      所以这里这样设置可以很有效的减少ipc.*/</span></span>
+<span class="line">        queueSet.disableCallbackProgressTimes(); </span>
+<span class="line"></span>
+<span class="line">        <span class="comment">// 所有任务在下载失败的时候都自动重试一次</span></span>
+<span class="line">        queueSet.setAutoRetryTimes(<span class="number">1</span>);</span>
+<span class="line"></span>
+<span class="line">        queueSet.downloadTogether(tasks);</span>
+<span class="line">        queueSet.start();</span>
+<span class="line"></span>
+<span class="line">    &#125;</span>
+</pre></td></tr></table></figure>
 </li>
 <li><p>在需要下载的地方调用者2个方法即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = new Retrofit.Builder().baseUrl(&quot;http:/xxx.xxx.com&quot;).addConverterFactory(GsonConverterFactory.create()).build();</div><div class="line">        RingListResult ringListResult = retrofit.create(RingListResult.class);</div><div class="line">        Call&lt;RingListJson&gt; call = ringListResult.getRings();</div><div class="line">        </div><div class="line">            final File dir = D8Application.applicationContext.getFilesDir();</div><div class="line">            final File rings = new File(dir + &quot;/rings&quot;);</div><div class="line">            if (!rings.exists()) &#123;</div><div class="line">                rings.mkdirs();</div><div class="line">            &#125;</div><div class="line">        call.enqueue(new Callback&lt;RingListJson&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void onResponse(Call&lt;RingListJson&gt; call, Response&lt;RingListJson&gt; response) &#123;</div><div class="line">                RingListJson ringListJson = response.body();</div><div class="line">                List&lt;RingListJson.RingBean&gt; ringList = ringListJson.ring; //在服务器拿到url的集合</div><div class="line">                Api.downloadFiles(ringList,rings);    //传进方法里  Api是自己的工具类</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onFailure(Call&lt;RingListJson&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+</pre></td><td class="code"><pre><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder().baseUrl(<span class="string">"http:/xxx.xxx.com"</span>).addConverterFactory(GsonConverterFactory.create()).build();</span>
+<span class="line">        RingListResult ringListResult = retrofit.create(RingListResult.class);</span>
+<span class="line">        Call&lt;RingListJson&gt; call = ringListResult.getRings();</span>
+<span class="line">        </span>
+<span class="line">            <span class="keyword">final</span> File dir = D8Application.applicationContext.getFilesDir();</span>
+<span class="line">            <span class="keyword">final</span> File rings = <span class="keyword">new</span> File(dir + <span class="string">"/rings"</span>);</span>
+<span class="line">            <span class="keyword">if</span> (!rings.exists()) &#123;</span>
+<span class="line">                rings.mkdirs();</span>
+<span class="line">            &#125;</span>
+<span class="line">        call.enqueue(<span class="keyword">new</span> Callback&lt;RingListJson&gt;() &#123;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;RingListJson&gt; call, Response&lt;RingListJson&gt; response)</span> </span>&#123;</span>
+<span class="line">                RingListJson ringListJson = response.body();</span>
+<span class="line">                List&lt;RingListJson.RingBean&gt; ringList = ringListJson.ring; <span class="comment">//在服务器拿到url的集合</span></span>
+<span class="line">                Api.downloadFiles(ringList,rings);    <span class="comment">//传进方法里  Api是自己的工具类</span></span>
+<span class="line">            &#125;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call&lt;RingListJson&gt; call, Throwable t)</span> </span>&#123;</span>
+<span class="line"></span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;);</span>
+</pre></td></tr></table></figure></li>
 </ol>
 
   </section>
@@ -195,7 +474,31 @@
                 <p class="excerpt">
                 
                 
-如果需要实现这种效果，直接上代码1234567891011121314151617181920tv = (TextView) findViewById(R.id.tv);        tv.append(&amp;quot;hehehehahaha&amp;quot;);        SpannableStr
+如果需要实现这种效果，直接上代码1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+tv = (TextView) findViewById(R.id.tv);
+
+        tv.append(&quot;hehehehahaha&quot;);
+
+      
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-07-30T02:46:46.000Z" class="post-list__meta--date date">2016-07-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -278,7 +581,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

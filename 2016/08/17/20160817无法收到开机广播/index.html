@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -14,19 +15,22 @@
 
     <meta name="description" content="国内第三方厂商对自启动做了一些限制，比如小米要在安全中心–&amp;gt;授权管理–自启动管理里添加三星要在智能管理器里面添加…
 
-注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；1234">
+注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；1
+2">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="无法收到开机广播 | 白玉楼へ">
     <meta name="twitter:description" content="国内第三方厂商对自启动做了一些限制，比如小米要在安全中心–&amp;gt;授权管理–自启动管理里添加三星要在智能管理器里面添加…
 
-注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；1234">
+注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；1
+2">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="无法收到开机广播 | 白玉楼へ">
     <meta property="og:description" content="国内第三方厂商对自启动做了一些限制，比如小米要在安全中心–&amp;gt;授权管理–自启动管理里添加三星要在智能管理器里面添加…
 
-注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；1234">
+注意：1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；1
+2">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -155,7 +159,21 @@
     <ul>
 <li>国内第三方厂商对自启动做了一些限制，<br>比如小米要在安全中心–&gt;授权管理–自启动管理里添加<br>三星要在智能管理器里面添加…</li>
 </ul>
-<p>注意：<br>1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；<br>2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；<br>3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;!--关机重启时启动服务，重新设置闹钟--&gt;</div><div class="line">&lt;receiver android:name=&quot;.receiver.BootCompletedReceiver&quot;&gt;</div><div class="line">    &lt;intent-filter android:priority=&quot;1000&quot;&gt;</div><div class="line">        &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot; /&gt;</div><div class="line">        &lt;action android:name=&quot;android.intent.action.QUICKBOOT_POWERON&quot; /&gt;  //快速启动，对！就是这玩意惹的锅！</div><div class="line">    &lt;/intent-filter&gt;</div><div class="line">&lt;/receiver&gt;</div></pre></td></tr></table></figure></p>
+<p>注意：<br>1、2.3版本以后 系统提供快速启动选项，如果使用，系统不会发开机完成的系统广播；<br>2、3.1以后，安装程序要启动一次才会运行接受系统广播，为了防止恶意的内置应用；<br>3、手机软件如360，定制系统如小米等，会设置禁止应用自启动，如果不在白名单，同样收不到系统广播；<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+</pre></td><td class="code"><pre><span class="line">&lt;!--关机重启时启动服务，重新设置闹钟--&gt;</span>
+<span class="line">&lt;receiver android:name=".receiver.BootCompletedReceiver"&gt;</span>
+<span class="line">    &lt;intent-filter android:priority="1000"&gt;</span>
+<span class="line">        &lt;action android:name="android.intent.action.BOOT_COMPLETED" /&gt;</span>
+<span class="line">        &lt;action android:name="android.intent.action.QUICKBOOT_POWERON" /&gt;  //快速启动，对！就是这玩意惹的锅！</span>
+<span class="line">    &lt;/intent-filter&gt;</span>
+<span class="line">&lt;/receiver&gt;</span>
+</pre></td></tr></table></figure></p>
 
   </section>
 
@@ -172,7 +190,10 @@
                 
 看源码 snackbar其实就是两个textview组成的
 
-12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action)
+1
+2
+mMessageView = (TextView) findViewById(R.id.snackbar_text);
+mActionView = (Button) findViewById(R.id.snackbar_acti
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-08-19T02:46:46.000Z" class="post-list__meta--date date">2016-08-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -273,7 +294,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

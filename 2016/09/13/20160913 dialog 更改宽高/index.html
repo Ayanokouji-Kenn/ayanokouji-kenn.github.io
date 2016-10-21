@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -12,15 +13,54 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="一种方法是在dialog的onCreate里面加上12345678910private void initWindow() &amp;#123;        Window win = this.getWindow();        win.getDecorView().setPadding(0, 0, 0, 0);        WindowManager.LayoutParams lp = win">
+    <meta name="description" content="一种方法是在dialog的onCreate里面加上1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+private void initWindow() &amp;#123;
+        Window win = this.getWindow();
+        win.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutPa">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="dialog 更改宽高 | 白玉楼へ">
-    <meta name="twitter:description" content="一种方法是在dialog的onCreate里面加上12345678910private void initWindow() &amp;#123;        Window win = this.getWindow();        win.getDecorView().setPadding(0, 0, 0, 0);        WindowManager.LayoutParams lp = win">
+    <meta name="twitter:description" content="一种方法是在dialog的onCreate里面加上1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+private void initWindow() &amp;#123;
+        Window win = this.getWindow();
+        win.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutPa">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="dialog 更改宽高 | 白玉楼へ">
-    <meta property="og:description" content="一种方法是在dialog的onCreate里面加上12345678910private void initWindow() &amp;#123;        Window win = this.getWindow();        win.getDecorView().setPadding(0, 0, 0, 0);        WindowManager.LayoutParams lp = win">
+    <meta property="og:description" content="一种方法是在dialog的onCreate里面加上1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+private void initWindow() &amp;#123;
+        Window win = this.getWindow();
+        win.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutPa">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -147,12 +187,54 @@
 
   <section class="post">
     <ul>
-<li>一种方法是在dialog的onCreate里面加上<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">private void initWindow() &#123;</div><div class="line">        Window win = this.getWindow();</div><div class="line">        win.getDecorView().setPadding(0, 0, 0, 0);</div><div class="line">        WindowManager.LayoutParams lp = win.getAttributes();</div><div class="line"></div><div class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</div><div class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</div><div class="line">        lp.gravity = Gravity.BOTTOM;</div><div class="line">        win.setAttributes(lp);  </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<li>一种方法是在dialog的onCreate里面加上<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+</pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWindow</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        Window win = <span class="keyword">this</span>.getWindow();</span>
+<span class="line">        win.getDecorView().setPadding(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span>
+<span class="line">        WindowManager.LayoutParams lp = win.getAttributes();</span>
+<span class="line"></span>
+<span class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</span>
+<span class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</span>
+<span class="line">        lp.gravity = Gravity.BOTTOM;</span>
+<span class="line">        win.setAttributes(lp);  </span>
+<span class="line">    &#125;</span>
+</pre></td></tr></table></figure>
 </li>
 </ul>
-<p>但是这么改是在自定义的继承自dialog里面才能这么写<br>有时我们可能只是简单的，这样写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">final AlertDialog dialog = new AlertDialog.Builder(activity,R.style.dialog)</div><div class="line">                .setView(view1)</div><div class="line">                .create();</div><div class="line">        dialog.show();</div></pre></td></tr></table></figure></p>
+<p>但是这么改是在自定义的继承自dialog里面才能这么写<br>有时我们可能只是简单的，这样写<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> AlertDialog dialog = <span class="keyword">new</span> AlertDialog.Builder(activity,R.style.dialog)</span>
+<span class="line">                .setView(view1)</span>
+<span class="line">                .create();</span>
+<span class="line">        dialog.show();</span>
+</pre></td></tr></table></figure></p>
 <ul>
-<li>那么就是第二种方法，<strong>在dialog.show()之后再调用以下的代码</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Window window = dialog.getWindow();</div><div class="line">        WindowManager.LayoutParams lp = window.getAttributes();</div><div class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</div><div class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</div><div class="line">        lp.gravity = Gravity.BOTTOM;</div><div class="line">        dialog.onWindowAttributesChanged(lp);</div><div class="line">        window.setAttributes(lp);</div></pre></td></tr></table></figure></li>
+<li>那么就是第二种方法，<strong>在dialog.show()之后再调用以下的代码</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+</pre></td><td class="code"><pre><span class="line">Window window = dialog.getWindow();</span>
+<span class="line">        WindowManager.LayoutParams lp = window.getAttributes();</span>
+<span class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</span>
+<span class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</span>
+<span class="line">        lp.gravity = Gravity.BOTTOM;</span>
+<span class="line">        dialog.onWindowAttributesChanged(lp);</span>
+<span class="line">        window.setAttributes(lp);</span>
+</pre></td></tr></table></figure></li>
 </ul>
 
   </section>
@@ -171,7 +253,15 @@
 需求：开发新项目时，拿到接口文档，需要请求消息体是json类型的
 
 
-可能你这么写过post：12345interface NService &amp;#123;        @FormUrlEncoded        @POST(&amp;quot;alarmclock/add.json&amp;quot;)   
+可能你这么写过post：1
+2
+3
+4
+5
+interface NService &amp;#123;
+        @FormUrlEncoded
+        @POST(&quot;alarmclock/add.json&quot;)
+     
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-09-13T02:46:46.000Z" class="post-list__meta--date date">2016-09-13</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -187,7 +277,10 @@
                 <h2 class="post-list__post-title post-title"><a href="/2016/09/02/20160902 调节安卓音量/" title="调节安卓音量">调节安卓音量</a></h2>
                 <p class="excerpt">
                 
-                如果使用MediaPlayer播放，直接setVolume即可，经测试静音也能有声音，但是用户调节媒体音量到0就不行了，他是在媒体音量的基础上做了百分比12MediaPlayer mediaPlayer = MediaPlayer.create(this, raws[ringId]);mediaPl
+                如果使用MediaPlayer播放，直接setVolume即可，经测试静音也能有声音，但是用户调节媒体音量到0就不行了，他是在媒体音量的基础上做了百分比1
+2
+MediaPlayer mediaPlayer = MediaPlayer.create(this, raws[ringId]);
+medi
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-09-02T02:46:46.000Z" class="post-list__meta--date date">2016-09-02</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -270,7 +363,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

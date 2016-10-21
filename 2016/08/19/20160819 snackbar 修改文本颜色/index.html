@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -14,22 +15,34 @@
 
     <meta name="description" content="看源码 snackbar其实就是两个textview组成的
 
-12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action);
-见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜色方法1">
+1
+2
+mMessageView = (TextView) findViewById(R.id.snackbar_text);
+mActionView = (Button) findViewById(R.id.snackbar_action);
+
+见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="snackbar 修改文本颜色 | 白玉楼へ">
     <meta name="twitter:description" content="看源码 snackbar其实就是两个textview组成的
 
-12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action);
-见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜色方法1">
+1
+2
+mMessageView = (TextView) findViewById(R.id.snackbar_text);
+mActionView = (Button) findViewById(R.id.snackbar_action);
+
+见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="snackbar 修改文本颜色 | 白玉楼へ">
     <meta property="og:description" content="看源码 snackbar其实就是两个textview组成的
 
-12mMessageView = (TextView) findViewById(R.id.snackbar_text);mActionView = (Button) findViewById(R.id.snackbar_action);
-见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜色方法1">
+1
+2
+mMessageView = (TextView) findViewById(R.id.snackbar_text);
+mActionView = (Button) findViewById(R.id.snackbar_action);
+
+见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -158,10 +171,70 @@
     <ul>
 <li>看源码 snackbar其实就是两个textview组成的</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mMessageView = (TextView) findViewById(R.id.snackbar_text);</div><div class="line">mActionView = (Button) findViewById(R.id.snackbar_action);</div></pre></td></tr></table></figure>
-<p>见名知意，一个是信息文本，一个是动作文本<br>然而，他虽然提供给了修改actoinView的颜色方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * Sets the text color of the action specified in</div><div class="line">     * &#123;@link #setAction(CharSequence, View.OnClickListener)&#125;.</div><div class="line">     */</div><div class="line">    @NonNull</div><div class="line">    public Snackbar setActionTextColor(@ColorInt int color) &#123;</div><div class="line">        final TextView tv = mView.getActionView();</div><div class="line">        tv.setTextColor(color);</div><div class="line">        return this;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>但是没有提供修改mMessageView颜色的方法，而且是私有的<br>可是呢，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * Returns the &#123;@link Snackbar&#125;&apos;s view.</div><div class="line">     */</div><div class="line">    @NonNull</div><div class="line">    public View getView() &#123;</div><div class="line">        return mView;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>那么我们可以拿到snackbar的view!!,那后面的事情就好办了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Snackbar snackbar = Snackbar.make(container, &quot;hehe&quot;, Snackbar.LENGTH_SHORT)</div><div class="line">                        .setAction(&quot;なに？？&quot;, new View.OnClickListener() &#123;</div><div class="line">                            @Override</div><div class="line">                            public void onClick(View view) &#123;</div><div class="line">                                Toast.makeText(MainActivity.this, &quot;whattttt&quot;, Toast.LENGTH_SHORT).show();</div><div class="line">                            &#125;</div><div class="line">                        &#125;)</div><div class="line">                        .setActionTextColor(0xffffc0cb);</div><div class="line">                //findViewById拿到文本textview，然后修改颜色就是了</div><div class="line">                ((TextView)snackbar.getView().findViewById(R.id.snackbar_text)).setTextColor(0xffffc0cb);</div><div class="line">                snackbar.show();</div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+</pre></td><td class="code"><pre><span class="line">mMessageView = (TextView) findViewById(R.id.snackbar_text);</span>
+<span class="line">mActionView = (Button) findViewById(R.id.snackbar_action);</span>
+</pre></td></tr></table></figure>
+<p>见名知意，一个是信息文本，一个是动作文本<br>然而，他虽然提供给了修改actoinView的颜色方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+</pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span>
+<span class="line">     * Sets the text color of the action specified in</span>
+<span class="line">     * &#123;<span class="doctag">@link</span> #setAction(CharSequence, View.OnClickListener)&#125;.</span>
+<span class="line">     */</span></span>
+<span class="line">    <span class="meta">@NonNull</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> Snackbar <span class="title">setActionTextColor</span><span class="params">(@ColorInt <span class="keyword">int</span> color)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">final</span> TextView tv = mView.getActionView();</span>
+<span class="line">        tv.setTextColor(color);</span>
+<span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span>
+<span class="line">    &#125;</span>
+</pre></td></tr></table></figure></p>
+<p>但是没有提供修改mMessageView颜色的方法，而且是私有的<br>可是呢，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+</pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span>
+<span class="line">     * Returns the &#123;<span class="doctag">@link</span> Snackbar&#125;'s view.</span>
+<span class="line">     */</span></span>
+<span class="line">    <span class="meta">@NonNull</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">return</span> mView;</span>
+<span class="line">    &#125;</span>
+</pre></td></tr></table></figure></p>
+<p>那么我们可以拿到snackbar的view!!,那后面的事情就好办了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+</pre></td><td class="code"><pre><span class="line">Snackbar snackbar = Snackbar.make(container, <span class="string">"hehe"</span>, Snackbar.LENGTH_SHORT)</span>
+<span class="line">                        .setAction(<span class="string">"なに？？"</span>, <span class="keyword">new</span> View.OnClickListener() &#123;</span>
+<span class="line">                            <span class="meta">@Override</span></span>
+<span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span>
+<span class="line">                                Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"whattttt"</span>, Toast.LENGTH_SHORT).show();</span>
+<span class="line">                            &#125;</span>
+<span class="line">                        &#125;)</span>
+<span class="line">                        .setActionTextColor(<span class="number">0xffffc0cb</span>);</span>
+<span class="line">                <span class="comment">//findViewById拿到文本textview，然后修改颜色就是了</span></span>
+<span class="line">                ((TextView)snackbar.getView().findViewById(R.id.snackbar_text)).setTextColor(<span class="number">0xffffc0cb</span>);</span>
+<span class="line">                snackbar.show();</span>
+</pre></td></tr></table></figure></p>
 
   </section>
 
@@ -172,18 +245,68 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 onStartCommand中的intent为null/" title="onStartCommand中的intent为null">onStartCommand中的intent为null</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 SPUtils/" title="SPUtils">SPUtils</a></h2>
                 <p class="excerpt">
                 
-                
-当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了123if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;             //do something&amp;#125;
-
+                1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
 
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/08/24/20160824 onStartCommand中的intent为null/">继续阅读</a></div>
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824 SPUtils/">继续阅读</a></div>
                            
             </div>
         
@@ -280,7 +403,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>

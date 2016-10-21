@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
@@ -12,15 +13,87 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="如果需要实现这种效果，直接上代码1234567891011121314151617181920tv = (TextView) findViewById(R.id.tv);        tv.append(&amp;quot;hehehehahaha&amp;quot;);        SpannableString ssb = new SpannableString(&amp;quot;点击跳转&amp;quot;);">
+    <meta name="description" content="如果需要实现这种效果，直接上代码1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+tv = (TextView) findViewById(R.id.tv);
+
+        tv.append(&quot;hehehehahaha&quot;);
+
+        SpannableString ssb = new SpannableString(&quot;点击跳转&quot;">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="TextView中添加下划线、不同颜色、点击跳转的字 | 白玉楼へ">
-    <meta name="twitter:description" content="如果需要实现这种效果，直接上代码1234567891011121314151617181920tv = (TextView) findViewById(R.id.tv);        tv.append(&amp;quot;hehehehahaha&amp;quot;);        SpannableString ssb = new SpannableString(&amp;quot;点击跳转&amp;quot;);">
+    <meta name="twitter:description" content="如果需要实现这种效果，直接上代码1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+tv = (TextView) findViewById(R.id.tv);
+
+        tv.append(&quot;hehehehahaha&quot;);
+
+        SpannableString ssb = new SpannableString(&quot;点击跳转&quot;">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="TextView中添加下划线、不同颜色、点击跳转的字 | 白玉楼へ">
-    <meta property="og:description" content="如果需要实现这种效果，直接上代码1234567891011121314151617181920tv = (TextView) findViewById(R.id.tv);        tv.append(&amp;quot;hehehehahaha&amp;quot;);        SpannableString ssb = new SpannableString(&amp;quot;点击跳转&amp;quot;);">
+    <meta property="og:description" content="如果需要实现这种效果，直接上代码1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+tv = (TextView) findViewById(R.id.tv);
+
+        tv.append(&quot;hehehehahaha&quot;);
+
+        SpannableString ssb = new SpannableString(&quot;点击跳转&quot;">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -147,7 +220,47 @@
 
   <section class="post">
     <ul>
-<li><img src="http://upload-images.jianshu.io/upload_images/2524531-ec6611c0ac42e704.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Screenshot_2016-07-30-13-36-50_com.aidebar.spandemo_1469857042549.jpg"><br>如果需要实现这种效果，<br>直接上代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">tv = (TextView) findViewById(R.id.tv);</div><div class="line"></div><div class="line">        tv.append(&quot;hehehehahaha&quot;);</div><div class="line"></div><div class="line">        SpannableString ssb = new SpannableString(&quot;点击跳转&quot;);</div><div class="line">        ssb.setSpan(new ClickableSpan() &#123;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onClick(View view) &#123;</div><div class="line">                startActivity(new Intent(MainActivity.this,SecondActivity.class)); //点击跳转</div><div class="line">            &#125;</div><div class="line">            @Override</div><div class="line">            public void updateDrawState(TextPaint ds) &#123;  //设置样式</div><div class="line">                super.updateDrawState(ds);</div><div class="line">                ds.setColor(getResources().getColor(R.color.textclick));  //字体颜色</div><div class="line">                ds.setUnderlineText(true);      //下划线</div><div class="line">            &#125;</div><div class="line">        &#125;,0,ssb.length(),SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);</div><div class="line">        tv.append(ssb);</div><div class="line">        tv.setMovementMethod(LinkMovementMethod.getInstance());     //开始响应点击事件</div></pre></td></tr></table></figure>
+<li><img src="http://upload-images.jianshu.io/upload_images/2524531-ec6611c0ac42e704.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Screenshot_2016-07-30-13-36-50_com.aidebar.spandemo_1469857042549.jpg"><br>如果需要实现这种效果，<br>直接上代码<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+</pre></td><td class="code"><pre><span class="line">tv = (TextView) findViewById(R.id.tv);</span>
+<span class="line"></span>
+<span class="line">        tv.append(<span class="string">"hehehehahaha"</span>);</span>
+<span class="line"></span>
+<span class="line">        SpannableString ssb = <span class="keyword">new</span> SpannableString(<span class="string">"点击跳转"</span>);</span>
+<span class="line">        ssb.setSpan(<span class="keyword">new</span> ClickableSpan() &#123;</span>
+<span class="line"></span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span>
+<span class="line">                startActivity(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,SecondActivity.class)); <span class="comment">//点击跳转</span></span>
+<span class="line">            &#125;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateDrawState</span><span class="params">(TextPaint ds)</span> </span>&#123;  <span class="comment">//设置样式</span></span>
+<span class="line">                <span class="keyword">super</span>.updateDrawState(ds);</span>
+<span class="line">                ds.setColor(getResources().getColor(R.color.textclick));  <span class="comment">//字体颜色</span></span>
+<span class="line">                ds.setUnderlineText(<span class="keyword">true</span>);      <span class="comment">//下划线</span></span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;,<span class="number">0</span>,ssb.length(),SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);</span>
+<span class="line">        tv.append(ssb);</span>
+<span class="line">        tv.setMovementMethod(LinkMovementMethod.getInstance());     <span class="comment">//开始响应点击事件</span></span>
+</pre></td></tr></table></figure>
 </li>
 </ul>
 <p>这里设置的是ClickableSpan，即点击效果，同时在updateDrawState中设置了字体样式，</p>
@@ -185,7 +298,10 @@
                 
                 
 问题：给child的集合个数是3个，但是打开折叠，出现了6个数据，debug发现getChildView执行了groupCount×childCount×2次，这显然是不合理的
-原因：虽然ExpandableListView提供了点击、展开、折叠的监听123listview.setOnGroupC
+原因：虽然ExpandableListView提供了点击、展开、折叠的监听1
+2
+3
+listview.setOnGro
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-07-27T02:46:46.000Z" class="post-list__meta--date date">2016-07-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -268,7 +384,7 @@
 
 
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
+   
     </script>
     
 </body>
