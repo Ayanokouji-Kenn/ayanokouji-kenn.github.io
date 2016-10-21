@@ -109,40 +109,11 @@
   </entry>
   
   <entry>
-    <title>dialog 更改宽高</title>
-    <link href="http://yoursite.com/2016/09/13/20160913%20dialog%20%E6%9B%B4%E6%94%B9%E5%AE%BD%E9%AB%98/"/>
-    <id>http://yoursite.com/2016/09/13/20160913 dialog 更改宽高/</id>
-    <published>2016-09-13T02:46:46.000Z</published>
-    <updated>2016-10-21T02:31:35.268Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>一种方法是在dialog的onCreate里面加上<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">private void initWindow() &#123;</div><div class="line">        Window win = this.getWindow();</div><div class="line">        win.getDecorView().setPadding(0, 0, 0, 0);</div><div class="line">        WindowManager.LayoutParams lp = win.getAttributes();</div><div class="line"></div><div class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</div><div class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</div><div class="line">        lp.gravity = Gravity.BOTTOM;</div><div class="line">        win.setAttributes(lp);  </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>但是这么改是在自定义的继承自dialog里面才能这么写<br>有时我们可能只是简单的，这样写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">final AlertDialog dialog = new AlertDialog.Builder(activity,R.style.dialog)</div><div class="line">                .setView(view1)</div><div class="line">                .create();</div><div class="line">        dialog.show();</div></pre></td></tr></table></figure></p>
-<ul>
-<li>那么就是第二种方法，<strong>在dialog.show()之后再调用以下的代码</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Window window = dialog.getWindow();</div><div class="line">        WindowManager.LayoutParams lp = window.getAttributes();</div><div class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</div><div class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</div><div class="line">        lp.gravity = Gravity.BOTTOM;</div><div class="line">        dialog.onWindowAttributesChanged(lp);</div><div class="line">        window.setAttributes(lp);</div></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;一种方法是在dialog的onCreate里面加上&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;li
-    
-    </summary>
-    
-    
-      <category term="problems" scheme="http://yoursite.com/tags/problems/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>dialog 更改宽高</title>
+    <title>retrofit 如何post json给服务端</title>
     <link href="http://yoursite.com/2016/09/13/20160722%20retrofit%20%E5%A6%82%E4%BD%95post%20json%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF/"/>
     <id>http://yoursite.com/2016/09/13/20160722 retrofit 如何post json给服务端/</id>
     <published>2016-09-13T02:46:46.000Z</published>
-    <updated>2016-10-21T02:32:44.465Z</updated>
+    <updated>2016-10-21T06:04:44.910Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>需求：<br>开发新项目时，拿到接口文档，需要请求消息体是json类型的</li>
@@ -175,23 +146,31 @@
   </entry>
   
   <entry>
-    <title>AndroidStudio 关联源码</title>
-    <link href="http://yoursite.com/2016/09/02/20160902%20AndroidStudio%20%E5%85%B3%E8%81%94%E6%BA%90%E7%A0%81/"/>
-    <id>http://yoursite.com/2016/09/02/20160902 AndroidStudio 关联源码/</id>
-    <published>2016-09-02T02:46:46.000Z</published>
-    <updated>2016-10-21T02:31:44.400Z</updated>
+    <title>dialog 更改宽高</title>
+    <link href="http://yoursite.com/2016/09/13/20160913%20dialog%20%E6%9B%B4%E6%94%B9%E5%AE%BD%E9%AB%98/"/>
+    <id>http://yoursite.com/2016/09/13/20160913 dialog 更改宽高/</id>
+    <published>2016-09-13T02:46:46.000Z</published>
+    <updated>2016-10-21T02:31:35.268Z</updated>
     
-    <content type="html"><![CDATA[<p>首先，确保你已经下载完成了，<br>然后，在<code>C:\Users\xxx\.AndroidStudio2.1\config\options</code>这里找到<code>jdk.table.xml</code><br>打开它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;jdk version=&quot;2&quot;&gt;</div><div class="line">      &lt;name value=&quot;Android API 24 Platform&quot; /&gt; //找到对应的版本</div><div class="line">      &lt;type value=&quot;Android SDK&quot; /&gt;</div><div class="line">      &lt;version value=&quot;java version &quot;1.8.0_91&quot;&quot; /&gt;</div><div class="line">      &lt;homePath value=&quot;D:\android-studio-sdk&quot; /&gt;</div><div class="line">      &lt;roots&gt;</div><div class="line">        &lt;annotationsPath&gt;</div><div class="line">          &lt;root type=&quot;composite&quot;&gt;</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;jar://$APPLICATION_HOME_DIR$/plugins/android/lib/androidAnnotations.jar!/&quot; /&gt;</div><div class="line">          &lt;/root&gt;</div><div class="line">        &lt;/annotationsPath&gt;</div><div class="line">        &lt;classPath&gt;</div><div class="line">          &lt;root type=&quot;composite&quot;&gt;</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;jar://D:/android-studio-sdk/platforms/android-24/android.jar!/&quot; /&gt;</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;file://D:/android-studio-sdk/platforms/android-24/data/res&quot; /&gt;</div><div class="line">          &lt;/root&gt;</div><div class="line">        &lt;/classPath&gt;</div><div class="line">        &lt;javadocPath&gt;</div><div class="line">          &lt;root type=&quot;composite&quot;&gt;</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;file://D:/android-studio-sdk/docs/reference&quot; /&gt;</div><div class="line">          &lt;/root&gt;</div><div class="line">        &lt;/javadocPath&gt;</div><div class="line">        &lt;sourcePath&gt;   //源码在這里</div><div class="line">          &lt;root type=&quot;composite&quot;&gt;</div><div class="line">          //把路径填进去，重开AndroidStudio就ok了</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;file://D:/android-studio-sdk/sources/android-24&quot; /&gt;</div><div class="line">          &lt;/root&gt;</div><div class="line">        &lt;/sourcePath&gt;</div><div class="line">      &lt;/roots&gt;</div><div class="line">      &lt;additional jdk=&quot;1.8&quot; sdk=&quot;android-24&quot; /&gt;</div><div class="line">    &lt;/jdk&gt;</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<ul>
+<li>一种方法是在dialog的onCreate里面加上<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">private void initWindow() &#123;</div><div class="line">        Window win = this.getWindow();</div><div class="line">        win.getDecorView().setPadding(0, 0, 0, 0);</div><div class="line">        WindowManager.LayoutParams lp = win.getAttributes();</div><div class="line"></div><div class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</div><div class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</div><div class="line">        lp.gravity = Gravity.BOTTOM;</div><div class="line">        win.setAttributes(lp);  </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>但是这么改是在自定义的继承自dialog里面才能这么写<br>有时我们可能只是简单的，这样写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">final AlertDialog dialog = new AlertDialog.Builder(activity,R.style.dialog)</div><div class="line">                .setView(view1)</div><div class="line">                .create();</div><div class="line">        dialog.show();</div></pre></td></tr></table></figure></p>
+<ul>
+<li>那么就是第二种方法，<strong>在dialog.show()之后再调用以下的代码</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Window window = dialog.getWindow();</div><div class="line">        WindowManager.LayoutParams lp = window.getAttributes();</div><div class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</div><div class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</div><div class="line">        lp.gravity = Gravity.BOTTOM;</div><div class="line">        dialog.onWindowAttributesChanged(lp);</div><div class="line">        window.setAttributes(lp);</div></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;首先，确保你已经下载完成了，&lt;br&gt;然后，在&lt;code&gt;C:\Users\xxx\.AndroidStudio2.1\config\options&lt;/code&gt;这里找到&lt;code&gt;jdk.table.xml&lt;/code&gt;&lt;br&gt;打开它&lt;br&gt;&lt;figure class=&quot;h
+      &lt;ul&gt;
+&lt;li&gt;一种方法是在dialog的onCreate里面加上&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;li
     
     </summary>
     
     
-      <category term="豆知识" scheme="http://yoursite.com/tags/%E8%B1%86%E7%9F%A5%E8%AF%86/"/>
+      <category term="problems" scheme="http://yoursite.com/tags/problems/"/>
     
   </entry>
   
@@ -209,6 +188,27 @@
     <summary type="html">
     
       &lt;p&gt;如果使用MediaPlayer播放，直接setVolume即可，经测试静音也能有声音，但是用户调节媒体音量到0就不行了，他是在媒体音量的基础上做了百分比&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gut
+    
+    </summary>
+    
+    
+      <category term="豆知识" scheme="http://yoursite.com/tags/%E8%B1%86%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AndroidStudio 关联源码</title>
+    <link href="http://yoursite.com/2016/09/02/20160902%20AndroidStudio%20%E5%85%B3%E8%81%94%E6%BA%90%E7%A0%81/"/>
+    <id>http://yoursite.com/2016/09/02/20160902 AndroidStudio 关联源码/</id>
+    <published>2016-09-02T02:46:46.000Z</published>
+    <updated>2016-10-21T02:31:44.400Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先，确保你已经下载完成了，<br>然后，在<code>C:\Users\xxx\.AndroidStudio2.1\config\options</code>这里找到<code>jdk.table.xml</code><br>打开它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;jdk version=&quot;2&quot;&gt;</div><div class="line">      &lt;name value=&quot;Android API 24 Platform&quot; /&gt; //找到对应的版本</div><div class="line">      &lt;type value=&quot;Android SDK&quot; /&gt;</div><div class="line">      &lt;version value=&quot;java version &quot;1.8.0_91&quot;&quot; /&gt;</div><div class="line">      &lt;homePath value=&quot;D:\android-studio-sdk&quot; /&gt;</div><div class="line">      &lt;roots&gt;</div><div class="line">        &lt;annotationsPath&gt;</div><div class="line">          &lt;root type=&quot;composite&quot;&gt;</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;jar://$APPLICATION_HOME_DIR$/plugins/android/lib/androidAnnotations.jar!/&quot; /&gt;</div><div class="line">          &lt;/root&gt;</div><div class="line">        &lt;/annotationsPath&gt;</div><div class="line">        &lt;classPath&gt;</div><div class="line">          &lt;root type=&quot;composite&quot;&gt;</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;jar://D:/android-studio-sdk/platforms/android-24/android.jar!/&quot; /&gt;</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;file://D:/android-studio-sdk/platforms/android-24/data/res&quot; /&gt;</div><div class="line">          &lt;/root&gt;</div><div class="line">        &lt;/classPath&gt;</div><div class="line">        &lt;javadocPath&gt;</div><div class="line">          &lt;root type=&quot;composite&quot;&gt;</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;file://D:/android-studio-sdk/docs/reference&quot; /&gt;</div><div class="line">          &lt;/root&gt;</div><div class="line">        &lt;/javadocPath&gt;</div><div class="line">        &lt;sourcePath&gt;   //源码在這里</div><div class="line">          &lt;root type=&quot;composite&quot;&gt;</div><div class="line">          //把路径填进去，重开AndroidStudio就ok了</div><div class="line">            &lt;root type=&quot;simple&quot; url=&quot;file://D:/android-studio-sdk/sources/android-24&quot; /&gt;</div><div class="line">          &lt;/root&gt;</div><div class="line">        &lt;/sourcePath&gt;</div><div class="line">      &lt;/roots&gt;</div><div class="line">      &lt;additional jdk=&quot;1.8&quot; sdk=&quot;android-24&quot; /&gt;</div><div class="line">    &lt;/jdk&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先，确保你已经下载完成了，&lt;br&gt;然后，在&lt;code&gt;C:\Users\xxx\.AndroidStudio2.1\config\options&lt;/code&gt;这里找到&lt;code&gt;jdk.table.xml&lt;/code&gt;&lt;br&gt;打开它&lt;br&gt;&lt;figure class=&quot;h
     
     </summary>
     
@@ -250,35 +250,11 @@
   </entry>
   
   <entry>
-    <title>onStartCommand中的intent为null</title>
-    <link href="http://yoursite.com/2016/08/24/20160824onStartCommand%E4%B8%AD%E7%9A%84intent%E4%B8%BAnull/"/>
-    <id>http://yoursite.com/2016/08/24/20160824onStartCommand中的intent为null/</id>
-    <published>2016-08-24T02:46:46.000Z</published>
-    <updated>2016-10-21T02:56:59.757Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (intent!=null &amp;&amp; intent.getAction()!=null) &#123; </div><div class="line">            //do something</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;li
-    
-    </summary>
-    
-    
-      <category term="problems" scheme="http://yoursite.com/tags/problems/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用okhttp/retrofit下载文件</title>
+    <title>RxBus的工具类</title>
     <link href="http://yoursite.com/2016/08/24/20160824%20RxBus%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
     <id>http://yoursite.com/2016/08/24/20160824 RxBus的工具类/</id>
     <published>2016-08-24T02:46:46.000Z</published>
-    <updated>2016-10-21T02:32:09.267Z</updated>
+    <updated>2016-10-21T06:04:29.159Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>直接上代码 ，三个类</li>
@@ -308,11 +284,35 @@
   </entry>
   
   <entry>
-    <title>用okhttp/retrofit下载文件</title>
+    <title>onStartCommand中的intent为null</title>
+    <link href="http://yoursite.com/2016/08/24/20160824onStartCommand%E4%B8%AD%E7%9A%84intent%E4%B8%BAnull/"/>
+    <id>http://yoursite.com/2016/08/24/20160824onStartCommand中的intent为null/</id>
+    <published>2016-08-24T02:46:46.000Z</published>
+    <updated>2016-10-21T02:56:59.757Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (intent!=null &amp;&amp; intent.getAction()!=null) &#123; </div><div class="line">            //do something</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;li
+    
+    </summary>
+    
+    
+      <category term="problems" scheme="http://yoursite.com/tags/problems/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SPUtils</title>
     <link href="http://yoursite.com/2016/08/24/20160824%20SPUtils/"/>
     <id>http://yoursite.com/2016/08/24/20160824 SPUtils/</id>
     <published>2016-08-24T02:46:46.000Z</published>
-    <updated>2016-10-21T02:32:04.849Z</updated>
+    <updated>2016-10-21T06:05:10.990Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * @author xzj</div><div class="line"> * @date 2016/8/24 15:40.</div><div class="line"> */</div><div class="line"></div><div class="line">import android.content.Context;</div><div class="line">import android.content.SharedPreferences;</div><div class="line"></div><div class="line">import com.google.gson.Gson;</div><div class="line">import com.google.gson.reflect.TypeToken;</div><div class="line"></div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">/**</div><div class="line"> * SharedPreferences工具类, 可以通过传入实体对象保存其至SharedPreferences中,</div><div class="line"> * 并通过实体的类型Class将保存的对象取出. 支持不带泛型的对象以及List集合</div><div class="line"> */</div><div class="line">public class SPUtils &#123;</div><div class="line"></div><div class="line">    private static final String LIST_TAG = &quot;.LIST&quot;;</div><div class="line">    private static SharedPreferences sharedPreferences;</div><div class="line">    private static Gson gson;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 使用之前初始化, 可在Application中调用</div><div class="line">     * @param context 请传入ApplicationContext避免内存泄漏</div><div class="line">     */</div><div class="line">    public static void init(Context context) &#123;</div><div class="line">        sharedPreferences = context.getSharedPreferences(&quot;shared_files&quot;,</div><div class="line">                Context.MODE_PRIVATE);</div><div class="line">        gson = new Gson();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static void checkInit() &#123;</div><div class="line">        if (sharedPreferences == null || gson == null) &#123;</div><div class="line">            throw new IllegalStateException(&quot;Please call init(context) first.&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 保存对象数据至SharedPreferences, key默认为类名, 如</div><div class="line">     * &lt;pre&gt;</div><div class="line">     * PreferencesHelper.putData(saveUser);</div><div class="line">     * &lt;/pre&gt;</div><div class="line">     * @param data 不带泛型的任意数据类型实例</div><div class="line">     */</div><div class="line">    public static &lt;T&gt; void putData(T data) &#123;</div><div class="line">        putData(data.getClass().getName(), data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 根据key保存对象数据至SharedPreferences, 如</div><div class="line">     * &lt;pre&gt;</div><div class="line">     * PreferencesHelper.putData(key, saveUser);</div><div class="line">     * &lt;/pre&gt;</div><div class="line">     * @param data 不带泛型的任意数据类型实例</div><div class="line">     */</div><div class="line">    public static &lt;T&gt; void putData(String key, T data) &#123;</div><div class="line">        checkInit();</div><div class="line">        if (data == null)</div><div class="line">            throw new IllegalStateException(&quot;data should not be null.&quot;);</div><div class="line">        sharedPreferences.edit().putString(key, gson.toJson(data)).apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 保存List集合数据至SharedPreferences, 请确保List至少含有一个元素, 如</div><div class="line">     * &lt;pre&gt;</div><div class="line">     * PreferencesHelper.putData(users);</div><div class="line">     * &lt;/pre&gt;</div><div class="line">     * @param data List类型实例</div><div class="line">     */</div><div class="line">    public static &lt;T&gt; void putData(List&lt;T&gt; data) &#123;</div><div class="line">        checkInit();</div><div class="line">        if (data == null || data.size() &lt;= 0)</div><div class="line">            throw new IllegalStateException(</div><div class="line">                    &quot;List should not be null or at least contains one element.&quot;);</div><div class="line">        Class returnType = data.get(0).getClass();</div><div class="line">        sharedPreferences.edit().putString(returnType.getName() + LIST_TAG,</div><div class="line">                gson.toJson(data)).apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 将数据从SharedPreferences中取出, key默认为类名, 如</div><div class="line">     * &lt;pre&gt;</div><div class="line">     * User user = PreferencesHelper.getData(key, User.class)</div><div class="line">     * &lt;/pre&gt;</div><div class="line">     */</div><div class="line">    public static &lt;T&gt; T getData(Class&lt;T&gt; clz) &#123;</div><div class="line">        return getData(clz.getName(), clz);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 根据key将数据从SharedPreferences中取出, 如</div><div class="line">     * &lt;pre&gt;</div><div class="line">     * User user = PreferencesHelper.getData(User.class)</div><div class="line">     * &lt;/pre&gt;</div><div class="line">     */</div><div class="line">    public static &lt;T&gt; T getData(String key, Class&lt;T&gt; clz) &#123;</div><div class="line">        checkInit();</div><div class="line">        String json = sharedPreferences.getString(key, &quot;&quot;);</div><div class="line">        return gson.fromJson(json, clz);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 将数据从SharedPreferences中取出, 如</div><div class="line">     * &lt;pre&gt;List&lt;User&gt; users = PreferencesHelper.getData(List.class, User.class)&lt;/pre&gt;</div><div class="line">     */</div><div class="line">    public static &lt;T&gt; List&lt;T&gt; getData(Class&lt;List&gt; clz,  Class&lt;T&gt; gClz) &#123;</div><div class="line">        checkInit();</div><div class="line">        String json = sharedPreferences.getString(gClz.getName() + LIST_TAG, &quot;&quot;);</div><div class="line">        return gson.fromJson(json, new TypeToken&lt;List&gt;()&#123;&#125;.getType());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 简易字符串保存, 仅支持字符串</div><div class="line">     */</div><div class="line">    public static void putString(String key, String data) &#123;</div><div class="line">        sharedPreferences.edit().putString(key, data).apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 简易字符串获取, 仅支持字符串</div><div class="line">     */</div><div class="line">    public static String getString(String key) &#123;</div><div class="line">        return sharedPreferences.getString(key, &quot;&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void putInt(String key, int data) &#123;</div><div class="line">        sharedPreferences.edit().putInt(key,data).apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static int getInt(String key) &#123;</div><div class="line">        return sharedPreferences.getInt(key, -1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void putBoolean(String key, boolean data) &#123;</div><div class="line">        sharedPreferences.edit().putBoolean(key,data).apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static boolean getBoolean(String key,boolean defaultData) &#123;</div><div class="line">        return sharedPreferences.getBoolean(key, defaultData);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void putFloat(String key, float data) &#123;</div><div class="line">        sharedPreferences.edit().putFloat(key,data).apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static float getFloat(String key,float defaultData) &#123;</div><div class="line">        return sharedPreferences.getFloat(key, defaultData);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void putLong(String key, long data) &#123;</div><div class="line">        sharedPreferences.edit().putLong(key,data).apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static float getLong(String key,long defaultData) &#123;</div><div class="line">        return sharedPreferences.getLong(key, defaultData);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void clear() &#123;</div><div class="line">        sharedPreferences.edit().clear().apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 删除保存的对象</div><div class="line">     */</div><div class="line">    public static void remove(String key) &#123;</div><div class="line">        sharedPreferences.edit().remove(key).apply();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 删除保存的对象</div><div class="line">     */</div><div class="line">    public static void remove(Class clz) &#123;</div><div class="line">        remove(clz.getName());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 删除保存的数组</div><div class="line">     */</div><div class="line">    public static void removeList(Class clz) &#123;</div><div class="line">        sharedPreferences.edit().remove(clz.getName() + LIST_TAG).apply();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
@@ -414,36 +414,6 @@
     <id>http://yoursite.com/2016/08/08/20160808 用okhttp retrofit下载文件/</id>
     <published>2016-08-08T02:46:46.000Z</published>
     <updated>2016-10-21T02:32:23.561Z</updated>
-    
-    <content type="html"><![CDATA[<p>项目中需要在开屏页下载东西，在github上发现一个好用的框架<br>大家可以去<code>https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md</code>查看<br>关于retrofit的用法就不多说了，<strong>这个框架依赖于okhttp 3.4.1</strong></p>
-<ol>
-<li>首先在项目中引用<br><code>compile &#39;com.liulishuo.filedownloader:library:0.3.4&#39;</code></li>
-<li>然后在Application的onCreate()中初始化<br><code>FileDownloader.init(applicationContext);</code></li>
-<li><p>在工具类中丢进这2个方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * 单任务下载</div><div class="line">     */</div><div class="line">    public static void downloadFile(String path, String url) &#123;</div><div class="line">        FileDownloader.getImpl().create(url)</div><div class="line">                .setPath(path)</div><div class="line">                .setListener(new FileDownloadListener() &#123;</div><div class="line">                    @Override</div><div class="line">                    protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void connected(BaseDownloadTask task, String etag, boolean isContinue, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void blockComplete(BaseDownloadTask task) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void retry(final BaseDownloadTask task, final Throwable ex, final int retryingTimes, final int soFarBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void completed(BaseDownloadTask task) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void paused(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void error(BaseDownloadTask task, Throwable e) &#123;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    @Override</div><div class="line">                    protected void warn(BaseDownloadTask task) &#123;</div><div class="line">                    &#125;</div><div class="line">                &#125;).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 多任务下载</div><div class="line">     * 参数1：url的集合   参数2：下载的路径</div><div class="line">     */</div><div class="line"></div><div class="line">    public static void downloadFiles(List&lt;RingListJson.RingBean&gt; urls,File dir) &#123;</div><div class="line">        final FileDownloadListener downloadListener = new FileDownloadListener() &#123;</div><div class="line">            @Override</div><div class="line">            protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void connected(BaseDownloadTask task, String etag, boolean isContinue, int soFarBytes, int totalBytes) &#123;</div><div class="line">            </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void blockComplete(BaseDownloadTask task) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void retry(final BaseDownloadTask task, final Throwable ex, final int retryingTimes, final int soFarBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void completed(BaseDownloadTask task) &#123;</div><div class="line">            </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void paused(BaseDownloadTask task, int soFarBytes, int totalBytes) &#123;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void error(BaseDownloadTask task, Throwable e) &#123;</div><div class="line">             &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            protected void warn(BaseDownloadTask task) &#123;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        final FileDownloadQueueSet queueSet = new FileDownloadQueueSet(downloadListener);</div><div class="line"></div><div class="line">        final List&lt;BaseDownloadTask&gt; tasks = new ArrayList&lt;&gt;();</div><div class="line">        for (int i = 0; i &lt; urls.size(); i++) &#123;</div><div class="line">            if (FileDownloader.getImpl().create((urls.get(i).url)).isReusedOldFile()) &#123;</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            tasks.add(FileDownloader.getImpl()</div><div class="line">                    .create(urls.get(i).url)</div><div class="line">                    .setTag(i + 1)</div><div class="line">                    .setPath(dir.getAbsolutePath()+ File.separator+urls.get(i).name.concat(&quot;.aac&quot;)));</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    /*由于是队列任务, 这里是我们假设了现在不需要每个任务都回调`FileDownloadListener#progress`, </div><div class="line">      我们只关系每个任务是否完成, </div><div class="line">      所以这里这样设置可以很有效的减少ipc.*/</div><div class="line">        queueSet.disableCallbackProgressTimes(); </div><div class="line"></div><div class="line">        // 所有任务在下载失败的时候都自动重试一次</div><div class="line">        queueSet.setAutoRetryTimes(1);</div><div class="line"></div><div class="line">        queueSet.downloadTogether(tasks);</div><div class="line">        queueSet.start();</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在需要下载的地方调用者2个方法即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = new Retrofit.Builder().baseUrl(&quot;http:/xxx.xxx.com&quot;).addConverterFactory(GsonConverterFactory.create()).build();</div><div class="line">        RingListResult ringListResult = retrofit.create(RingListResult.class);</div><div class="line">        Call&lt;RingListJson&gt; call = ringListResult.getRings();</div><div class="line">        </div><div class="line">            final File dir = D8Application.applicationContext.getFilesDir();</div><div class="line">            final File rings = new File(dir + &quot;/rings&quot;);</div><div class="line">            if (!rings.exists()) &#123;</div><div class="line">                rings.mkdirs();</div><div class="line">            &#125;</div><div class="line">        call.enqueue(new Callback&lt;RingListJson&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void onResponse(Call&lt;RingListJson&gt; call, Response&lt;RingListJson&gt; response) &#123;</div><div class="line">                RingListJson ringListJson = response.body();</div><div class="line">                List&lt;RingListJson.RingBean&gt; ringList = ringListJson.ring; //在服务器拿到url的集合</div><div class="line">                Api.downloadFiles(ringList,rings);    //传进方法里  Api是自己的工具类</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onFailure(Call&lt;RingListJson&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;项目中需要在开屏页下载东西，在github上发现一个好用的框架&lt;br&gt;大家可以去&lt;code&gt;https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md&lt;/code&gt;查看&lt;br&gt;关于retrofi
-    
-    </summary>
-    
-    
-      <category term="Utils" scheme="http://yoursite.com/tags/Utils/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用okhttp/retrofit下载文件</title>
-    <link href="http://yoursite.com/2016/08/08/20160808%20%E7%94%A8okhttpretrofit%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/"/>
-    <id>http://yoursite.com/2016/08/08/20160808 用okhttpretrofit下载文件/</id>
-    <published>2016-08-08T02:46:46.000Z</published>
-    <updated>2016-10-21T02:56:59.072Z</updated>
     
     <content type="html"><![CDATA[<p>项目中需要在开屏页下载东西，在github上发现一个好用的框架<br>大家可以去<code>https://github.com/lingochamp/FileDownloader/blob/master/README-zh.md</code>查看<br>关于retrofit的用法就不多说了，<strong>这个框架依赖于okhttp 3.4.1</strong></p>
 <ol>
@@ -575,6 +545,33 @@
     
       &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;问题：&lt;br&gt;我对某个radioButton里面写了个startActivity跳转到另一个界面，然后那个界面finish()之前需要调用radioGroup.check(),发现又跳转进这个界面了，纳闷之下，debug走起，发现OnCheckedChan
+    
+    </summary>
+    
+    
+      <category term="problems" scheme="http://yoursite.com/tags/problems/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unique Constraint Failded</title>
+    <link href="http://yoursite.com/2016/07/20/Unique%20Constraint%20Failded/"/>
+    <id>http://yoursite.com/2016/07/20/Unique Constraint Failded/</id>
+    <published>2016-07-20T02:46:46.000Z</published>
+    <updated>2016-10-21T02:31:03.124Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li><p>今天碰到个奇怪的问题<br>数据库建表的时候，主键是这样的<code>_id INTEGER PRIMARY KEY AUTOINCREMENT</code><br>插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,<br>说主键的唯一性约束出错？？<br>通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？</p>
+</li>
+<li><p>解决问题<br>排查发现是<strong>插入的时候多了一个表中没有的字段</strong>，此时插入不会出错，只是会插在0的位置，如果继续插入不存在的字段，sqlite还会插在0的位置，就导致了唯一性约束出错。<br>将插入的代码改掉就好了</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;今天碰到个奇怪的问题&lt;br&gt;数据库建表的时候，主键是这样的&lt;code&gt;_id INTEGER PRIMARY KEY AUTOINCREMENT&lt;/code&gt;&lt;br&gt;插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Fa
     
     </summary>
     
