@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>notifyDatasetChanged无效的解决办法 | 白玉楼へ</title>
+    <title>Unique Constraint Failded | 白玉楼へ</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -13,48 +13,21 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="出现问题比如这样给适配器传一个集合1
-2
-3
-4
-List datas;
-datas = DBDao.selectMyClock(); //此句是返回一个List
-clocksAdapter = new AlarmClockListAdapter(getContext(), datas);
-myClocks.setAdapter(clocksAdapter);
+    <meta name="description" content="今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？
 
-
-
-数据库刷新了，然后想这样刷新">
+解决问题排查发现是插入">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="notifyDatasetChanged无效的解决办法 | 白玉楼へ">
-    <meta name="twitter:description" content="出现问题比如这样给适配器传一个集合1
-2
-3
-4
-List datas;
-datas = DBDao.selectMyClock(); //此句是返回一个List
-clocksAdapter = new AlarmClockListAdapter(getContext(), datas);
-myClocks.setAdapter(clocksAdapter);
+    <meta name="twitter:title" content="Unique Constraint Failded | 白玉楼へ">
+    <meta name="twitter:description" content="今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？
 
-
-
-数据库刷新了，然后想这样刷新">
+解决问题排查发现是插入">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="notifyDatasetChanged无效的解决办法 | 白玉楼へ">
-    <meta property="og:description" content="出现问题比如这样给适配器传一个集合1
-2
-3
-4
-List datas;
-datas = DBDao.selectMyClock(); //此句是返回一个List
-clocksAdapter = new AlarmClockListAdapter(getContext(), datas);
-myClocks.setAdapter(clocksAdapter);
+    <meta property="og:title" content="Unique Constraint Failded | 白玉楼へ">
+    <meta property="og:description" content="今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？
 
-
-
-数据库刷新了，然后想这样刷新">
+解决问题排查发现是插入">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -71,7 +44,7 @@ myClocks.setAdapter(clocksAdapter);
     <link rel="alternate" type="application/rss+xml" title="白玉楼へ" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2016/07/20/notifyDatasetChanged无效的解决办法/"/>
+    <link rel="canonical" href="http://yoursite.com/2016/07/20/20160720 Unique Constraint Failded/"/>
 
     
       
@@ -105,6 +78,12 @@ myClocks.setAdapter(clocksAdapter);
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
               <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/tags/Utils">工具</a></li>
+            
+              <li class="navigation__item"><a href="/tags/problems">问题</a></li>
+            
+              <li class="navigation__item"><a href="/tags/tips">豆知识</a></li>
             
             </ul>
           </nav>
@@ -176,44 +155,15 @@ myClocks.setAdapter(clocksAdapter);
       </span> 
    
     </div>
-    <h1 class="post-title">notifyDatasetChanged无效的解决办法</h1>
+    <h1 class="post-title">Unique Constraint Failded</h1>
   </header>
 
   <section class="post">
     <ul>
-<li>出现问题<br>比如这样给适配器传一个集合<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-</pre></td><td class="code"><pre><span class="line">List datas;</span>
-<span class="line">datas = DBDao.selectMyClock(); <span class="comment">//此句是返回一个List</span></span>
-<span class="line">clocksAdapter = <span class="keyword">new</span> AlarmClockListAdapter(getContext(), datas);</span>
-<span class="line">myClocks.setAdapter(clocksAdapter);</span>
-</pre></td></tr></table></figure>
+<li><p>今天碰到个奇怪的问题<br>数据库建表的时候，主键是这样的<code>_id INTEGER PRIMARY KEY AUTOINCREMENT</code><br>插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,<br>说主键的唯一性约束出错？？<br>通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？</p>
 </li>
-</ul>
-<p>数据库刷新了，然后想这样刷新数据<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-</pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> </span>&#123;</span>
-<span class="line">    datas = DBDao.selectMyClock();</span>
-<span class="line">    clocksAdapter.notifyDataSetChanged();</span>
-<span class="line">&#125;</span>
-</pre></td></tr></table></figure></p>
-<p>是无效的，因为datas指向了两个对象</p>
-<ul>
-<li>解决办法：清空集合，再将新的数据添加进去即可<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-<span class="line">5</span>
-</pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> </span>&#123;</span>
-<span class="line">    datas.clear();</span>
-<span class="line">    datas.addAll(DBDao.selectMyClock());</span>
-<span class="line">    clocksAdapter.notifyDataSetChanged();</span>
-<span class="line">&#125;</span>
-</pre></td></tr></table></figure></li>
+<li><p>解决问题<br>排查发现是<strong>插入的时候多了一个表中没有的字段</strong>，此时插入不会出错，只是会插在0的位置，如果继续插入不存在的字段，sqlite还会插在0的位置，就导致了唯一性约束出错。<br>将插入的代码改掉就好了</p>
+</li>
 </ul>
 
   </section>
@@ -225,16 +175,23 @@ myClocks.setAdapter(clocksAdapter);
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/07/20/Unique Constraint Failded/" title="Unique Constraint Failded">Unique Constraint Failded</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2016/07/20/20160720 notifyDatasetChanged无效的解决办法/" title="notifyDatasetChanged无效的解决办法">notifyDatasetChanged无效的解决办法</a></h2>
                 <p class="excerpt">
                 
                 
-今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条
+出现问题比如这样给适配器传一个集合1
+2
+3
+4
+List datas;
+datas = DBDao.selectMyClock(); //此句是返回一个List
+clocksAdapter = new AlarmClockListAdapter(getContext(), datas);
+myC
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/20/Unique Constraint Failded/">继续阅读</a></div>
+</span><a class="btn-border-small" href="/2016/07/20/20160720 notifyDatasetChanged无效的解决办法/">继续阅读</a></div>
                            
             </div>
         
@@ -267,9 +224,9 @@ myClocks.setAdapter(clocksAdapter);
   <script type="text/javascript">
       var disqus_shortname = 'ayanokouji-kenn'; 
       
-  var disqus_identifier = '/2016/07/20/notifyDatasetChanged无效的解决办法/';
-  var disqus_title = 'notifyDatasetChanged无效的解决办法';
-  var disqus_url = 'http://yoursite.com/2016/07/20/notifyDatasetChanged无效的解决办法/';
+  var disqus_identifier = '/2016/07/20/20160720 Unique Constraint Failded/';
+  var disqus_title = 'Unique Constraint Failded';
+  var disqus_url = 'http://yoursite.com/2016/07/20/20160720 Unique Constraint Failded/';
   
 
       /* * * DON'T EDIT BELOW THIS LINE * * */

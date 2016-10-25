@@ -76,6 +76,12 @@
             <ul class="navigation">
               <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
             
+              <li class="navigation__item"><a href="/tags/Utils">工具</a></li>
+            
+              <li class="navigation__item"><a href="/tags/problems">问题</a></li>
+            
+              <li class="navigation__item"><a href="/tags/tips">豆知识</a></li>
+            
             </ul>
           </nav>
           </div>
@@ -162,23 +168,16 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/07/20/notifyDatasetChanged无效的解决办法/" title="notifyDatasetChanged无效的解决办法">notifyDatasetChanged无效的解决办法</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2016/07/20/20160720 Unique Constraint Failded/" title="Unique Constraint Failded">Unique Constraint Failded</a></h2>
                 <p class="excerpt">
                 
                 
-出现问题比如这样给适配器传一个集合1
-2
-3
-4
-List datas;
-datas = DBDao.selectMyClock(); //此句是返回一个List
-clocksAdapter = new AlarmClockListAdapter(getContext(), datas);
-myC
+今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/20/notifyDatasetChanged无效的解决办法/">继续阅读</a></div>
+</span><a class="btn-border-small" href="/2016/07/20/20160720 Unique Constraint Failded/">继续阅读</a></div>
                            
             </div>
         

@@ -641,6 +641,78 @@
   </entry>
   
   <entry>
+    <title>dialog 更改宽高</title>
+    <link href="http://yoursite.com/2016/09/13/20160913%20dialog%20%E6%9B%B4%E6%94%B9%E5%AE%BD%E9%AB%98/"/>
+    <id>http://yoursite.com/2016/09/13/20160913 dialog 更改宽高/</id>
+    <published>2016-09-13T02:46:46.000Z</published>
+    <updated>2016-10-21T08:55:47.540Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>一种方法是在dialog的onCreate里面加上<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+</pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWindow</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        Window win = <span class="keyword">this</span>.getWindow();</span>
+<span class="line">        win.getDecorView().setPadding(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span>
+<span class="line">        WindowManager.LayoutParams lp = win.getAttributes();</span>
+<span class="line"></span>
+<span class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</span>
+<span class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</span>
+<span class="line">        lp.gravity = Gravity.BOTTOM;</span>
+<span class="line">        win.setAttributes(lp);  </span>
+<span class="line">    &#125;</span>
+</pre></td></tr></table></figure>
+</li>
+</ul>
+<p>但是这么改是在自定义的继承自dialog里面才能这么写<br>有时我们可能只是简单的，这样写<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> AlertDialog dialog = <span class="keyword">new</span> AlertDialog.Builder(activity,R.style.dialog)</span>
+<span class="line">                .setView(view1)</span>
+<span class="line">                .create();</span>
+<span class="line">        dialog.show();</span>
+</pre></td></tr></table></figure></p>
+<ul>
+<li>那么就是第二种方法，<strong>在dialog.show()之后再调用以下的代码</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+</pre></td><td class="code"><pre><span class="line">Window window = dialog.getWindow();</span>
+<span class="line">        WindowManager.LayoutParams lp = window.getAttributes();</span>
+<span class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</span>
+<span class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</span>
+<span class="line">        lp.gravity = Gravity.BOTTOM;</span>
+<span class="line">        dialog.onWindowAttributesChanged(lp);</span>
+<span class="line">        window.setAttributes(lp);</span>
+</pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;一种方法是在dialog的onCreate里面加上&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;
+&lt;span class=
+    
+    </summary>
+    
+    
+      <category term="problems" scheme="http://yoursite.com/tags/problems/"/>
+    
+  </entry>
+  
+  <entry>
     <title>retrofit 如何post json给服务端</title>
     <link href="http://yoursite.com/2016/09/13/20160722%20retrofit%20%E5%A6%82%E4%BD%95post%20json%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF/"/>
     <id>http://yoursite.com/2016/09/13/20160722 retrofit 如何post json给服务端/</id>
@@ -802,83 +874,11 @@
   </entry>
   
   <entry>
-    <title>dialog 更改宽高</title>
-    <link href="http://yoursite.com/2016/09/13/20160913%20dialog%20%E6%9B%B4%E6%94%B9%E5%AE%BD%E9%AB%98/"/>
-    <id>http://yoursite.com/2016/09/13/20160913 dialog 更改宽高/</id>
-    <published>2016-09-13T02:46:46.000Z</published>
-    <updated>2016-10-21T08:55:47.540Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>一种方法是在dialog的onCreate里面加上<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-<span class="line">5</span>
-<span class="line">6</span>
-<span class="line">7</span>
-<span class="line">8</span>
-<span class="line">9</span>
-<span class="line">10</span>
-</pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWindow</span><span class="params">()</span> </span>&#123;</span>
-<span class="line">        Window win = <span class="keyword">this</span>.getWindow();</span>
-<span class="line">        win.getDecorView().setPadding(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span>
-<span class="line">        WindowManager.LayoutParams lp = win.getAttributes();</span>
-<span class="line"></span>
-<span class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</span>
-<span class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</span>
-<span class="line">        lp.gravity = Gravity.BOTTOM;</span>
-<span class="line">        win.setAttributes(lp);  </span>
-<span class="line">    &#125;</span>
-</pre></td></tr></table></figure>
-</li>
-</ul>
-<p>但是这么改是在自定义的继承自dialog里面才能这么写<br>有时我们可能只是简单的，这样写<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-</pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> AlertDialog dialog = <span class="keyword">new</span> AlertDialog.Builder(activity,R.style.dialog)</span>
-<span class="line">                .setView(view1)</span>
-<span class="line">                .create();</span>
-<span class="line">        dialog.show();</span>
-</pre></td></tr></table></figure></p>
-<ul>
-<li>那么就是第二种方法，<strong>在dialog.show()之后再调用以下的代码</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-<span class="line">5</span>
-<span class="line">6</span>
-<span class="line">7</span>
-</pre></td><td class="code"><pre><span class="line">Window window = dialog.getWindow();</span>
-<span class="line">        WindowManager.LayoutParams lp = window.getAttributes();</span>
-<span class="line">        lp.width = WindowManager.LayoutParams.MATCH_PARENT;</span>
-<span class="line">        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;</span>
-<span class="line">        lp.gravity = Gravity.BOTTOM;</span>
-<span class="line">        dialog.onWindowAttributesChanged(lp);</span>
-<span class="line">        window.setAttributes(lp);</span>
-</pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;一种方法是在dialog的onCreate里面加上&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;
-&lt;span class=
-    
-    </summary>
-    
-    
-      <category term="problems" scheme="http://yoursite.com/tags/problems/"/>
-    
-  </entry>
-  
-  <entry>
     <title>调节安卓音量</title>
     <link href="http://yoursite.com/2016/09/02/20160902%20%E8%B0%83%E8%8A%82%E5%AE%89%E5%8D%93%E9%9F%B3%E9%87%8F/"/>
     <id>http://yoursite.com/2016/09/02/20160902 调节安卓音量/</id>
     <published>2016-09-02T02:46:46.000Z</published>
-    <updated>2016-10-21T08:55:40.810Z</updated>
+    <updated>2016-10-25T08:41:51.742Z</updated>
     
     <content type="html"><![CDATA[<p>如果使用MediaPlayer播放，直接setVolume即可，经测试静音也能有声音，但是用户调节媒体音量到0就不行了，他是在媒体音量的基础上做了百分比<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
 <span class="line">2</span>
@@ -917,7 +917,7 @@
     </summary>
     
     
-      <category term="豆知识" scheme="http://yoursite.com/tags/%E8%B1%86%E7%9F%A5%E8%AF%86/"/>
+      <category term="tips" scheme="http://yoursite.com/tags/tips/"/>
     
   </entry>
   
@@ -926,7 +926,7 @@
     <link href="http://yoursite.com/2016/09/02/20160902%20AndroidStudio%20%E5%85%B3%E8%81%94%E6%BA%90%E7%A0%81/"/>
     <id>http://yoursite.com/2016/09/02/20160902 AndroidStudio 关联源码/</id>
     <published>2016-09-02T02:46:46.000Z</published>
-    <updated>2016-10-21T07:38:46.899Z</updated>
+    <updated>2016-10-25T08:41:44.342Z</updated>
     
     <content type="html"><![CDATA[<p>首先，确保你已经下载完成了，<br>然后，在<code>C:\Users\xxx\.AndroidStudio2.1\config\options</code>这里找到<code>jdk.table.xml</code><br>打开它<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span>
 <span class="line">2</span>
@@ -1000,7 +1000,7 @@
     </summary>
     
     
-      <category term="豆知识" scheme="http://yoursite.com/tags/%E8%B1%86%E7%9F%A5%E8%AF%86/"/>
+      <category term="tips" scheme="http://yoursite.com/tags/tips/"/>
     
   </entry>
   
@@ -1936,7 +1936,7 @@
     <link href="http://yoursite.com/2016/08/19/20160819%20snackbar%20%E4%BF%AE%E6%94%B9%E6%96%87%E6%9C%AC%E9%A2%9C%E8%89%B2/"/>
     <id>http://yoursite.com/2016/08/19/20160819 snackbar 修改文本颜色/</id>
     <published>2016-08-19T02:46:46.000Z</published>
-    <updated>2016-10-21T08:54:49.480Z</updated>
+    <updated>2016-10-25T08:41:31.880Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>看源码 snackbar其实就是两个textview组成的</li>
@@ -2017,7 +2017,7 @@
     </summary>
     
     
-      <category term="豆知识" scheme="http://yoursite.com/tags/%E8%B1%86%E7%9F%A5%E8%AF%86/"/>
+      <category term="tips" scheme="http://yoursite.com/tags/tips/"/>
     
   </entry>
   
@@ -2439,8 +2439,8 @@
   
   <entry>
     <title>ExpandableListView中childview的数据出现了2次</title>
-    <link href="http://yoursite.com/2016/07/27/ExpandableListView%E4%B8%ADchildview%E7%9A%84%E6%95%B0%E6%8D%AE%E5%87%BA%E7%8E%B0%E4%BA%862%E6%AC%A1/"/>
-    <id>http://yoursite.com/2016/07/27/ExpandableListView中childview的数据出现了2次/</id>
+    <link href="http://yoursite.com/2016/07/27/20160727%20ExpandableListView%E4%B8%ADchildview%E7%9A%84%E6%95%B0%E6%8D%AE%E5%87%BA%E7%8E%B0%E4%BA%862%E6%AC%A1/"/>
+    <id>http://yoursite.com/2016/07/27/20160727 ExpandableListView中childview的数据出现了2次/</id>
     <published>2016-07-27T02:46:46.000Z</published>
     <updated>2016-10-21T08:56:25.152Z</updated>
     
@@ -2522,8 +2522,8 @@
   
   <entry>
     <title>解决toggleButton关闭状态初始化背景无效</title>
-    <link href="http://yoursite.com/2016/07/27/%E8%A7%A3%E5%86%B3toggleButton%E5%85%B3%E9%97%AD%E7%8A%B6%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E8%83%8C%E6%99%AF%E6%97%A0%E6%95%88/"/>
-    <id>http://yoursite.com/2016/07/27/解决toggleButton关闭状态初始化背景无效/</id>
+    <link href="http://yoursite.com/2016/07/27/20160727%20%E8%A7%A3%E5%86%B3toggleButton%E5%85%B3%E9%97%AD%E7%8A%B6%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E8%83%8C%E6%99%AF%E6%97%A0%E6%95%88/"/>
+    <id>http://yoursite.com/2016/07/27/20160727 解决toggleButton关闭状态初始化背景无效/</id>
     <published>2016-07-27T02:46:46.000Z</published>
     <updated>2016-10-21T02:30:51.552Z</updated>
     
@@ -2552,8 +2552,8 @@
   
   <entry>
     <title>radioGroup.check()执行了多次OnCheckedChangeListener()</title>
-    <link href="http://yoursite.com/2016/07/24/radioGroup.check()%E6%89%A7%E8%A1%8C%E4%BA%86%E5%A4%9A%E6%AC%A1OnCheckedChangeListener()/"/>
-    <id>http://yoursite.com/2016/07/24/radioGroup.check()执行了多次OnCheckedChangeListener()/</id>
+    <link href="http://yoursite.com/2016/07/24/20160724radioGroup.check()%E6%89%A7%E8%A1%8C%E4%BA%86%E5%A4%9A%E6%AC%A1OnCheckedChangeListener()/"/>
+    <id>http://yoursite.com/2016/07/24/20160724radioGroup.check()执行了多次OnCheckedChangeListener()/</id>
     <published>2016-07-24T02:46:46.000Z</published>
     <updated>2016-10-21T02:31:09.917Z</updated>
     
@@ -2578,24 +2578,54 @@
   </entry>
   
   <entry>
-    <title>Unique Constraint Failded</title>
-    <link href="http://yoursite.com/2016/07/20/Unique%20Constraint%20Failded/"/>
-    <id>http://yoursite.com/2016/07/20/Unique Constraint Failded/</id>
+    <title>notifyDatasetChanged无效的解决办法</title>
+    <link href="http://yoursite.com/2016/07/20/20160720%20notifyDatasetChanged%E6%97%A0%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://yoursite.com/2016/07/20/20160720 notifyDatasetChanged无效的解决办法/</id>
     <published>2016-07-20T02:46:46.000Z</published>
-    <updated>2016-10-21T02:31:03.124Z</updated>
+    <updated>2016-10-21T08:56:30.157Z</updated>
     
     <content type="html"><![CDATA[<ul>
-<li><p>今天碰到个奇怪的问题<br>数据库建表的时候，主键是这样的<code>_id INTEGER PRIMARY KEY AUTOINCREMENT</code><br>插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,<br>说主键的唯一性约束出错？？<br>通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？</p>
+<li>出现问题<br>比如这样给适配器传一个集合<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+</pre></td><td class="code"><pre><span class="line">List datas;</span>
+<span class="line">datas = DBDao.selectMyClock(); <span class="comment">//此句是返回一个List</span></span>
+<span class="line">clocksAdapter = <span class="keyword">new</span> AlarmClockListAdapter(getContext(), datas);</span>
+<span class="line">myClocks.setAdapter(clocksAdapter);</span>
+</pre></td></tr></table></figure>
 </li>
-<li><p>解决问题<br>排查发现是<strong>插入的时候多了一个表中没有的字段</strong>，此时插入不会出错，只是会插在0的位置，如果继续插入不存在的字段，sqlite还会插在0的位置，就导致了唯一性约束出错。<br>将插入的代码改掉就好了</p>
-</li>
+</ul>
+<p>数据库刷新了，然后想这样刷新数据<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+</pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">    datas = DBDao.selectMyClock();</span>
+<span class="line">    clocksAdapter.notifyDataSetChanged();</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure></p>
+<p>是无效的，因为datas指向了两个对象</p>
+<ul>
+<li>解决办法：清空集合，再将新的数据添加进去即可<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+</pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">    datas.clear();</span>
+<span class="line">    datas.addAll(DBDao.selectMyClock());</span>
+<span class="line">    clocksAdapter.notifyDataSetChanged();</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
       &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;今天碰到个奇怪的问题&lt;br&gt;数据库建表的时候，主键是这样的&lt;code&gt;_id INTEGER PRIMARY KEY AUTOINCREMENT&lt;/code&gt;&lt;br&gt;插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Fa
+&lt;li&gt;出现问题&lt;br&gt;比如这样给适配器传一个集合&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;lin
     
     </summary>
     

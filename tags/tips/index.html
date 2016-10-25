@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Unique Constraint Failded | 白玉楼へ</title>
+    <title>白玉楼へ | ようこそ～</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -13,21 +13,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？
-
-解决问题排查发现是插入">
+    <meta name="description" content="">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Unique Constraint Failded | 白玉楼へ">
-    <meta name="twitter:description" content="今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？
-
-解决问题排查发现是插入">
+    <meta name="twitter:title" content="白玉楼へ | ようこそ～">
+    <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Unique Constraint Failded | 白玉楼へ">
-    <meta property="og:description" content="今天碰到个奇怪的问题数据库建表的时候，主键是这样的_id INTEGER PRIMARY KEY AUTOINCREMENT插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,说主键的唯一性约束出错？？通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？
-
-解决问题排查发现是插入">
+    <meta property="og:title" content="白玉楼へ | ようこそ～">
+    <meta property="og:description" content="">
 
     
     <meta name="author" content="Ayanokouji-Kenn">
@@ -44,7 +38,7 @@
     <link rel="alternate" type="application/rss+xml" title="白玉楼へ" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2016/07/20/Unique Constraint Failded/"/>
+    <link rel="canonical" href="http://yoursite.com"/>
 
     
       
@@ -78,6 +72,12 @@
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
               <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/tags/Utils">工具</a></li>
+            
+              <li class="navigation__item"><a href="/tags/problems">问题</a></li>
+            
+              <li class="navigation__item"><a href="/tags/tips">豆知识</a></li>
             
             </ul>
           </nav>
@@ -137,80 +137,106 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <article class="post-container post-container--single">
-
-  <header class="post-header">
-    <div class="post-meta">
-      <time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
- </span>
-      <span class="page-pv">
-      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
-      </span> 
-   
-    </div>
-    <h1 class="post-title">Unique Constraint Failded</h1>
-  </header>
-
-  <section class="post">
-    <ul>
-<li><p>今天碰到个奇怪的问题<br>数据库建表的时候，主键是这样的<code>_id INTEGER PRIMARY KEY AUTOINCREMENT</code><br>插入第一条数据没问题，插入第2条数据的时候却弹了个Unique Constraint Failded xxx._id,<br>说主键的唯一性约束出错？？<br>通过debug发现插入的第一条数据的_id为0，我们知道设置的主键应该是从1开始自增的，那0是怎么回事？</p>
-</li>
-<li><p>解决问题<br>排查发现是<strong>插入的时候多了一个表中没有的字段</strong>，此时插入不会出错，只是会插在0的位置，如果继续插入不存在的字段，sqlite还会插在0的位置，就导致了唯一性约束出错。<br>将插入的代码改掉就好了</p>
-</li>
-</ul>
-
-  </section>
-
-</article>
-<section class="read-more">
-           
+            <div class="main-post-list">
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/07/24/radioGroup.check()执行了多次OnCheckedChangeListener()/" title="radioGroup.check()执行了多次OnCheckedChangeListener()">radioGroup.check()执行了多次OnCheckedChangeListener()</a></h2>
-                <p class="excerpt">
-                
-                
-问题：我对某个radioButton里面写了个startActivity跳转到另一个界面，然后那个界面finish()之前需要调用radioGroup.check(),发现又跳转进这个界面了，纳闷之下，debug走起，发现OnCheckedChangeListener()走了好几次，所以页面又被启
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2016-07-24T02:46:46.000Z" class="post-list__meta--date date">2016-07-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/24/radioGroup.check()执行了多次OnCheckedChangeListener()/">继续阅读</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/07/20/notifyDatasetChanged无效的解决办法/" title="notifyDatasetChanged无效的解决办法">notifyDatasetChanged无效的解决办法</a></h2>
-                <p class="excerpt">
-                
-                
-出现问题比如这样给适配器传一个集合1
+  <ol class="post-list">
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/09/02/20160902 AndroidStudio 关联源码/" title="link to post.title">AndroidStudio 关联源码</a></h2>
+      <p class="excerpt">
+    
+      首先，确保你已经下载完成了，然后，在C:\Users\xxx\.AndroidStudio2.1\config\options这里找到jdk.table.xml打开它1
 2
 3
 4
-List datas;
-datas = DBDao.selectMyClock(); //此句是返回一个List
-clocksAdapter = new AlarmClockListAdapter(getContext(), datas);
-myC
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2016-07-20T02:46:46.000Z" class="post-list__meta--date date">2016-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/07/20/notifyDatasetChanged无效的解决办法/">继续阅读</a></div>
-                       
-            </div>
-        
-     
-   
-   
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+&amp;lt;jdk version=&quot;2&quot;&amp;gt;
+      &amp;lt
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-09-02T02:46:46.000Z" class="post-list__meta--date date">2016-09-02</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/tips/">tips</a>
+</span><a class="btn-border-small" href="/2016/09/02/20160902 AndroidStudio 关联源码/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
   
-</section>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/09/02/20160902 调节安卓音量/" title="link to post.title">调节安卓音量</a></h2>
+      <p class="excerpt">
+    
+      如果使用MediaPlayer播放，直接setVolume即可，经测试静音也能有声音，但是用户调节媒体音量到0就不行了，他是在媒体音量的基础上做了百分比1
+2
+MediaPlayer mediaPlayer = MediaPlayer.create(this, raws[ringId]);
+mediaPlayer.setVolume(1.0f, 1.0f);
+
+比如某个需要提醒用户的时候，1
+2
+
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-09-02T02:46:46.000Z" class="post-list__meta--date date">2016-09-02</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/tips/">tips</a>
+</span><a class="btn-border-small" href="/2016/09/02/20160902 调节安卓音量/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/19/20160819 snackbar 修改文本颜色/" title="link to post.title">snackbar 修改文本颜色</a></h2>
+      <p class="excerpt">
+    
+      
+看源码 snackbar其实就是两个textview组成的
+
+1
+2
+mMessageView = (TextView) findViewById(R.id.snackbar_text);
+mActionView = (Button) findViewById(R.id.snackbar_action);
+
+见名知意，一个是信息文本，一个是动作文本然而，他虽然提供给了修改actoinView的颜
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-08-19T02:46:46.000Z" class="post-list__meta--date date">2016-08-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/tips/">tips</a>
+</span><a class="btn-border-small" href="/2016/08/19/20160819 snackbar 修改文本颜色/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+  </ol>
+
+
+
+</div>
+
 
             
 <section class="post-comments">
@@ -218,10 +244,6 @@ myC
   <script type="text/javascript">
       var disqus_shortname = 'ayanokouji-kenn'; 
       
-  var disqus_identifier = '/2016/07/20/Unique Constraint Failded/';
-  var disqus_title = 'Unique Constraint Failded';
-  var disqus_url = 'http://yoursite.com/2016/07/20/Unique Constraint Failded/';
-  
 
       /* * * DON'T EDIT BELOW THIS LINE * * */
       (function() {
@@ -229,7 +251,7 @@ myC
           //dsq.src = '/js/embed.js';
           //将disqus使用https协议将大大提高显示速度
           dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-          //dsq.src = 'https://a.disquscdn.com/embed.js';
+          //dsq.src = 'https://a.disquscdn.com/count.js';
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
       })();
   </script>
