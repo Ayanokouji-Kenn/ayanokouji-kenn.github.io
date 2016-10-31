@@ -166,77 +166,24 @@ Beginning in Android 6.0 (API lev
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 RxBus的工具类/" title="link to post.title">RxBus的工具类</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824onStartCommand中的intent为null/" title="link to post.title">onStartCommand中的intent为null</a></h2>
       <p class="excerpt">
     
       
-直接上代码 ，三个类
-
-1
+当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了1
 2
 3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-import rx.Observable;
+if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123; 
+            //do something
+&amp;#125;
+
+
 
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/08/24/20160824 RxBus的工具类/">继续阅读</a></div>
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824onStartCommand中的intent为null/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -325,6 +272,82 @@ import rx.Observable;
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 RxBus的工具类/" title="link to post.title">RxBus的工具类</a></h2>
+      <p class="excerpt">
+    
+      
+直接上代码 ，三个类
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+import rx.Observable;
+
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824 RxBus的工具类/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 onStartCommand中的intent为null/" title="link to post.title">onStartCommand中的intent为null</a></h2>
       <p class="excerpt">
     
@@ -343,29 +366,6 @@ if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;
       <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/problems/">problems</a>
 </span><a class="btn-border-small" href="/2016/08/24/20160824 onStartCommand中的intent为null/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824onStartCommand中的intent为null/" title="link to post.title">onStartCommand中的intent为null</a></h2>
-      <p class="excerpt">
-    
-      
-当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了1
-2
-3
-if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123; 
-            //do something
-&amp;#125;
-
-
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/problems/">problems</a>
-</span><a class="btn-border-small" href="/2016/08/24/20160824onStartCommand中的intent为null/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   

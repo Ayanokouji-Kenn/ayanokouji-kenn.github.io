@@ -264,40 +264,18 @@ Beginning in Android 6.0 (API lev">
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/09/02/20160902 AndroidStudio 关联源码/" title="AndroidStudio 关联源码">AndroidStudio 关联源码</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2016/09/02/20160902 调节安卓音量/" title="调节安卓音量">调节安卓音量</a></h2>
                 <p class="excerpt">
                 
-                首先，确保你已经下载完成了，然后，在C:\Users\xxx\.AndroidStudio2.1\config\options这里找到jdk.table.xml打开它1
+                如果使用MediaPlayer播放，直接setVolume即可，经测试静音也能有声音，但是用户调节媒体音量到0就不行了，他是在媒体音量的基础上做了百分比1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-2
+MediaPlayer mediaPlayer = MediaPlayer.create(this, raws[ringId]);
+medi
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-09-02T02:46:46.000Z" class="post-list__meta--date date">2016-09-02</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/tips/">tips</a>
-</span><a class="btn-border-small" href="/2016/09/02/20160902 AndroidStudio 关联源码/">继续阅读</a></div>
+</span><a class="btn-border-small" href="/2016/09/02/20160902 调节安卓音量/">继续阅读</a></div>
                            
             </div>
         
@@ -305,66 +283,21 @@ Beginning in Android 6.0 (API lev">
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 RxBus的工具类/" title="RxBus的工具类">RxBus的工具类</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824onStartCommand中的intent为null/" title="onStartCommand中的intent为null">onStartCommand中的intent为null</a></h2>
                 <p class="excerpt">
                 
                 
-直接上代码 ，三个类
-
-1
+当需要在服务中，对intent做什么事情的时候，先加入这个判断，特别是那个getAction不能忘了1
 2
 3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
+if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123; 
+            //do something
+&amp;#12
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/08/24/20160824 RxBus的工具类/">继续阅读</a></div>
+  <a class="tag-link" href="/tags/problems/">problems</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824onStartCommand中的intent为null/">继续阅读</a></div>
                        
             </div>
         

@@ -6059,8 +6059,8 @@ ul {
 }
 code {
   padding: 0.1em 0.4em;
-  background: #6e6e6e;
-  border: 1px solid #6e6e6e;
+  background: #ffefd5;
+  border: 1px solid #ffefd5;
   border-radius: 3px;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
   font-size: 0.9em;
@@ -6070,7 +6070,7 @@ code {
 pre {
   margin-bottom: 1.3em;
   padding: 1em 2.5%;
-  background: #eed5b7;
+  background: #fffaf0;
   border: 1px solid #edf6fd;
   border-radius: 3px;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
