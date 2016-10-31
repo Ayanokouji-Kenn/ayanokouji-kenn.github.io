@@ -1893,6 +1893,383 @@
   </entry>
   
   <entry>
+    <title>RxBus的工具类</title>
+    <link href="http://yoursite.com/2016/08/24/20160824%20RxBus%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    <id>http://yoursite.com/2016/08/24/20160824 RxBus的工具类/</id>
+    <published>2016-08-24T02:46:46.000Z</published>
+    <updated>2016-10-21T08:55:06.208Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>直接上代码 ，三个类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+<span class="line">35</span>
+<span class="line">36</span>
+<span class="line">37</span>
+<span class="line">38</span>
+<span class="line">39</span>
+<span class="line">40</span>
+<span class="line">41</span>
+<span class="line">42</span>
+<span class="line">43</span>
+<span class="line">44</span>
+<span class="line">45</span>
+<span class="line">46</span>
+<span class="line">47</span>
+<span class="line">48</span>
+<span class="line">49</span>
+<span class="line">50</span>
+<span class="line">51</span>
+<span class="line">52</span>
+<span class="line">53</span>
+<span class="line">54</span>
+<span class="line">55</span>
+<span class="line">56</span>
+<span class="line">57</span>
+<span class="line">58</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rx.Observable;</span>
+<span class="line"><span class="keyword">import</span> rx.functions.Func1;</span>
+<span class="line"><span class="keyword">import</span> rx.subjects.PublishSubject;</span>
+<span class="line"><span class="keyword">import</span> rx.subjects.SerializedSubject;</span>
+<span class="line"><span class="keyword">import</span> rx.subjects.Subject;</span>
+<span class="line"></span>
+<span class="line"><span class="comment">/**</span>
+<span class="line"> * <span class="doctag">@author</span> xzj</span>
+<span class="line"> * <span class="doctag">@date</span> 2016/8/24 14:00.</span>
+<span class="line"> */</span></span>
+<span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RxBus</span> </span>&#123;</span>
+<span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> RxBus mRxBus = <span class="keyword">null</span>;</span>
+<span class="line">    <span class="comment">/**</span>
+<span class="line">     * PublishSubject只会把在订阅发生的时间点之后来自原始Observable的数据发射给观察者</span>
+<span class="line">     */</span></span>
+<span class="line"></span>
+<span class="line">    <span class="keyword">private</span> Subject&lt;Object, Object&gt; mRxBusObserverable = <span class="keyword">new</span> SerializedSubject&lt;&gt;(PublishSubject.create());</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> RxBus <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">if</span> (mRxBus == <span class="keyword">null</span>) &#123;</span>
+<span class="line">            mRxBus = <span class="keyword">new</span> RxBus();</span>
+<span class="line">        &#125;</span>
+<span class="line">        <span class="keyword">return</span> mRxBus;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(Object o, String tag)</span> </span>&#123;</span>
+<span class="line">        mRxBusObserverable.onNext(<span class="keyword">new</span> RxBusObject(tag, o));</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line"><span class="comment">//    public Observable&lt;Object&gt; toObserverable() &#123;</span></span>
+<span class="line"><span class="comment">//        return mRxBusObserverable;</span></span>
+<span class="line"><span class="comment">//    &#125;</span></span>
+<span class="line"></span>
+<span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function">Observable&lt;T&gt; <span class="title">toObservable</span><span class="params">(<span class="keyword">final</span> Class&lt;T&gt; eventType, <span class="keyword">final</span> String tag)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">return</span> mRxBusObserverable.filter(<span class="keyword">new</span> Func1&lt;Object, Boolean&gt;() &#123;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">(Object o)</span> </span>&#123;</span>
+<span class="line">                <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> RxBusObject)) <span class="keyword">return</span> <span class="keyword">false</span>;</span>
+<span class="line">                RxBusObject ro = (RxBusObject) o;</span>
+<span class="line">                <span class="keyword">return</span> eventType.isInstance(ro.getObj()) &amp;&amp; tag != <span class="keyword">null</span></span>
+<span class="line">                        &amp;&amp; tag.equals(ro.getTag());</span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;).map(<span class="keyword">new</span> Func1&lt;Object, T&gt;() &#123;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> T <span class="title">call</span><span class="params">(Object o)</span> </span>&#123;</span>
+<span class="line">                RxBusObject ro = (RxBusObject) o;</span>
+<span class="line">                <span class="keyword">return</span> (T) ro.getObj();</span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;);</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">/**</span>
+<span class="line">     * 判断是否有订阅者</span>
+<span class="line">     */</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasObservers</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">return</span> mRxBusObserverable.hasObservers();</span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+</pre></td><td class="code"><pre><span class="line"></span>
+<span class="line"><span class="comment">/**</span>
+<span class="line"> * <span class="doctag">@author</span> xzj</span>
+<span class="line"> * <span class="doctag">@date</span> 2016/8/24 14:22.</span>
+<span class="line"> */</span></span>
+<span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RxBusObject</span> </span>&#123;</span>
+<span class="line">    <span class="keyword">private</span> String tag;</span>
+<span class="line">    <span class="keyword">private</span> Object obj;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RxBusObject</span><span class="params">(String tag, Object obj)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">this</span>.tag = tag;</span>
+<span class="line">        <span class="keyword">this</span>.obj = obj;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTag</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">return</span> tag;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTag</span><span class="params">(String tag)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">this</span>.tag = tag;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getObj</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">return</span> obj;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setObj</span><span class="params">(Object obj)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">this</span>.obj = obj;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RxBusObject <span class="title">newInstance</span><span class="params">(String tag, Object obj)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RxBusObject(tag, obj);</span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+</pre></td><td class="code"><pre><span class="line"></span>
+<span class="line"><span class="comment">/**</span>
+<span class="line"> * <span class="doctag">@author</span> xzj</span>
+<span class="line"> * <span class="doctag">@date</span> 2016/8/24 14:24.</span>
+<span class="line"> */</span></span>
+<span class="line"></span>
+<span class="line"><span class="keyword">import</span> rx.Subscriber;</span>
+<span class="line"></span>
+<span class="line"><span class="comment">/**</span>
+<span class="line"> * 请使用此类来subscribe RxBus返回的Observable以简化onError与onCompleted函数.</span>
+<span class="line"> */</span></span>
+<span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RxBusSubscriber</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Subscriber</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        completed();</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</span>
+<span class="line">        error(e);</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T t)</span> </span>&#123;</span>
+<span class="line">        receive(t);</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">receive</span><span class="params">(T data)</span></span>;</span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">error</span><span class="params">(Throwable e)</span> </span>&#123;</span>
+<span class="line">        e.printStackTrace();</span>
+<span class="line">    &#125;</span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">completed</span><span class="params">()</span> </span>&#123;&#125;</span>
+<span class="line"></span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>用法</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2524531-d4b703f7adcb771c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>一个简单的例子<br>就是上下两个fragment，change按钮是在fragment里的，点击随机生成一个color发给下面的fragment2，下面的fragmeng2收到了，更改背景<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span>
+<span class="line">    <span class="meta">@Nullable</span></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)</span> </span>&#123;</span>
+<span class="line">        View view = inflater.inflate(R.layout.layout_fragment, <span class="keyword">null</span>);</span>
+<span class="line">        Button btn = (Button) view.findViewById(R.id.btn);</span>
+<span class="line"></span>
+<span class="line">        btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span>
+<span class="line">            <span class="meta">@Override</span></span>
+<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span>
+<span class="line">                Random random = <span class="keyword">new</span> Random();</span>
+<span class="line">                <span class="keyword">int</span> color = Color.argb(random.nextInt(<span class="number">256</span>), random.nextInt(<span class="number">256</span>), random.nextInt(<span class="number">256</span>), random.nextInt(<span class="number">256</span>));</span>
+<span class="line">                RxBus.getInstance().send(color,<span class="string">"color"</span>);</span>
+<span class="line">            &#125;</span>
+<span class="line">        &#125;);</span>
+<span class="line">        <span class="keyword">return</span> view;</span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment2</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span>
+<span class="line"></span>
+<span class="line">    <span class="keyword">private</span> Subscription subscribe;</span>
+<span class="line"></span>
+<span class="line">    <span class="meta">@Nullable</span></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">final</span> View view = inflater.inflate(R.layout.layout_fragment2, <span class="keyword">null</span>);</span>
+<span class="line">        <span class="comment">//标记发过来的是个int，tag是“color”，和被观测者send（）方法里参数能匹配上，才会被这里观测到</span></span>
+<span class="line">        subscribe = RxBus.getInstance().toObservable(Integer.class, <span class="string">"color"</span>) </span>
+<span class="line">                .subscribe(<span class="keyword">new</span> RxBusSubscriber&lt;Integer&gt;() &#123;</span>
+<span class="line">                    <span class="meta">@Override</span></span>
+<span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receive</span><span class="params">(Integer data)</span> </span>&#123;</span>
+<span class="line">                        view.setBackgroundColor(data);</span>
+<span class="line">                    &#125;</span>
+<span class="line">                &#125;);</span>
+<span class="line">        <span class="keyword">return</span> view;</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="meta">@Override</span></span>
+<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroyView</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">super</span>.onDestroyView();</span>
+<span class="line">        <span class="keyword">if</span> (!subscribe.isUnsubscribed()) &#123;</span>
+<span class="line">            subscribe.unsubscribe();</span>
+<span class="line">        &#125;</span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;直接上代码 ，三个类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;li
+    
+    </summary>
+    
+    
+      <category term="Utils" scheme="http://yoursite.com/tags/Utils/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SPUtils</title>
     <link href="http://yoursite.com/2016/08/24/20160824%20SPUtils/"/>
     <id>http://yoursite.com/2016/08/24/20160824 SPUtils/</id>
@@ -2339,383 +2716,6 @@
     
     
       <category term="problems" scheme="http://yoursite.com/tags/problems/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RxBus的工具类</title>
-    <link href="http://yoursite.com/2016/08/24/20160824%20RxBus%E7%9A%84%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    <id>http://yoursite.com/2016/08/24/20160824 RxBus的工具类/</id>
-    <published>2016-08-24T02:46:46.000Z</published>
-    <updated>2016-10-21T08:55:06.208Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>直接上代码 ，三个类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-<span class="line">5</span>
-<span class="line">6</span>
-<span class="line">7</span>
-<span class="line">8</span>
-<span class="line">9</span>
-<span class="line">10</span>
-<span class="line">11</span>
-<span class="line">12</span>
-<span class="line">13</span>
-<span class="line">14</span>
-<span class="line">15</span>
-<span class="line">16</span>
-<span class="line">17</span>
-<span class="line">18</span>
-<span class="line">19</span>
-<span class="line">20</span>
-<span class="line">21</span>
-<span class="line">22</span>
-<span class="line">23</span>
-<span class="line">24</span>
-<span class="line">25</span>
-<span class="line">26</span>
-<span class="line">27</span>
-<span class="line">28</span>
-<span class="line">29</span>
-<span class="line">30</span>
-<span class="line">31</span>
-<span class="line">32</span>
-<span class="line">33</span>
-<span class="line">34</span>
-<span class="line">35</span>
-<span class="line">36</span>
-<span class="line">37</span>
-<span class="line">38</span>
-<span class="line">39</span>
-<span class="line">40</span>
-<span class="line">41</span>
-<span class="line">42</span>
-<span class="line">43</span>
-<span class="line">44</span>
-<span class="line">45</span>
-<span class="line">46</span>
-<span class="line">47</span>
-<span class="line">48</span>
-<span class="line">49</span>
-<span class="line">50</span>
-<span class="line">51</span>
-<span class="line">52</span>
-<span class="line">53</span>
-<span class="line">54</span>
-<span class="line">55</span>
-<span class="line">56</span>
-<span class="line">57</span>
-<span class="line">58</span>
-</pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rx.Observable;</span>
-<span class="line"><span class="keyword">import</span> rx.functions.Func1;</span>
-<span class="line"><span class="keyword">import</span> rx.subjects.PublishSubject;</span>
-<span class="line"><span class="keyword">import</span> rx.subjects.SerializedSubject;</span>
-<span class="line"><span class="keyword">import</span> rx.subjects.Subject;</span>
-<span class="line"></span>
-<span class="line"><span class="comment">/**</span>
-<span class="line"> * <span class="doctag">@author</span> xzj</span>
-<span class="line"> * <span class="doctag">@date</span> 2016/8/24 14:00.</span>
-<span class="line"> */</span></span>
-<span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RxBus</span> </span>&#123;</span>
-<span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> RxBus mRxBus = <span class="keyword">null</span>;</span>
-<span class="line">    <span class="comment">/**</span>
-<span class="line">     * PublishSubject只会把在订阅发生的时间点之后来自原始Observable的数据发射给观察者</span>
-<span class="line">     */</span></span>
-<span class="line"></span>
-<span class="line">    <span class="keyword">private</span> Subject&lt;Object, Object&gt; mRxBusObserverable = <span class="keyword">new</span> SerializedSubject&lt;&gt;(PublishSubject.create());</span>
-<span class="line"></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> RxBus <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">if</span> (mRxBus == <span class="keyword">null</span>) &#123;</span>
-<span class="line">            mRxBus = <span class="keyword">new</span> RxBus();</span>
-<span class="line">        &#125;</span>
-<span class="line">        <span class="keyword">return</span> mRxBus;</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(Object o, String tag)</span> </span>&#123;</span>
-<span class="line">        mRxBusObserverable.onNext(<span class="keyword">new</span> RxBusObject(tag, o));</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line"><span class="comment">//    public Observable&lt;Object&gt; toObserverable() &#123;</span></span>
-<span class="line"><span class="comment">//        return mRxBusObserverable;</span></span>
-<span class="line"><span class="comment">//    &#125;</span></span>
-<span class="line"></span>
-<span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function">Observable&lt;T&gt; <span class="title">toObservable</span><span class="params">(<span class="keyword">final</span> Class&lt;T&gt; eventType, <span class="keyword">final</span> String tag)</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">return</span> mRxBusObserverable.filter(<span class="keyword">new</span> Func1&lt;Object, Boolean&gt;() &#123;</span>
-<span class="line">            <span class="meta">@Override</span></span>
-<span class="line">            <span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">(Object o)</span> </span>&#123;</span>
-<span class="line">                <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> RxBusObject)) <span class="keyword">return</span> <span class="keyword">false</span>;</span>
-<span class="line">                RxBusObject ro = (RxBusObject) o;</span>
-<span class="line">                <span class="keyword">return</span> eventType.isInstance(ro.getObj()) &amp;&amp; tag != <span class="keyword">null</span></span>
-<span class="line">                        &amp;&amp; tag.equals(ro.getTag());</span>
-<span class="line">            &#125;</span>
-<span class="line">        &#125;).map(<span class="keyword">new</span> Func1&lt;Object, T&gt;() &#123;</span>
-<span class="line">            <span class="meta">@Override</span></span>
-<span class="line">            <span class="function"><span class="keyword">public</span> T <span class="title">call</span><span class="params">(Object o)</span> </span>&#123;</span>
-<span class="line">                RxBusObject ro = (RxBusObject) o;</span>
-<span class="line">                <span class="keyword">return</span> (T) ro.getObj();</span>
-<span class="line">            &#125;</span>
-<span class="line">        &#125;);</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="comment">/**</span>
-<span class="line">     * 判断是否有订阅者</span>
-<span class="line">     */</span></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasObservers</span><span class="params">()</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">return</span> mRxBusObserverable.hasObservers();</span>
-<span class="line">    &#125;</span>
-<span class="line">&#125;</span>
-</pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-<span class="line">5</span>
-<span class="line">6</span>
-<span class="line">7</span>
-<span class="line">8</span>
-<span class="line">9</span>
-<span class="line">10</span>
-<span class="line">11</span>
-<span class="line">12</span>
-<span class="line">13</span>
-<span class="line">14</span>
-<span class="line">15</span>
-<span class="line">16</span>
-<span class="line">17</span>
-<span class="line">18</span>
-<span class="line">19</span>
-<span class="line">20</span>
-<span class="line">21</span>
-<span class="line">22</span>
-<span class="line">23</span>
-<span class="line">24</span>
-<span class="line">25</span>
-<span class="line">26</span>
-<span class="line">27</span>
-<span class="line">28</span>
-<span class="line">29</span>
-<span class="line">30</span>
-<span class="line">31</span>
-<span class="line">32</span>
-<span class="line">33</span>
-<span class="line">34</span>
-</pre></td><td class="code"><pre><span class="line"></span>
-<span class="line"><span class="comment">/**</span>
-<span class="line"> * <span class="doctag">@author</span> xzj</span>
-<span class="line"> * <span class="doctag">@date</span> 2016/8/24 14:22.</span>
-<span class="line"> */</span></span>
-<span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RxBusObject</span> </span>&#123;</span>
-<span class="line">    <span class="keyword">private</span> String tag;</span>
-<span class="line">    <span class="keyword">private</span> Object obj;</span>
-<span class="line"></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RxBusObject</span><span class="params">(String tag, Object obj)</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">this</span>.tag = tag;</span>
-<span class="line">        <span class="keyword">this</span>.obj = obj;</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTag</span><span class="params">()</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">return</span> tag;</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTag</span><span class="params">(String tag)</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">this</span>.tag = tag;</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getObj</span><span class="params">()</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">return</span> obj;</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setObj</span><span class="params">(Object obj)</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">this</span>.obj = obj;</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RxBusObject <span class="title">newInstance</span><span class="params">(String tag, Object obj)</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RxBusObject(tag, obj);</span>
-<span class="line">    &#125;</span>
-<span class="line">&#125;</span>
-</pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-<span class="line">5</span>
-<span class="line">6</span>
-<span class="line">7</span>
-<span class="line">8</span>
-<span class="line">9</span>
-<span class="line">10</span>
-<span class="line">11</span>
-<span class="line">12</span>
-<span class="line">13</span>
-<span class="line">14</span>
-<span class="line">15</span>
-<span class="line">16</span>
-<span class="line">17</span>
-<span class="line">18</span>
-<span class="line">19</span>
-<span class="line">20</span>
-<span class="line">21</span>
-<span class="line">22</span>
-<span class="line">23</span>
-<span class="line">24</span>
-<span class="line">25</span>
-<span class="line">26</span>
-<span class="line">27</span>
-<span class="line">28</span>
-<span class="line">29</span>
-<span class="line">30</span>
-<span class="line">31</span>
-<span class="line">32</span>
-<span class="line">33</span>
-<span class="line">34</span>
-</pre></td><td class="code"><pre><span class="line"></span>
-<span class="line"><span class="comment">/**</span>
-<span class="line"> * <span class="doctag">@author</span> xzj</span>
-<span class="line"> * <span class="doctag">@date</span> 2016/8/24 14:24.</span>
-<span class="line"> */</span></span>
-<span class="line"></span>
-<span class="line"><span class="keyword">import</span> rx.Subscriber;</span>
-<span class="line"></span>
-<span class="line"><span class="comment">/**</span>
-<span class="line"> * 请使用此类来subscribe RxBus返回的Observable以简化onError与onCompleted函数.</span>
-<span class="line"> */</span></span>
-<span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">RxBusSubscriber</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Subscriber</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span>
-<span class="line">    <span class="meta">@Override</span></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;</span>
-<span class="line">        completed();</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="meta">@Override</span></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</span>
-<span class="line">        error(e);</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="meta">@Override</span></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T t)</span> </span>&#123;</span>
-<span class="line">        receive(t);</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">receive</span><span class="params">(T data)</span></span>;</span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">error</span><span class="params">(Throwable e)</span> </span>&#123;</span>
-<span class="line">        e.printStackTrace();</span>
-<span class="line">    &#125;</span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">completed</span><span class="params">()</span> </span>&#123;&#125;</span>
-<span class="line"></span>
-<span class="line">&#125;</span>
-</pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>用法</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2524531-d4b703f7adcb771c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>一个简单的例子<br>就是上下两个fragment，change按钮是在fragment里的，点击随机生成一个color发给下面的fragment2，下面的fragmeng2收到了，更改背景<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-<span class="line">5</span>
-<span class="line">6</span>
-<span class="line">7</span>
-<span class="line">8</span>
-<span class="line">9</span>
-<span class="line">10</span>
-<span class="line">11</span>
-<span class="line">12</span>
-<span class="line">13</span>
-<span class="line">14</span>
-<span class="line">15</span>
-<span class="line">16</span>
-<span class="line">17</span>
-<span class="line">18</span>
-</pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span>
-<span class="line">    <span class="meta">@Nullable</span></span>
-<span class="line">    <span class="meta">@Override</span></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)</span> </span>&#123;</span>
-<span class="line">        View view = inflater.inflate(R.layout.layout_fragment, <span class="keyword">null</span>);</span>
-<span class="line">        Button btn = (Button) view.findViewById(R.id.btn);</span>
-<span class="line"></span>
-<span class="line">        btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span>
-<span class="line">            <span class="meta">@Override</span></span>
-<span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span>
-<span class="line">                Random random = <span class="keyword">new</span> Random();</span>
-<span class="line">                <span class="keyword">int</span> color = Color.argb(random.nextInt(<span class="number">256</span>), random.nextInt(<span class="number">256</span>), random.nextInt(<span class="number">256</span>), random.nextInt(<span class="number">256</span>));</span>
-<span class="line">                RxBus.getInstance().send(color,<span class="string">"color"</span>);</span>
-<span class="line">            &#125;</span>
-<span class="line">        &#125;);</span>
-<span class="line">        <span class="keyword">return</span> view;</span>
-<span class="line">    &#125;</span>
-<span class="line">&#125;</span>
-</pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span>
-<span class="line">2</span>
-<span class="line">3</span>
-<span class="line">4</span>
-<span class="line">5</span>
-<span class="line">6</span>
-<span class="line">7</span>
-<span class="line">8</span>
-<span class="line">9</span>
-<span class="line">10</span>
-<span class="line">11</span>
-<span class="line">12</span>
-<span class="line">13</span>
-<span class="line">14</span>
-<span class="line">15</span>
-<span class="line">16</span>
-<span class="line">17</span>
-<span class="line">18</span>
-<span class="line">19</span>
-<span class="line">20</span>
-<span class="line">21</span>
-<span class="line">22</span>
-<span class="line">23</span>
-<span class="line">24</span>
-<span class="line">25</span>
-<span class="line">26</span>
-<span class="line">27</span>
-</pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment2</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span>
-<span class="line"></span>
-<span class="line">    <span class="keyword">private</span> Subscription subscribe;</span>
-<span class="line"></span>
-<span class="line">    <span class="meta">@Nullable</span></span>
-<span class="line">    <span class="meta">@Override</span></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">final</span> View view = inflater.inflate(R.layout.layout_fragment2, <span class="keyword">null</span>);</span>
-<span class="line">        <span class="comment">//标记发过来的是个int，tag是“color”，和被观测者send（）方法里参数能匹配上，才会被这里观测到</span></span>
-<span class="line">        subscribe = RxBus.getInstance().toObservable(Integer.class, <span class="string">"color"</span>) </span>
-<span class="line">                .subscribe(<span class="keyword">new</span> RxBusSubscriber&lt;Integer&gt;() &#123;</span>
-<span class="line">                    <span class="meta">@Override</span></span>
-<span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receive</span><span class="params">(Integer data)</span> </span>&#123;</span>
-<span class="line">                        view.setBackgroundColor(data);</span>
-<span class="line">                    &#125;</span>
-<span class="line">                &#125;);</span>
-<span class="line">        <span class="keyword">return</span> view;</span>
-<span class="line">    &#125;</span>
-<span class="line"></span>
-<span class="line">    <span class="meta">@Override</span></span>
-<span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroyView</span><span class="params">()</span> </span>&#123;</span>
-<span class="line">        <span class="keyword">super</span>.onDestroyView();</span>
-<span class="line">        <span class="keyword">if</span> (!subscribe.isUnsubscribed()) &#123;</span>
-<span class="line">            subscribe.unsubscribe();</span>
-<span class="line">        &#125;</span>
-<span class="line">    &#125;</span>
-<span class="line">&#125;</span>
-</pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;直接上代码 ，三个类&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;li
-    
-    </summary>
-    
-    
-      <category term="Utils" scheme="http://yoursite.com/tags/Utils/"/>
     
   </entry>
   

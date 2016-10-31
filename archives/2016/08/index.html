@@ -79,6 +79,8 @@
             
               <li class="navigation__item"><a href="/tags/tips">豆知识</a></li>
             
+              <li class="navigation__item"><a href="/archives">世界线</a></li>
+            
             </ul>
           </nav>
           </div>
@@ -159,6 +161,82 @@ Beginning in Android 6.0 (API lev
       <div class="post-list__meta"><time datetime="2016-08-30T02:46:46.000Z" class="post-list__meta--date date">2016-08-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/problems/">problems</a>
 </span><a class="btn-border-small" href="/2016/08/30/20160830 SecurityException与android.permission.xxxx/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 RxBus的工具类/" title="link to post.title">RxBus的工具类</a></h2>
+      <p class="excerpt">
+    
+      
+直接上代码 ，三个类
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+import rx.Observable;
+
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Utils/">Utils</a>
+</span><a class="btn-border-small" href="/2016/08/24/20160824 RxBus的工具类/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -293,82 +371,6 @@ if (intent!=null &amp;amp;&amp;amp; intent.getAction()!=null) &amp;#123;
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/24/20160824 RxBus的工具类/" title="link to post.title">RxBus的工具类</a></h2>
-      <p class="excerpt">
-    
-      
-直接上代码 ，三个类
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-import rx.Observable;
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-24T02:46:46.000Z" class="post-list__meta--date date">2016-08-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Utils/">Utils</a>
-</span><a class="btn-border-small" href="/2016/08/24/20160824 RxBus的工具类/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/08/19/20160819 snackbar 修改文本颜色/" title="link to post.title">snackbar 修改文本颜色</a></h2>
       <p class="excerpt">
     
@@ -434,24 +436,24 @@ mActionView = (Button) findViewById(R.id.snackbar_action);
 
             
 <section class="post-comments">
-  <div id="disqus_thread"></div>
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="http://yoursite.com" data-title="undefined" data-url="http://yoursite.com"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
-      var disqus_shortname = 'ayanokouji-kenn'; 
-      
-
-      /* * * DON'T EDIT BELOW THIS LINE * * */
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          //dsq.src = '/js/embed.js';
-          //将disqus使用https协议将大大提高显示速度
-          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-          //dsq.src = 'https://a.disquscdn.com/count.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
+  var duoshuoQuery = {short_name:"ayanokouji-kenn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<!-- 多说公共JS代码 end -->
 </section>
+
 
             <footer class="footer">
     <span class="footer__copyright">
