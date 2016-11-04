@@ -1,0 +1,36 @@
+menu:
+  工具: /tags/Utils
+  问题: /tags/problems
+  豆知识: /tags/tips
+  世界线: /archives
+  #博客: /#blog
+  #黄金屋: /favourite
+  #时光机: /favourite/time.html
+  #我是: /aboutme
+rss: /atom.xml
+description: 
+social:
+  weibo: 
+  github: https://github.com/Ayanokouji-Kenn
+  stack_overflow: 
+  facebook: 
+  twitter: 
+  google_plus: 
+
+page_comment: true
+# 封面中的头像
+logo: /images/avatar.jpg
+
+background:
+  cover: /images/background-cover.png
+  color: cover-purple
+
+archive_date_format: MMM DD
+fancybox: true
+# 多说的帐号名, 不配置则不启用，使用disqus请去全局_config.yml中配置disqus_shortname
+duoshuo_shortname: ayanokouji-kenn
+
+google_analytics: UA-85987364-1
+baidu_tongji: 8837000262937cab3066c1640339da22
+favicon: /images/avata.png
+
