@@ -68,6 +68,6 @@ theme: new-vno
 # Deployment
 ## Docs: https://hexo.io/doheployment.html
 deploy:
-  type: github
+  type: git
   repo: https://github.com/Ayanokouji-Kenn/ayanokouji-kenn.github.io
   branch: master
