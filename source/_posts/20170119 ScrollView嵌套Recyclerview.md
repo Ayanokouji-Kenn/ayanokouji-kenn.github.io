@@ -2,7 +2,7 @@
 title: ScrollView嵌套Recyclerview
 date: 2017-01-19 10:33:27
 tags: tips
-
+categories: Android
 ---
 
 - 老问题了，以前用一些别的方式解决了比如linearlayout，比如listview的type，比如footview之类的

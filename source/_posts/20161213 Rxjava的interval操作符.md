@@ -2,7 +2,7 @@
 title: Rxjava的interval操作符
 date: 2016-12-13 10:33:27
 tags: Utils
-
+categories: Android
 ---
 
 - 有个需求重复发送，当然用timer、handler都行啦，不过要优雅还是得用rxjava啊
