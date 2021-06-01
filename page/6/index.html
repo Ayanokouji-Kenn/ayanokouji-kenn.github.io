@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>七夜的小屋 - ようこそ</title><meta name="description"><meta name="author" content="Nanaya Haruki"><meta name="copyright" content="Nanaya Haruki"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/avatar.jfif"><link rel="canonical" href="https://nanayaharuki.github.io/page/6/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="bVhNojYvumg92cuWQHIpPCLKkDNieuXJCoUG8Kpmxzg"/><meta name="baidu-site-verification" content="H4PZQqcpUQ"/><meta property="og:type" content="website"><meta property="og:title" content="七夜的小屋"><meta property="og:url" content="https://nanayaharuki.github.io/page/6/"><meta property="og:site_name" content="七夜的小屋"><meta property="og:description"><meta property="og:image" content="https://nanayaharuki.github.io/img/avatar.jfif"><meta property="article:published_time" content="2021-06-01T08:33:41.230Z"><meta property="article:modified_time" content="2021-06-01T08:33:41.230Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4417f86c0cc24eb9d60f23fc6cbaa820";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-85987364-1', 'auto');
+ga('send', 'pageview');
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jfif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">91</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">30</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://w.wallhaven.cc/full/96/wallhaven-9618od.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">七夜的小屋</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">七夜的小屋</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/NanayaHaruki" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:sankarea8818@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2017/05/19/20170519%20%E5%88%A9%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="利用hexo搭建博客">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="利用hexo搭建博客"></a></div><div class="recent-post-info"><a class="article-title" href="/2017/05/19/20170519%20%E5%88%A9%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="利用hexo搭建博客">利用hexo搭建博客</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2017-05-19 10:33:27"><i class="far fa-calendar-alt"></i>2017-05-19</time></div><div class="content">下载之前在公司搭过，家里电脑一直没写过东西，就重新弄了下，留个步骤在这里，备查。
+
+下载nodejs,并安装。
+
+下载git,并安装。  
+
+
+安装
+
+
+
+
+
+
+3bc004a (init local)OK，开始安装hexo，官网。
+
+
+
+
+
+
+
+1234$ npm install -g hexo-cli$ hexo init &lt;folder&gt;$ cd &lt;folder&gt;$ npm install
+依次安装，完成后，会出现一些文件夹，可以在config.yml里进行一些设置，具体自己去官网看。
+12345678.├── _config.yml├── package.json├── scaffolds├── source|   ├── _drafts|   └── _posts└── themes
+
+source就是资源，文章都是放在_posts下面的，themes是放主题的。$ hexo init [folder] 新建一个网站$ hexo g 就可以生成网页文件了$ hexo s 启动服务器，默认为 http://localhost:4000/有的时候4000端 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2017/04/01/20170401%20%E5%9C%A8%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B%E5%90%8E%EF%BC%8C%E5%A6%82%E4%BD%95%E6%94%B6%E5%88%B0%E5%B9%BF%E6%92%AD%E5%91%A2%EF%BC%9F/" title="在杀死进程后，如何收到广播呢？">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在杀死进程后，如何收到广播呢？"></a></div><div class="recent-post-info"><a class="article-title" href="/2017/04/01/20170401%20%E5%9C%A8%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B%E5%90%8E%EF%BC%8C%E5%A6%82%E4%BD%95%E6%94%B6%E5%88%B0%E5%B9%BF%E6%92%AD%E5%91%A2%EF%BC%9F/" title="在杀死进程后，如何收到广播呢？">在杀死进程后，如何收到广播呢？</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2017-04-01 10:33:27"><i class="far fa-calendar-alt"></i>2017-04-01</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span></div><div class="content">
+先说结论：3.1之前，可以。3.1之后，系统广播不可以。自定义广播可以。
+原因：在3.1之后，系统的package manager增加了对处于“stopped state”应用的管理，所谓“stopped state”就是说该app从未运行过 或 运行过但是现在停止运行了同时系统增加了2个Flag：FLAG_INCLUDE_STOPPED_PACKAGESFLAG_EXCLUDE_STOPPED_PACKAGESgoogle在3.1之后给所有的广播都默认加上了FLAG_EXCLUDE_STOPPED_PACKAGES，所以在进程没了的情况下，是收不到广播的。
+
+但是自定义广播的话，我们可以
+1234Intent brIntent = new Intent();brIntent.setAction("uu");brIntent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);sendBroadcast(brIntent);
+这样手动添加一个flag，就可以了。所谓葫芦娃保活措施就可以这么搞起来
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2017/01/19/20170119%20ScrollView%E5%B5%8C%E5%A5%97Recyclerview/" title="ScrollView嵌套Recyclerview">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ScrollView嵌套Recyclerview"></a></div><div class="recent-post-info"><a class="article-title" href="/2017/01/19/20170119%20ScrollView%E5%B5%8C%E5%A5%97Recyclerview/" title="ScrollView嵌套Recyclerview">ScrollView嵌套Recyclerview</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2017-01-19 10:33:27"><i class="far fa-calendar-alt"></i>2017-01-19</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span></div><div class="content">
+老问题了，以前用一些别的方式解决了比如linearlayout，比如listview的type，比如footview之类的
+但这次的需求不太一样
+
+​
+上面是一个recyclerview全部显示，滑到底了，下面一个“今日推荐”，再下面一个资讯类的recyclerview有分页功能，滑到底了加载下一页。
+
+思路就是让recyclerview不能滑动，滑动交给外层的scrollview，将recyclerview替换成下面这个
+1234567891011121314151617public class NoScrollRecyclerView extends RecyclerView &#123;    public NoScrollRecyclerView(Context context) &#123;        super(context);    &#125;    public NoScrollRecyclerView(Context context, @Nullable AttributeSet attrs) &#123;        super(context, att ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2017/01/19/20170119%20ImagView%E6%92%AD%E6%94%BE%E5%8A%A8%E7%94%BB%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="ImagView播放动画的几种方式">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ImagView播放动画的几种方式"></a></div><div class="recent-post-info"><a class="article-title" href="/2017/01/19/20170119%20ImagView%E6%92%AD%E6%94%BE%E5%8A%A8%E7%94%BB%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="ImagView播放动画的几种方式">ImagView播放动画的几种方式</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2017-01-19 10:33:27"><i class="far fa-calendar-alt"></i>2017-01-19</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span></div><div class="content">
+
+比如这个，总共77帧。下面对比三种方案
+
+方案一：
+像这样把每一帧图片放进animation-list
+1234567&lt;animation-list xmlns:android="http://schemas.android.com/apk/res/android"    android:oneshot="false"&gt;  &lt;item android:drawable="@drawable/shenlie76" android:duration="83"/&gt;  &lt;item android:drawable="@drawable/shenlie77" android:duration="83"/&gt;  &lt;item android:drawable="@drawable/shenlie01" android:duration="83"/&gt;  .....  &lt;/animation-list&gt;
+
+然后
+123mIv.setImageResource(R.drawable.animation);Animatable drawable  ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2016/12/13/20161213%20Rxjava%E7%9A%84interval%E6%93%8D%E4%BD%9C%E7%AC%A6/" title="Rxjava的interval操作符">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rxjava的interval操作符"></a></div><div class="recent-post-info"><a class="article-title" href="/2016/12/13/20161213%20Rxjava%E7%9A%84interval%E6%93%8D%E4%BD%9C%E7%AC%A6/" title="Rxjava的interval操作符">Rxjava的interval操作符</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2016-12-13 10:33:27"><i class="far fa-calendar-alt"></i>2016-12-13</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span></div><div class="content">
+有个需求重复发送，当然用timer、handler都行啦，不过要优雅还是得用rxjava啊
+
+小demo，一个progressDialog进度条递增，涨到100，进度条消失，如下所示
+12345678910111213141516171819202122232425262728293031private ProgressDialog pd;    private void download() &#123;        if (pd == null) &#123;            pd = new ProgressDialog(this);            pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);            pd.setTitle("download new version");            pd.setProgress(0);            pd.setCanceledOnTouchOutside(false);        &#125;        pd.show() ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2016/12/13/20161227%20%E5%8A%A8%E6%80%81%E6%9B%B4%E6%94%B9%E6%A1%8C%E9%9D%A2app%E5%9B%BE%E6%A0%87/" title="动态更改桌面app图标">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="动态更改桌面app图标"></a></div><div class="recent-post-info"><a class="article-title" href="/2016/12/13/20161227%20%E5%8A%A8%E6%80%81%E6%9B%B4%E6%94%B9%E6%A1%8C%E9%9D%A2app%E5%9B%BE%E6%A0%87/" title="动态更改桌面app图标">动态更改桌面app图标</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2016-12-13 10:33:27"><i class="far fa-calendar-alt"></i>2016-12-13</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span></div><div class="content">
+清单中里的设置
+123456789101112131415161718192021222324252627&lt;activity android:name=".MainActivity"&gt;            &lt;intent-filter&gt;                &lt;action android:name="android.intent.action.MAIN"/&gt;            &lt;/intent-filter&gt; &lt;/activity&gt; &lt;activity-alias            android:name=".maoyu"            android:enabled="false"            android:icon="@mipmap/maoyu"            android:label="maoyu"            android:targetActivity=".MainActivity"&gt;  			&lt;intent-filter&gt;    ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2016/12/08/20161208%206.0%E4%B9%8B%E5%90%8E%E5%8A%A8%E6%80%81%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90/" title="6.0动态之后获取权限">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="6.0动态之后获取权限"></a></div><div class="recent-post-info"><a class="article-title" href="/2016/12/08/20161208%206.0%E4%B9%8B%E5%90%8E%E5%8A%A8%E6%80%81%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90/" title="6.0动态之后获取权限">6.0动态之后获取权限</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2016-12-08 10:33:27"><i class="far fa-calendar-alt"></i>2016-12-08</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span></div><div class="content">
+在各类流氓肆虐的安卓生态环境中，6.0之前是只要一安装app就能获取到所有需要的权限了。
+6.0之后，谷歌将权限分成了两种，一种普通权限，跟以前一样，AndroidManifest.xml中声明了就可以用了
+另一种是危险权限，在你的项目compileSdkVersion和targetSdkVersion均&gt;=23的时候，这一类权限不仅需要在清单中声明，而且要在使用的时候向用户申请才行。如果还像6.0之前那样只是声明一下的话，分分钟崩给你看T.T~
+
+
+123456java.lang.SecurityExceptiongetDeviceId: Neither user 10204 nor current process has android.permission.READ_PHONE_STATE...&#125;1 java.lang.RuntimeException:Unable to start activity ComponentInfo&#123;com.aidebar.d8alarmclock/com.aidebar.d8alarmclock.activity.Mai ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2016/12/06/20161206%20%E6%BB%91%E5%8A%A8%E5%9B%9E%E5%BC%B9%E4%B8%8E%E5%86%85%E5%B1%82listview%E7%9A%84%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81/" title="滑动回弹与内层listview的滑动冲突">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="滑动回弹与内层listview的滑动冲突"></a></div><div class="recent-post-info"><a class="article-title" href="/2016/12/06/20161206%20%E6%BB%91%E5%8A%A8%E5%9B%9E%E5%BC%B9%E4%B8%8E%E5%86%85%E5%B1%82listview%E7%9A%84%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81/" title="滑动回弹与内层listview的滑动冲突">滑动回弹与内层listview的滑动冲突</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2016-12-06 10:33:27"><i class="far fa-calendar-alt"></i>2016-12-06</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span></div><div class="content">
+需求：
+
+
+1、随着下拉，view发生位移，松开回弹到原来的位置
+2、内部的listview可以正常的上下滑动
+3、listview滑到顶部的时候，继续下拉，则是拉动整个外部view，并且松开回弹
+这3个需求就会造成事件冲突，那么处理方式就是：listview不是初始状态就是listview自己处理事件，listview还原到了初始状态，外部view处理下拉回弹事件。
+
+需求一个一个的实现，首先第一个下拉回弹
+因为里面还要套一个listview，所以我们自定义一个view继承自viewGroup，这里选择的是LinearLayout
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162package com.aidebar.demo;import android.content.Context;import android.util.AttributeSet;import android.util.Log;i ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2016/12/05/20161205%20popupWindow%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" title="popupWindow的一个坑">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="popupWindow的一个坑"></a></div><div class="recent-post-info"><a class="article-title" href="/2016/12/05/20161205%20popupWindow%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" title="popupWindow的一个坑">popupWindow的一个坑</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2016-12-05 10:33:27"><i class="far fa-calendar-alt"></i>2016-12-05</time></div><div class="content">
+PopupWindow这东西可以说大量存在于各种app里，popupWindow = new PopupWindow(popupWindowView, DP2PX.dip2px(this, 149F), LinearLayout.LayoutParams.WRAP_CONTENT, true); 
+
+通常会这么写，最后一个true表示获取焦点，这样做有一个好处，当点击pop以外的区域，都会让pop消失，同时因为焦点在pop上，点击外面的按钮因为按钮没有焦点所以不会触发点击事件。这也是符合一般用户习惯的，如下图
+
+西卡西！！！如果我要相应外部的点击事件呢？
+如果你认为：那好办，调用另一个构造方法，不获取焦点不就行了。
+曾经我也是这么的年轻。。。不获取焦点，确实能够让外部响应点击事件，然而
+弹出pop的那个按钮也响应了点击事件了啊喂！！  用户习惯通常应该是点击一次，弹出popup，再点击一次，消失啊！
+
+这样爽么？这肯定不是我们想要的
+那么如何让这个按钮不要响应点击事件或者响应了点击事件但是关闭pop而不是再次打开呢
+你可能又会想到：监听pop的开闭状态，搞个变量记住，在点击事件里根据 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2016/12/05/20161205%20%E4%B8%80%E4%B8%AA%E6%96%B9%E4%BE%BF%E5%81%9A%E8%BD%AE%E6%92%AD%E5%9B%BE%E7%9A%84%E5%B7%A5%E5%85%B7/" title="一个方便做轮播图的工具">     <img class="post_bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一个方便做轮播图的工具"></a></div><div class="recent-post-info"><a class="article-title" href="/2016/12/05/20161205%20%E4%B8%80%E4%B8%AA%E6%96%B9%E4%BE%BF%E5%81%9A%E8%BD%AE%E6%92%AD%E5%9B%BE%E7%9A%84%E5%B7%A5%E5%85%B7/" title="一个方便做轮播图的工具">一个方便做轮播图的工具</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2016-12-05 10:33:27"><i class="far fa-calendar-alt"></i>2016-12-05</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span></div><div class="content">
+首先导入包
+12compile 'com.youth.banner:banner:1.4.2'compile 'com.github.bumptech.glide:glide:3.7.0'
+
+当然不用glide，用picasso，fresco都是可以的
+
+然后写一个加载类，如果是用Glide的话，就这么写
+1234567891011121314151617181920212223242526272829303132333435363738394041package com.aidebar.demo;import android.content.Context;import android.widget.ImageView;import com.bumptech.glide.Glide;import com.youth.banner.loader.ImageLoader;/** * @author xzj * @date 2016/11/21 11:27. */public class GlideImageLoader extends ImageLoader &#123;    @Ov ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jfif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Nanaya Haruki</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">91</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">30</div></a></div><div class="card-info-data-item is-center">     <a href="/categories"><div class="headline">分类</div><div class="length_num">3</div></a></div></div><div class="card-info-bookmark is-center"><button class="button--animated" id="bookmark-it" title="加入书签"><i class="fas fa-bookmark"></i><span>加入书签</span></button></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/NanayaHaruki" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:sankarea8818@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a href="/2021/05/31/20210531%20AS%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="AS的一些设置" alt="AS的一些设置"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2021/05/31/20210531%20AS%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE/" title="AS的一些设置">AS的一些设置</div><time class="aside-post_meta post-meta__date" title="发表于 2021-05-31 10:04:27">2021-05-31</time></div></a></div><div class="aside-recent-post"><a href="/2021/03/10/20210310%20flutter%20web%20%E9%A1%B5%E9%9D%A2%E7%A9%BA%E7%99%BD%20canvaskit/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="20210310 flutter web 页面空白 canvaskit" alt="20210310 flutter web 页面空白 canvaskit"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2021/03/10/20210310%20flutter%20web%20%E9%A1%B5%E9%9D%A2%E7%A9%BA%E7%99%BD%20canvaskit/" title="20210310 flutter web 页面空白 canvaskit">20210310 flutter web 页面空白 canvaskit</div><time class="aside-post_meta post-meta__date" title="发表于 2021-03-10 10:04:27">2021-03-10</time></div></a></div><div class="aside-recent-post"><a href="/2020/09/11/20200911%20%E7%BB%98%E5%88%B6%E6%96%87%E5%AD%97%E7%9A%84%E5%AF%B9%E9%BD%90%E4%B8%8E%E8%B7%B3%E8%BF%87%E5%9B%BE%E7%89%87/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="绘制文字的对齐与跳过图片" alt="绘制文字的对齐与跳过图片"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/09/11/20200911%20%E7%BB%98%E5%88%B6%E6%96%87%E5%AD%97%E7%9A%84%E5%AF%B9%E9%BD%90%E4%B8%8E%E8%B7%B3%E8%BF%87%E5%9B%BE%E7%89%87/" title="绘制文字的对齐与跳过图片">绘制文字的对齐与跳过图片</div><time class="aside-post_meta post-meta__date" title="发表于 2020-09-11 10:04:27">2020-09-11</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/24/20200724%20ObjectBox%E5%A2%9E%E5%8A%A0%E6%96%B0%E5%AD%97%E6%AE%B5%E7%9A%84%E9%97%AE%E9%A2%98/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="ObjectBox增加新字段的问题" alt="ObjectBox增加新字段的问题"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/24/20200724%20ObjectBox%E5%A2%9E%E5%8A%A0%E6%96%B0%E5%AD%97%E6%AE%B5%E7%9A%84%E9%97%AE%E9%A2%98/" title="ObjectBox增加新字段的问题">ObjectBox增加新字段的问题</div><time class="aside-post_meta post-meta__date" title="发表于 2020-07-24 10:04:27">2020-07-24</time></div></a></div><div class="aside-recent-post"><a href="/2020/07/13/20200713%20%E7%BB%8F%E6%B5%8E%E5%AD%A6/"><div class="aside-post-cover"><img class="aside-post-bg" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="经济学" alt="经济学"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/07/13/20200713%20%E7%BB%8F%E6%B5%8E%E5%AD%A6/" title="经济学">经济学</div><time class="aside-post_meta post-meta__date" title="发表于 2020-07-13 10:55:27">2020-07-13</time></div></a></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">52</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Flutter/"><span class="card-category-list-name">Flutter</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/"><span class="card-category-list-name">读书</span><span class="card-category-list-count">5</span></a></li>
+                       
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Android/" style="font-size: 22px; color: #99a9bf">Android</a> <a href="/tags/AndroidStudio/" style="font-size: 17.33px; color: #999da1">AndroidStudio</a> <a href="/tags/DataBinding/" style="font-size: 16px; color: #999">DataBinding</a> <a href="/tags/Dialog/" style="font-size: 16.67px; color: #999b9d">Dialog</a> <a href="/tags/Flutter/" style="font-size: 16.67px; color: #999b9d">Flutter</a> <a href="/tags/Gson/" style="font-size: 18.67px; color: #99a0aa">Gson</a> <a href="/tags/ObjectBox/" style="font-size: 17.33px; color: #999da1">ObjectBox</a> <a href="/tags/PopupWindows/" style="font-size: 16px; color: #999">PopupWindows</a> <a href="/tags/Room/" style="font-size: 16px; color: #999">Room</a> <a href="/tags/Rxjava/" style="font-size: 16px; color: #999">Rxjava</a> <a href="/tags/UI/" style="font-size: 20px; color: #99a4b2">UI</a> <a href="/tags/Utils/" style="font-size: 20.67px; color: #99a5b7">Utils</a> <a href="/tags/View/" style="font-size: 16px; color: #999">View</a> <a href="/tags/Web/" style="font-size: 16px; color: #999">Web</a> <a href="/tags/android/" style="font-size: 16px; color: #999">android</a> <a href="/tags/canvas/" style="font-size: 16px; color: #999">canvas</a> <a href="/tags/https/" style="font-size: 16px; color: #999">https</a> <a href="/tags/json/" style="font-size: 16px; color: #999">json</a> <a href="/tags/kotlin/" style="font-size: 18.67px; color: #99a0aa">kotlin</a> <a href="/tags/problems/" style="font-size: 21.33px; color: #99a7bb">problems</a> <a href="/tags/refrofit/" style="font-size: 16px; color: #999">refrofit</a> <a href="/tags/retrofit/" style="font-size: 16px; color: #999">retrofit</a> <a href="/tags/tablayout/" style="font-size: 16px; color: #999">tablayout</a> <a href="/tags/tips/" style="font-size: 19.33px; color: #99a2ae">tips</a> <a href="/tags/toolbar/" style="font-size: 16px; color: #999">toolbar</a> <a href="/tags/wifi/" style="font-size: 16px; color: #999">wifi</a> <a href="/tags/%E5%8D%8F%E7%A8%8B/" style="font-size: 16px; color: #999">协程</a> <a href="/tags/%E6%BA%90%E7%A0%81/" style="font-size: 18px; color: #999ea6">源码</a> <a href="/tags/%E7%BB%8F%E6%B5%8E/" style="font-size: 18.67px; color: #99a0aa">经济</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 16px; color: #999">面试</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">五月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/06/"><span class="card-archive-list-date">六月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">三月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/02/"><span class="card-archive-list-date">二月 2020</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">91</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" publish_date="2020/07/10 15:16:00">     </div></div><div class="webinfo-item"><div class="webinfo-site-wordcount-name">本站总字数 :</div><div class="webinfo-site-wordcount">46.8k</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Nanaya Haruki</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var subtitleEffect = true
+if (subtitleEffect) { 
+  var typed = new Typed("#subtitle", {
+    strings: "今日事&#44;今日毕,Never put off till tomorrow what you can do today".split(","),
+    startDelay: 300,
+    typeSpeed: 150,
+    loop: true,
+    backSpeed: 50
+  })
+} else {
+  document.getElementById("subtitle").innerHTML = '今日事&#44;今日毕'
+}</script></body></html>
