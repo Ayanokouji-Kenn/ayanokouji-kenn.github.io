@@ -1,122 +1,153 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ObjectBox 数据刷新无效问题 | 七夜的小屋</title><meta name="description" content="实际项目中发现没有自动刷新，于是写了个小demo测试了下，  一开始是这样，tv是用来测试自动刷新的TextView，tv2是手动显示user.age的，用来对比。 123456789101112131415161718ObjectBox.getUserBox().query().build()            .subscribe()            .on(AndroidSche"><meta name="keywords" content="Android,ObjectBox"><meta name="author" content="Nanaya Haruki"><meta name="copyright" content="Nanaya Haruki"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/avatar.jfif"><link rel="canonical" href="https://nanayaharuki.github.io/2019/04/12/20190412%20ObjectBox%20%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="bVhNojYvumg92cuWQHIpPCLKkDNieuXJCoUG8Kpmxzg"/><meta name="baidu-site-verification" content="H4PZQqcpUQ"/><meta property="og:type" content="article"><meta property="og:title" content="ObjectBox 数据刷新无效问题"><meta property="og:url" content="https://nanayaharuki.github.io/2019/04/12/20190412%20ObjectBox%20%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/"><meta property="og:site_name" content="七夜的小屋"><meta property="og:description" content="实际项目中发现没有自动刷新，于是写了个小demo测试了下，  一开始是这样，tv是用来测试自动刷新的TextView，tv2是手动显示user.age的，用来对比。 123456789101112131415161718ObjectBox.getUserBox().query().build()            .subscribe()            .on(AndroidSche"><meta property="og:image" content="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg"><meta property="article:published_time" content="2019-04-12T09:21:27.000Z"><meta property="article:modified_time" content="2021-03-10T09:35:58.992Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null) {
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
-  }
-}
-var activateLightMode = function () {
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null) {
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
-  }
-}
-
-var getCookies = function (name) {
-  const value = `; ${document.cookie}`
-  const parts = value.split(`; ${name}=`)
-  if (parts.length === 2) return parts.pop().split(';').shift()
-}
-
-var autoChangeMode = 'false'
-var t = getCookies('theme')
-if (autoChangeMode === '1') {
-  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-  if (t === undefined) {
-    if (isLightMode) activateLightMode()
-    else if (isDarkMode) activateDarkMode()
-    else if (isNotSpecified || hasNoSupport) {
-      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
-      var now = new Date()
-      var hour = now.getHours()
-      var isNight = hour <= 6 || hour >= 18
-      isNight ? activateDarkMode() : activateLightMode()
-    }
-    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-      if (Cookies.get('theme') === undefined) {
-        e.matches ? activateDarkMode() : activateLightMode()
-      }
-    })
-  } else if (t === 'light') activateLightMode()
-  else activateDarkMode()
-} else if (autoChangeMode === '2') {
-  now = new Date()
-  hour = now.getHours()
-  isNight = hour <= 6 || hour >= 18
-  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode()
-} else {
-  if (t === 'dark') activateDarkMode()
-  else if (t === 'light') activateLightMode()
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="Kotlin使用Gson、Moshi、KotlinSerialization转换json的区别" href="https://nanayaharuki.github.io/2019/05/02/20190502%20Kotlin%20%20%E4%BD%BF%E7%94%A8Gson%E3%80%81Moshi%E3%80%81KotlinSerialization%E8%BD%AC%E6%8D%A2json%E7%9A%84%E5%8C%BA%E5%88%AB/"><link rel="next" title="首页Activity重复启动问题" href="https://nanayaharuki.github.io/2019/03/01/20190301%20%E9%A6%96%E9%A1%B5Activity%E9%87%8D%E5%A4%8D%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/"><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?4417f86c0cc24eb9d60f23fc6cbaa820";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-85987364-1', 'auto');
-ga('send', 'pageview');
-</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ObjectBox 数据刷新无效问题 | 七夜的小屋</title><meta name="keywords" content="Android,ObjectBox"><meta name="author" content="Nanaya Haruki"><meta name="copyright" content="Nanaya Haruki"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="实际项目中发现没有自动刷新，于是写了个小demo测试了下，  一开始是这样，tv是用来测试自动刷新的TextView，tv2是手动显示user.age的，用来对比。 123456789101112131415161718ObjectBox.getUserBox().query().build()            .subscribe()            .on(AndroidSche">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ObjectBox 数据刷新无效问题">
+<meta property="og:url" content="https://nanayaharuki.github.io/2019/04/12/20190412%20ObjectBox%20%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="七夜的小屋">
+<meta property="og:description" content="实际项目中发现没有自动刷新，于是写了个小demo测试了下，  一开始是这样，tv是用来测试自动刷新的TextView，tv2是手动显示user.age的，用来对比。 123456789101112131415161718ObjectBox.getUserBox().query().build()            .subscribe()            .on(AndroidSche">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nanayaharuki.github.io/img/6.jpg">
+<meta property="article:published_time" content="2019-04-12T09:21:27.000Z">
+<meta property="article:modified_time" content="2021-03-10T09:35:58.992Z">
+<meta property="article:author" content="Nanaya Haruki">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="ObjectBox">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nanayaharuki.github.io/img/6.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://nanayaharuki.github.io/2019/04/12/20190412%20ObjectBox%20%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  localSearch: undefined,
   translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
     noSupport: '浏览器不支持'
   },
-  bookmark: {
-    message_prev: '按',
-    message_next: '键将本页加入书签'
+  relativeDate: {
+    homepage: false,
+    post: false
   },
-  runtime_unit: '天',
-  runtime: true,
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
   copyright: undefined,
-  ClickShowText: undefined,
-  medium_zoom: false,
-  fancybox: true,
+  lightbox: 'fancybox',
   Snackbar: undefined,
-  justifiedGallery: {
-    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
   },
-  baiduPush: false,
-  highlightCopy: true,
-  highlightLang: true,
   isPhotoFigcaption: false,
   islazyload: true,
-  isanchor: false    
-}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ObjectBox 数据刷新无效问题',
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
-  isSidebar: false
-  }</script><noscript><style>
-#nav {
-  opacity: 1
-}
-.justified-gallery img{
-  opacity: 1
-}
-</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jfif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">91</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">30</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">七夜的小屋</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">ObjectBox 数据刷新无效问题</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2019-04-12 17:21:27"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2019-04-12</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2021-03-10 17:35:58"><i class="fas fa-history fa-fw"></i> 更新于 2021-03-10</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/Android/">Android</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">306</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 1 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><ol>
+  isToc: false,
+  postUpdate: '2021-03-10 17:35:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music"><i class="fa-fw /music/"></i><span> 0</span></a></li><li><a class="site-page child" href="/Movie"><i class="fa-fw /movies/"></i><span> 1</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">七夜的小屋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music"><i class="fa-fw /music/"></i><span> 0</span></a></li><li><a class="site-page child" href="/Movie"><i class="fa-fw /movies/"></i><span> 1</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ObjectBox 数据刷新无效问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-04-12T09:21:27.000Z" title="发表于 2019-04-12 17:21:27">2019-04-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-03-10T09:35:58.992Z" title="更新于 2021-03-10 17:35:58">2021-03-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Android/">Android</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ObjectBox 数据刷新无效问题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ol>
 <li>实际项目中发现没有自动刷新，于是写了个小demo测试了下，</li>
 </ol>
 <p>一开始是这样，tv是用来测试自动刷新的<code>TextView</code>，tv2是手动显示<code>user.age</code>的，用来对比。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ObjectBox.getUserBox().query().build()</span><br><span class="line">            .subscribe()</span><br><span class="line">            .on(AndroidScheduler.mainThread())</span><br><span class="line">            .observer &#123;</span><br><span class="line">                tv.text = it.firstOrNull()?.age?.toString()</span><br><span class="line">            &#125;</span><br><span class="line">btn_modify.setOnClickListener &#123;</span><br><span class="line">            val singleUser = ObjectBox.getUserBox().all.firstOrNull()</span><br><span class="line">            <span class="comment">//数据库空的，就随便插一条数据</span></span><br><span class="line">            <span class="keyword">if</span> (singleUser==<span class="keyword">null</span>) &#123;</span><br><span class="line">                ObjectBox.getUserBox().put(User(<span class="number">0</span>,<span class="string">"lucy"</span>,<span class="number">13</span>))</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 数据库有值，就拿出来，年龄自增一次</span></span><br><span class="line">                singleUser.age+=<span class="number">1</span></span><br><span class="line">                ObjectBox.getUserBox().put(singleUser)</span><br><span class="line">            &#125;</span><br><span class="line">            tv2.setText(singleUser?.age?.toString())</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ObjectBox.getUserBox().query().build()</span><br><span class="line">            .subscribe()</span><br><span class="line">            .on(AndroidScheduler.mainThread())</span><br><span class="line">            .observer &#123;</span><br><span class="line">                tv.text = it.firstOrNull()?.age?.toString()</span><br><span class="line">            &#125;</span><br><span class="line">btn_modify.setOnClickListener &#123;</span><br><span class="line">            val singleUser = ObjectBox.getUserBox().all.firstOrNull()</span><br><span class="line">            <span class="comment">//数据库空的，就随便插一条数据</span></span><br><span class="line">            <span class="keyword">if</span> (singleUser==<span class="keyword">null</span>) &#123;</span><br><span class="line">                ObjectBox.getUserBox().put(User(<span class="number">0</span>,<span class="string">&quot;lucy&quot;</span>,<span class="number">13</span>))</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 数据库有值，就拿出来，年龄自增一次</span></span><br><span class="line">                singleUser.age+=<span class="number">1</span></span><br><span class="line">                ObjectBox.getUserBox().put(singleUser)</span><br><span class="line">            &#125;</span><br><span class="line">            tv2.setText(singleUser?.age?.toString())</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 <p>测试发现，一开始tv和tv2是保持同步的，随着不断点击<code>btn_modify</code>按钮，tv2还在自增，tv停了。。，我怀疑是不是observer的对象被回收了，于是改成了</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> subcribtion  = DataSubscriptionList() <span class="comment">//这里是成员变量</span></span><br><span class="line"> <span class="comment">//下面是方法里的内容</span></span><br><span class="line"> ObjectBox.getUserBox().query().build()</span><br><span class="line">            .subscribe(subcribtion)  <span class="comment">//这里传进来</span></span><br><span class="line">            .on(AndroidScheduler.mainThread())</span><br><span class="line">            .observer &#123;</span><br><span class="line">                tv.text = it.firstOrNull()?.age?.toString()</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> subcribtion  = DataSubscriptionList() <span class="comment">//这里是成员变量</span></span><br><span class="line"> <span class="comment">//下面是方法里的内容</span></span><br><span class="line"> ObjectBox.getUserBox().query().build()</span><br><span class="line">            .subscribe(subcribtion)  <span class="comment">//这里传进来</span></span><br><span class="line">            .on(AndroidScheduler.mainThread())</span><br><span class="line">            .observer &#123;</span><br><span class="line">                tv.text = it.firstOrNull()?.age?.toString()</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br></pre></td></tr></table></figure>
 <p>将subscribe保存在成员变量里延长生命周期，就可以一直刷新了。</p>
 <p>用<code>DataSubscriptionList</code>可以保存多个<code>DataSubscription</code>,取消监听的时候可以一起<code>cancel</code>掉。<br>如果就一个的话，直接将observer返回的<code>DataSubscription</code>放到成员变量位置在一个个取消也是可以的。</p>
-</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Nanaya Haruki</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nanayaharuki.github.io/2019/04/12/20190412%20ObjectBox%20%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/">https://nanayaharuki.github.io/2019/04/12/20190412%20ObjectBox%20%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nanayaharuki.github.io" target="_blank">七夜的小屋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android/">Android</a><a class="post-meta__tags" href="/tags/ObjectBox/">ObjectBox</a></div><div class="post_share"><div class="social-share" data-image="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/05/02/20190502%20Kotlin%20%20%E4%BD%BF%E7%94%A8Gson%E3%80%81Moshi%E3%80%81KotlinSerialization%E8%BD%AC%E6%8D%A2json%E7%9A%84%E5%8C%BA%E5%88%AB/"><img class="prev-cover" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Kotlin使用Gson、Moshi、KotlinSerialization转换json的区别</div></div></a></div><div class="next-post pull-right"><a href="/2019/03/01/20190301%20%E9%A6%96%E9%A1%B5Activity%E9%87%8D%E5%A4%8D%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/"><img class="next-cover" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">首页Activity重复启动问题</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/02/28/20200228 [ObjectBox] Relation target class 'Long' defined in class 'LocalMessage' could not be foun.../" title="错误[ObjectBox] Relation target class 'Long' defined in class 'LocalMessage' could not be foun..."><img class="relatedPosts_cover" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-28</div><div class="relatedPosts_title">错误[ObjectBox] Relation target class 'Long' defined in class 'LocalMessage' could not be foun...</div></div></a></div><div class="relatedPosts_item"><a href="/2020/07/24/20200724 ObjectBox增加新字段的问题/" title="ObjectBox增加新字段的问题"><img class="relatedPosts_cover" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-24</div><div class="relatedPosts_title">ObjectBox增加新字段的问题</div></div></a></div><div class="relatedPosts_item"><a href="/2016/12/05/20161205 一个方便做轮播图的工具/" title="一个方便做轮播图的工具"><img class="relatedPosts_cover" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2016-12-05</div><div class="relatedPosts_title">一个方便做轮播图的工具</div></div></a></div><div class="relatedPosts_item"><a href="/2016/12/06/20161206 滑动回弹与内层listview的滑动冲突/" title="滑动回弹与内层listview的滑动冲突"><img class="relatedPosts_cover" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2016-12-06</div><div class="relatedPosts_title">滑动回弹与内层listview的滑动冲突</div></div></a></div><div class="relatedPosts_item"><a href="/2017/06/27/20170627 AlertDialog不显示文字/" title="AlertDialog不显示文字"><img class="relatedPosts_cover" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-06-27</div><div class="relatedPosts_title">AlertDialog不显示文字</div></div></a></div><div class="relatedPosts_item"><a href="/2017/07/05/20170705 打开相册失败no activity found/" title="打开相册失败no activity found"><img class="relatedPosts_cover" data-src="https://w.wallhaven.cc/full/j5/wallhaven-j5zprq.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-07-05</div><div class="relatedPosts_title">打开相册失败no activity found</div></div></a></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Nanaya Haruki</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script></body></html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Nanaya Haruki</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nanayaharuki.github.io/2019/04/12/20190412%20ObjectBox%20%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/">https://nanayaharuki.github.io/2019/04/12/20190412%20ObjectBox%20%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nanayaharuki.github.io" target="_blank">七夜的小屋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android/">Android</a><a class="post-meta__tags" href="/tags/ObjectBox/">ObjectBox</a></div><div class="post_share"><div class="social-share" data-image="/img/6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/05/02/20190502%20Kotlin%20%20%E4%BD%BF%E7%94%A8Gson%E3%80%81Moshi%E3%80%81KotlinSerialization%E8%BD%AC%E6%8D%A2json%E7%9A%84%E5%8C%BA%E5%88%AB/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Kotlin使用Gson、Moshi、KotlinSerialization转换json的区别</div></div></a></div><div class="next-post pull-right"><a href="/2019/03/01/20190301%20%E9%A6%96%E9%A1%B5Activity%E9%87%8D%E5%A4%8D%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">首页Activity重复启动问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/02/28/20200228 [ObjectBox] Relation target class 'Long' defined in class 'LocalMessage' could not be foun.../" title="错误[ObjectBox] Relation target class 'Long' defined in class 'LocalMessage' could not be foun..."><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-28</div><div class="title">错误[ObjectBox] Relation target class 'Long' defined in class 'LocalMessage' could not be foun...</div></div></a></div><div><a href="/2020/07/24/20200724 ObjectBox增加新字段的问题/" title="ObjectBox增加新字段的问题"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-24</div><div class="title">ObjectBox增加新字段的问题</div></div></a></div><div><a href="/2016/12/05/20161205 一个方便做轮播图的工具/" title="一个方便做轮播图的工具"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2016-12-05</div><div class="title">一个方便做轮播图的工具</div></div></a></div><div><a href="/2016/12/06/20161206 滑动回弹与内层listview的滑动冲突/" title="滑动回弹与内层listview的滑动冲突"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2016-12-06</div><div class="title">滑动回弹与内层listview的滑动冲突</div></div></a></div><div><a href="/2017/06/27/20170627 AlertDialog不显示文字/" title="AlertDialog不显示文字"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2017-06-27</div><div class="title">AlertDialog不显示文字</div></div></a></div><div><a href="/2017/07/05/20170705 打开相册失败no activity found/" title="打开相册失败no activity found"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2017-07-05</div><div class="title">打开相册失败no activity found</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Nanaya Haruki</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">91</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/31/20210531%20AS%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE/" title="AS的一些设置"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AS的一些设置"/></a><div class="content"><a class="title" href="/2021/05/31/20210531%20AS%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE/" title="AS的一些设置">AS的一些设置</a><time datetime="2021-05-31T02:04:27.000Z" title="发表于 2021-05-31 10:04:27">2021-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/10/20210310%20flutter%20web%20%E9%A1%B5%E9%9D%A2%E7%A9%BA%E7%99%BD%20canvaskit/" title="20210310 flutter web 页面空白 canvaskit"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="20210310 flutter web 页面空白 canvaskit"/></a><div class="content"><a class="title" href="/2021/03/10/20210310%20flutter%20web%20%E9%A1%B5%E9%9D%A2%E7%A9%BA%E7%99%BD%20canvaskit/" title="20210310 flutter web 页面空白 canvaskit">20210310 flutter web 页面空白 canvaskit</a><time datetime="2021-03-10T02:04:27.000Z" title="发表于 2021-03-10 10:04:27">2021-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/11/20200911%20%E7%BB%98%E5%88%B6%E6%96%87%E5%AD%97%E7%9A%84%E5%AF%B9%E9%BD%90%E4%B8%8E%E8%B7%B3%E8%BF%87%E5%9B%BE%E7%89%87/" title="绘制文字的对齐与跳过图片"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="绘制文字的对齐与跳过图片"/></a><div class="content"><a class="title" href="/2020/09/11/20200911%20%E7%BB%98%E5%88%B6%E6%96%87%E5%AD%97%E7%9A%84%E5%AF%B9%E9%BD%90%E4%B8%8E%E8%B7%B3%E8%BF%87%E5%9B%BE%E7%89%87/" title="绘制文字的对齐与跳过图片">绘制文字的对齐与跳过图片</a><time datetime="2020-09-11T02:04:27.000Z" title="发表于 2020-09-11 10:04:27">2020-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/24/20200724%20ObjectBox%E5%A2%9E%E5%8A%A0%E6%96%B0%E5%AD%97%E6%AE%B5%E7%9A%84%E9%97%AE%E9%A2%98/" title="ObjectBox增加新字段的问题"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ObjectBox增加新字段的问题"/></a><div class="content"><a class="title" href="/2020/07/24/20200724%20ObjectBox%E5%A2%9E%E5%8A%A0%E6%96%B0%E5%AD%97%E6%AE%B5%E7%9A%84%E9%97%AE%E9%A2%98/" title="ObjectBox增加新字段的问题">ObjectBox增加新字段的问题</a><time datetime="2020-07-24T02:04:27.000Z" title="发表于 2020-07-24 10:04:27">2020-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/13/20200713%20%E7%BB%8F%E6%B5%8E%E5%AD%A6/" title="经济学"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="经济学"/></a><div class="content"><a class="title" href="/2020/07/13/20200713%20%E7%BB%8F%E6%B5%8E%E5%AD%A6/" title="经济学">经济学</a><time datetime="2020-07-13T02:55:27.000Z" title="发表于 2020-07-13 10:55:27">2020-07-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Nanaya Haruki</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
