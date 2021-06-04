@@ -4,14 +4,15 @@
     text-align: center
 
   .btn-beautify
-    position: relative
-    z-index: 1
     display: inline-block
     margin: 0 .2rem .3rem
     padding: 0 1rem
     background-color: $btn-default-color
     color: $btn-color
     line-height: 2
+
+    i + span
+      margin-left: .3rem
 
     &:not(.block) + .btn-beautify:not(.block)
       margin: 0 .2rem 1rem
@@ -34,9 +35,9 @@
     &:hover
       text-decoration: none
 
-    for $type in $btn-types
+    for $type in $tagsP-types
       &.{$type}
-        background-color: lookup('$btn-' + $type + '-color')
+        background-color: lookup('$tagsP-' + $type + '-color')
 
     &.outline
       border: 1px solid transparent
@@ -51,10 +52,10 @@
       &:hover
         color: white !important
 
-      for $type in $btn-types
+      for $type in $tagsP-types
         &.{$type}
-          border-color: lookup('$btn-' + $type + '-color')
-          color: lookup('$btn-' + $type + '-color')
+          border-color: lookup('$tagsP-' + $type + '-color')
+          color: lookup('$tagsP-' + $type + '-color')
 
           &.button--animated:before
-            background: lookup('$btn-' + $type + '-color')
+            background: lookup('$tagsP-' + $type + '-color')

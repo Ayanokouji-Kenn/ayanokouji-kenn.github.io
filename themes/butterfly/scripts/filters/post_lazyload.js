@@ -1,23 +1,29 @@
 /**
  * Butterfly
  * lazyload
- * replace src to data-src
+ * replace src to data-lazy-src
  */
-// <figure .+class="[^"]* highlight [^"]*".+>
 
 'use strict'
 
 const urlFor = require('hexo-util').url_for.bind(hexo)
 
-function lazyProcess (htmlContent) {
-  var bg = hexo.theme.config.lazyload.post ? urlFor(hexo.theme.config.lazyload.post) : 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-  return htmlContent.replace(/(<img .*?src=)/ig, `$1 "${bg}" data-src=`)
+function lazyload (htmlContent) {
+  const bg = hexo.theme.config.lazyload.placeholder ? urlFor(hexo.theme.config.lazyload.placeholder) : 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+  return htmlContent.replace(/(<img.*? src=)/ig, `$1 "${bg}" data-lazy-src=`)
 }
 
-var processPost = function (data) {
-  if (!hexo.theme.config.lazyload.enable) return
-  data.content = lazyProcess.call(this, data.content)
+hexo.extend.filter.register('after_render:html', function (data) {
+  const config = hexo.theme.config.lazyload
+  if (!config.enable) return
+  if (config.field !== 'site') return
+  return lazyload.call(this, data)
+})
+
+hexo.extend.filter.register('after_post_render', data => {
+  const config = hexo.theme.config.lazyload
+  if (!config.enable) return
+  if (config.field !== 'post') return
+  data.content = lazyload.call(this, data.content)
   return data
-}
-
-hexo.extend.filter.register('after_post_render', processPost)
+})
