@@ -8,7 +8,7 @@
       <link href="2021/05/31/20210531%20AS%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE/"/>
       <url>2021/05/31/20210531%20AS%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE/</url>
       
-        <content type="html"><![CDATA[<hr><ol><li>注释快捷键的时候，不要顶格，而与上一行对齐</li></ol><p>Editor-Code Style-Kotlin-Code Generation<br>将Line comment at first column 勾去掉<br>将Add a space at comment start勾上</p>]]></content>
+        <content type="html"><![CDATA[<hr><ol><li>注释快捷键的时候，不要顶格，而与上一行对齐</li></ol><p>Editor-Code Style-Kotlin-Code Generation<br>将Line comment at first column 勾去掉<br>将Add a space at comment start勾上</p><ol start="2"><li>AS或Idea输入中文障碍<br>Help-Edit Custom VM options 添加<code>-Drecreate.x11.input.method=true</code>,重启</li></ol>]]></content>
       
       
       <categories>
