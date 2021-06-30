@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>AndroiStudio Java or Kotlin library 打包</title>
+      <link href="2021/06/30/20210630%20AndroidStudio%20Java%20or%20Kotlin%20library%20%E6%89%93%E5%8C%85/"/>
+      <url>2021/06/30/20210630%20AndroidStudio%20Java%20or%20Kotlin%20library%20%E6%89%93%E5%8C%85/</url>
+      
+        <content type="html"><![CDATA[<h1 id="在AS中建新的java-kotlin-library-打包后jar无法运行"><a href="#在AS中建新的java-kotlin-library-打包后jar无法运行" class="headerlink" title="在AS中建新的java kotlin library 打包后jar无法运行"></a>在AS中建新的java kotlin library 打包后jar无法运行</h1><p>在module的<code>build.gradle</code>里加上</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">jar &#123;</span><br><span class="line">    manifest &#123;</span><br><span class="line">    // 冒号后面的是你主函数所在类名，我这Kt是因为这是个kotlin file</span><br><span class="line">        attributes &#x27;Main-Class&#x27;: &#x27;com.optimais.hidenavigationbar.MyClassKt&#x27; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 下面这行也要加，不然打的jar包莫的kotlin环境</span><br><span class="line">    from &#123; configurations.compileClasspath.collect &#123; it.isDirectory() ? it : zipTree(it) &#125; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> AndroiStudio </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>卢麒元</title>
       <link href="2021/06/24/20210624%20%E5%8D%A2%E9%BA%92%E5%85%83/"/>
       <url>2021/06/24/20210624%20%E5%8D%A2%E9%BA%92%E5%85%83/</url>
@@ -1736,8 +1755,8 @@
     
     <entry>
       <title>设置背景比较器失败</title>
-      <link href="2016/11/09/201611106%20%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E6%AF%94%E8%BE%83%E5%99%A8%E5%A4%B1%E8%B4%A5/"/>
-      <url>2016/11/09/201611106%20%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E6%AF%94%E8%BE%83%E5%99%A8%E5%A4%B1%E8%B4%A5/</url>
+      <link href="2016/11/09/20161109%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E6%AF%94%E8%BE%83%E5%99%A8%E5%A4%B1%E8%B4%A5/"/>
+      <url>2016/11/09/20161109%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E6%AF%94%E8%BE%83%E5%99%A8%E5%A4%B1%E8%B4%A5/</url>
       
         <content type="html"><![CDATA[<ul><li>错误：<code>&lt;item&gt; tag requires a &#39;drawable&#39; attribute or child tag defining a drawable</code></li></ul><p>设置背景选择器的时候像常用的那样</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;selector xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span><br><span class="line">    &lt;item android:state_pressed=<span class="string">&quot;true&quot;</span> android:color=<span class="string">&quot;@color/leftmenu_pressed&quot;</span>  /&gt;</span><br><span class="line">    &lt;item android:color=<span class="string">&quot;@color/leftmenu_bg&quot;</span> /&gt;</span><br><span class="line">&lt;/selector&gt;</span><br></pre></td></tr></table></figure><p>就会报错，目前只有在设置背景的时候碰到过。</p><hr><ul><li>解决办法</li></ul><p>好吧，提示说我少drawable的话。。那么在colors.xml里面把<code>&lt;color&gt;</code>标签替换成<code>&lt;drawable&gt;</code>标签</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;drawable name=<span class="string">&quot;leftmenu_pressed&quot;</span>&gt;#0f0f0f&lt;/drawable&gt;</span><br><span class="line">&lt;drawable name=<span class="string">&quot;leftmenu_bg&quot;</span>&gt;#<span class="number">141414</span>&lt;/drawable&gt;</span><br></pre></td></tr></table></figure><p>然后将选择器改成</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;selector xmlns:android=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span><br><span class="line">    &lt;item android:state_pressed=<span class="string">&quot;true&quot;</span> android:drawable=<span class="string">&quot;@drawable/leftmenu_pressed&quot;</span>  /&gt;</span><br><span class="line">    &lt;item android:drawable=<span class="string">&quot;@drawable/leftmenu_bg&quot;</span> /&gt;</span><br><span class="line">&lt;/selector&gt;</span><br></pre></td></tr></table></figure><p>就好了.</p>]]></content>
       
